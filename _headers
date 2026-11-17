@@ -1,0 +1,8 @@
+# Security headers — Cloudflare Pages (ignored by GitHub Pages)
+# If/when you migrate the site to Cloudflare Pages, these apply automatically.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
