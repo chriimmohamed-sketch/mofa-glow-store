@@ -21,16 +21,72 @@
 - زر تبديل الوضع الفاتح/الداكن + زر "إتمام الطلب" العائم على الجوال.
 - وسوم SEO (description، Open Graph، JSON-LD للمنتجات بالدرهم).
 - حماية من XSS في كل ما يُعرض من بيانات المستخدم.
+- تسجيل الطلبات مباشرة في Google Sheets (Apps Script Web App) — راجع قسم «ربط Google Sheets».
 
-## الإعداد
-افتح `index.html` وعدّل الكائن `CONFIG` في بداية قسم `<script>`:
+## ربط Google Sheets (استقبال الطلبات في جدول)
 
-```js
-const CONFIG={whatsapp:"2126XXXXXXXX", freeShipAt:400, shipFee:35, promoCode:"GLOW2026", promoPct:15};
+المتجر يرسل كل طلب مؤكد إلى جدول Google Sheets عبر Google Apps Script — بدون سيرفر وبدون تكلفة.
+
+### الخطوة 1: أنشئ الجدول
+1. افتح [https://sheets.new](https://sheets.new)
+2. غيّر اسم الجدول إلى `MOFA GLOW — الطلبات`
+3. ضع في الصف الأول هذه العناوين:
+
+| A | B | C | D | E | F | G | H | I | J | K |
+|---|---|---|---|---|---|---|---|---|---|---|
+| تاريخ ووقت | رقم الطلب | الاسم | الهاتف | المدينة | العنوان | المنتجات | المجموع | الخصم | التوصيل | المبلغ النهائي |
+| 2026-11-17 21:41 | MG-744758 | سارة | 0612345678 | أكادير | حي السلام، عمارة 3 | [{id:retinol-100, qty:2,...}] | 398 | 0 | 0 | 398 |
+
+### الخطوة 2: أضف Apps Script
+1. في الجدول: **Extensions ← Apps Script**
+2. امسح أي كود موجود والصق هذا بالضبط:
+
+```javascript
+function doPost(e) {
+  var data = JSON.parse(e.postData.contents);
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheet1');
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(['تاريخ ووقت','رقم الطلب','الاسم','الهاتف','المدينة','العنوان','المنتجات','المجموع','الخصم','التوصيل','المبلغ النهائي']);
+  }
+  sheet.appendRow([
+    new Date(),
+    data.id || '',
+    data.name || '',
+    data.phone || '',
+    data.city || '',
+    data.address || '',
+    JSON.stringify(data.items || []),
+    data.subtotal || 0,
+    data.discount || 0,
+    data.shipping || 0,
+    data.total || 0
+  ]);
+  return ContentService.createTextOutput(JSON.stringify({ ok: true }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
 ```
+3. احفظ (Ctrl+S)
 
-- `whatsapp`: رقم المتجر بصيغة دولية بدون `+` ولا مسافات. عند ضبطه يظهر زر واتساب عائم ويُرسَل الطلب إليك مباشرة. إن تُرك فارغاً يظهر للزبونة زر "نسخ ملخص الطلب" فقط.
-- أسعار البيع في الحقل `price` داخل مصفوفة `PRODUCTS`.
+### الخطوة 3: انشر كـ Web App
+1. اضغط **Deploy ← New deployment**
+2. اختر النوع **Web app**
+3. في الحقول:
+   - **Description**: MOFA GLOW Orders
+   - **Execute as**: Me
+   - **Who has access**: Anyone
+4. اضغط **Deploy** ثم **Authorize access** وأكمل الصلاحيات (حسابك الشخصي)
+5. انسخ **Web app URL** (يبدأ بـ `https://script.google.com/macros/s/...`)
+
+### الخطوة 4: ضع الرابط في المتجر
+1. افتح `index.html` في المستودع ← أيقونة القلم للتحرير
+2. عدّل السطر:
+```js
+const CONFIG={whatsapp:"2126XXXXXXXX",sheetUrl:"https://script.google.com/macros/s/XXXXXXX/exec",freeShipAt:400,shipFee:35,promoCode:"GLOW2026",promoPct:15};
+```
+3. Commit changes — تُعاد Pages تلقائياً خلال دقيقة
+
+### كيف يعمل
+عند إتمام الزبونة لطلبها، يُرسَل الطلب بصمت (no-cors) إلى Apps Script الذي يضيف صفاً في الجدول فوراً، مع رقم الطلب MG-XXXXXX. إن فشل الإرسال لا يتأثر إتمام الطلب لدى الزبونة — تبقى شاشة التأكيد تُعرض وكذلك خيار النسخ/واتساب.
 
 ## النشر المجاني (GitHub Pages)
 1. من المستودع: **Settings ← Pages**.
