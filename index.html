@@ -48,22 +48,25 @@ button{cursor:pointer}
 a{color:inherit}
 img{display:block}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .wrap{max-width:1200px;margin-inline:auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+
 .latin{font-family:var(--f-latin);letter-spacing:.14em}
 .eyebrow{font:500 12px/1 var(--f-latin);letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
 h1,h2,h3{font-family:var(--f-head);font-weight:700;text-wrap:balance;margin:0}
 .bar{background:var(--btn-bg);color:var(--btn-fg);text-align:center;font-size:13px;padding:8px 16px}
-.bar b{color:var(--gold)}
-:root:not([data-theme="dark"]) .bar b{color:#E9D9B8}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bar b{color:#8F6A2E}}
-:root[data-theme="dark"] .bar b{color:#8F6A2E}
+.bar b{color:#E9D9B8}
+:root[data-theme="dark"] .bar b{color:#2A2622}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bar b{color:#2A2622}}
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:68px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand-mark{width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold)}
 .brand-name{display:flex;flex-direction:column;line-height:1;direction:ltr;align-items:flex-start}
 .brand-name b{font:600 19px/1 var(--f-latin);letter-spacing:.12em}
-.brand-name i{font:italic 500 15px/1 var(--f-latin);color:var(--gold);margin-top:3px}
+.brand-name i{font:italic 500 15px/1 var(--f-latin);color:#E9D9B8;margin-top:3px}
+:root[data-theme="dark"] .brand-name i{color:#2A2622}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand-name i{color:#2A2622}}
 nav.links{display:flex;gap:26px;font-size:15px}
 nav.links a{text-decoration:none;color:var(--muted)}
 nav.links a:hover{color:var(--fg)}
@@ -284,17 +287,19 @@ footer a{opacity:.8;text-decoration:none}footer a:hover{opacity:1}
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="MOFA GLOW">
+    <a class="brand" href="#top">
       <span class="brand-mark"><svg width="18" height="18" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 3C16 3 7 13.2 7 19.5a9 9 0 0 0 18 0C25 13.2 16 3 16 3Z"/><path d="M16 9s-4.5 6-4.5 9.8c0 2.5 2 4.5 4.5 4.5" stroke-linecap="round"/></svg></span>
       <span class="brand-name"><b>MOFA</b><i>glow</i></span>
     </a>
     <nav class="links"><a href="#catalog">المنتجات</a><a href="#ritual">الطقوس</a><a href="#delivery">التوصيل</a><a href="#faq">أسئلة شائعة</a></nav>
     <div class="actions">
-      <button class="icon-btn" id="favBtn" aria-label="المفضلة">
+      <button class="icon-btn" id="favBtn">
+        <span class="sr-only">المفضلة</span>
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 8.25c0-2.5-2.1-4.5-4.7-4.5-1.9 0-3.6 1.1-4.3 2.7-.7-1.6-2.4-2.7-4.3-2.7C5.1 3.75 3 5.75 3 8.25c0 7.2 9 12 9 12s9-4.8 9-12Z"/></svg>
         <span class="count" id="favCount" hidden>0</span>
       </button>
-      <button class="icon-btn" id="cartBtn" aria-label="حقيبة التسوق">
+      <button class="icon-btn" id="cartBtn">
+        <span class="sr-only">حقيبة التسوق</span>
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.36-2 1.26 12c.07.67-.45 1.25-1.12 1.25H4.25c-.67 0-1.19-.58-1.12-1.25l1.26-12c.06-.57.54-1 1.12-1h12.97c.58 0 1.06.43 1.12 1Z"/></svg>
         <span class="count" id="cartCount">0</span>
       </button>
