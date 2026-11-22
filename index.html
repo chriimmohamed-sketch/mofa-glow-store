@@ -1414,7 +1414,7 @@ function getProduct3DHTML(p, mode = renderMode) {
 /* منتجات لها صورة حقيقية تُعرض بالصورة، والبقية بالمجسم ثلاثي الأبعاد */
 function getProductVisualHTML(p, mode = renderMode) {
   if (p.img) {
-    return `<div class="photo-box"><img src="${p.img}" alt="${p.name}" loading="lazy" decoding="async"></div>`;
+    return `<div class="photo-box"><img src="${p.img}" alt="${p.name}" loading="eager" decoding="async"></div>`;
   }
   return getProduct3DHTML(p, mode);
 }
