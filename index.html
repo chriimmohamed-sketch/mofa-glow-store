@@ -165,8 +165,7 @@ footer{background:var(--emerald-2);color:#fff;padding:40px 20px;margin-top:60px}
     </a>
     <nav>
       <a href="#shop">المتجر</a>
-      <a href="#gallery">معرض الصور</a>
-      <a href="#about">عن العلامة</a>
+            <a href="#about">عن العلامة</a>
     </nav>
     <div class="header-actions">
       <button class="cart-btn" onclick="toggleCart()">🛒 <span>السلة</span> <span class="cart-badge" id="cartBadge">0</span></button>
@@ -206,8 +205,7 @@ footer{background:var(--emerald-2);color:#fff;padding:40px 20px;margin-top:60px}
 <!-- Modal -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-img"><img id="modalImg" src="" alt=""></div>
-    <div class="modal-body">
+        <div class="modal-body">
       <h3 class="modal-name" id="modalName"></h3>
       <div class="modal-price" id="modalPrice"></div>
       <p class="modal-desc" id="modalDesc"></p>
@@ -237,11 +235,6 @@ footer{background:var(--emerald-2);color:#fff;padding:40px 20px;margin-top:60px}
   <button class="checkout-btn" onclick="location.reload()">العودة للمتجر</button>
 </section>
 
-<!-- Gallery -->
-<section class="gallery-section" id="gallery">
-  <h2>معرض الصور</h2>
-  <div class="gallery-grid" id="galleryGrid"></div>
-</section>
 
 <!-- About -->
 <section style="max-width:800px;margin:40px auto;padding:20px;text-align:center" id="about">
@@ -263,7 +256,7 @@ footer{background:var(--emerald-2);color:#fff;padding:40px 20px;margin-top:60px}
     <div class="footer-col">
       <h4>روابط</h4>
       <a href="#shop">المتجر</a><br>
-      <a href="#gallery">معرض الصور</a><br>
+      <br>
       <a href="#about">عن العلامة</a>
     </div>
   </div>
@@ -424,10 +417,7 @@ function renderProducts(filter='all'){
   const filtered = filter==='all' ? PRODUCTS : PRODUCTS.filter(p=>p.cat===filter);
   grid.innerHTML = filtered.map(p=>`
     <div class="product-card" onclick="openModal(${p.id})">
-      <div class="card-img">
-        <img src="${p.img}" alt="${p.name}" loading="lazy">
-        ${p.badge?`<span class="card-badge">${p.badge}</span>`:''}
-      </div>
+      <div class="card-img" style="display:grid;place-items:center;background:linear-gradient(135deg,var(--emerald),var(--gold));color:#fff;font-size:2rem;font-weight:800">${p.name.charAt(0)}</div>
       <div class="card-body">
         <div class="card-cat">${p.cat}</div>
         <div class="card-name">${p.name}</div>
@@ -453,7 +443,6 @@ function openModal(id){
   const p = PRODUCTS.find(x=>x.id===id);
   if(!p) return;
   currentProduct = p;
-  document.getElementById('modalImg').src = p.img;
   document.getElementById('modalName').textContent = p.name;
   document.getElementById('modalPrice').textContent = p.price + ' درهم';
   document.getElementById('modalDesc').textContent = p.desc;
@@ -471,7 +460,6 @@ function goToCheckout(){
   if(cart.length===0){ alert('السلة فارغة'); return; }
   toggleCart(false);
   document.getElementById('shop').style.display='none';
-  document.getElementById('gallery').style.display='none';
   document.getElementById('checkoutSection').style.display='block';
   renderOrderSummary();
   window.scrollTo(0,0);
@@ -556,25 +544,11 @@ function submitOrder(){
   window.scrollTo(0,0);
 }
 
-// Gallery
-function renderGallery(){
-  const grid = document.getElementById('galleryGrid');
-  const imgs = [];
-  for(let i=1;i<=89;i++) imgs.push(`assets/products/new/new-${String(i).padStart(2,'0')}.jpg`);
-  imgs.push('assets/products/new/label-poudre-200g.png');
-  imgs.push('assets/media/product-video.mov');
-  imgs.push('assets/media/product-video-2.mp4');
-  imgs.push('assets/media/product-video-3.mov');
-  grid.innerHTML = imgs.map(src=>{
-    if(src.endsWith('.mov')||src.endsWith('.mp4')) return `<video src="${src}" controls preload="metadata" playsinline></video>`;
-    return `<img src="${src}" alt="صورة" loading="lazy">`;
-  }).join('');
-}
 
 // Init
 updateCartUI();
 renderProducts();
-renderGallery();
+
 </script>
 </body>
 </html>
