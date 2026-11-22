@@ -435,6 +435,22 @@ h1{
   position:relative;transform-style:preserve-3d;will-change:transform;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
 }
+
+/* [IMG] صور المنتجات الحقيقية */
+.photo-box{
+  position:relative;z-index:2;display:grid;place-items:center;
+  width:100%;height:100%;padding:10px;pointer-events:none;
+}
+.photo-box img{
+  max-width:100%;max-height:100%;object-fit:contain;
+  filter:drop-shadow(0 18px 26px rgba(0,0,0,.28));
+  transition:transform .5s cubic-bezier(.2,.8,.2,1);
+}
+.card:hover .photo-box img{transform:scale(1.06) translateY(-4px)}
+.ci .thumb img{width:100%;height:100%;object-fit:contain;padding:3px}
+.fly-item .photo-box{padding:0}
+.fly-item .photo-box img{filter:drop-shadow(0 8px 14px rgba(0,0,0,.35))}
+.qv-top .photo-box img{max-height:190px}
 .s-brand{
   font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.16em;font-size:8px;
   pointer-events:none;z-index:2;text-transform:uppercase;
@@ -732,6 +748,11 @@ footer .serif{letter-spacing:.24em;color:var(--text);font-weight:700}
   color:var(--text);font-family:inherit;font-size:.8rem;outline:none;
 }
 .cust-fields input:focus{border-color:var(--gold)}
+#custAddress{grid-column:1/-1}
+.order-status{font-size:.76rem;line-height:1.6;color:var(--muted);min-height:0}
+.order-status.ok{color:var(--emerald)}
+.order-status.err{color:#B4472F}
+.ship-line{font-size:.76rem;color:var(--muted);text-align:center}
 .total-row{display:flex;justify-content:space-between;align-items:baseline}
 .total-row span{font-size:.88rem;color:var(--muted)}
 .total-row b{font-size:1.45rem;font-weight:900;font-family:'Playfair Display',serif}
@@ -1002,7 +1023,7 @@ footer .serif{letter-spacing:.24em;color:var(--text);font-weight:700}
       </div>
 
       <button class="btn btn-primary" id="addRitualBundle" style="margin-top:22px">
-        ✦ أضيفي طقس الخطوات الثلاث للسلة (399 درهم بدل 437)
+        ✦ أضيفي طقس الخطوات الثلاث للسلة (975 درهم)
       </button>
     </div>
   </div>
@@ -1091,7 +1112,7 @@ footer .serif{letter-spacing:.24em;color:var(--text);font-weight:700}
 
 <footer>
   <span class="serif">MOFA GLOW</span>
-  <span>واتساب الطلبات: +212600000000</span>
+  <span>واتساب الطلبات: +212665366326</span>
   <span>© 2026 MOFA GLOW. جميع الحقوق محفوظة.</span>
 </footer>
 
@@ -1109,9 +1130,13 @@ footer .serif{letter-spacing:.24em;color:var(--text);font-weight:700}
   <div class="cart-items" id="cartItems"></div>
   <div class="drawer-foot">
     <div class="cust-fields">
-      <input type="text" id="custName" placeholder="الاسم الكامل (اختياري)">
-      <input type="text" id="custCity" placeholder="المدينة (اختياري)">
+      <input type="text" id="custName" placeholder="الاسم الكامل *" autocomplete="name">
+      <input type="tel" id="custPhone" placeholder="رقم الهاتف 06… *" inputmode="tel" autocomplete="tel">
+      <input type="text" id="custCity" placeholder="المدينة *" autocomplete="address-level2">
+      <input type="text" id="custAddress" placeholder="العنوان الكامل *" autocomplete="street-address">
     </div>
+    <div class="order-status" id="orderStatus" role="status"></div>
+    <div class="ship-line" id="shipLine"></div>
     <div class="total-row"><span>المجموع الإجمالي</span><b id="totalPrice">0 MAD</b></div>
     <button class="wa-btn" id="waCheckoutBtn">أرسلي الطلب عبر واتساب 💬</button>
   </div>
@@ -1162,7 +1187,15 @@ footer .serif{letter-spacing:.24em;color:var(--text);font-weight:700}
 /* ==========================================================
    1. قاعدة منتجات MOFA GLOW المتكاملة
    ========================================================== */
-const WHATSAPP_NUMBER = "212600000000";
+const WHATSAPP_NUMBER = "212665366326";
+
+/* ===== ربط الطلبات =====
+   بعد نشر Code.gs كتطبيق ويب، ضعي رابط /exec في SHEET_URL.
+   اتركيه فارغاً مؤقتاً: الطلب سيُفتح عبر واتساب ويُحفظ محلياً. */
+const SHEET_URL = "";                       // مثال: https://script.google.com/macros/s/XXXX/exec
+const SHEET_TOKEN = "MG7X9q2L8pV4";         // يجب أن يطابق SECRET_TOKEN في Code.gs
+const FREE_SHIPPING_FROM = 300;
+const SHIPPING_FEE = 35;
 
 const PRODUCTS = [
   {
@@ -1171,7 +1204,7 @@ const PRODUCTS = [
     c1: '#C88A3B', c2: '#5A3110',
     desc: 'سيروم خفيف الملمس غني بفيتامين C النقي يمنح البشرة نضارة فورية وتوهّجاً صحياً.',
     ritual: 'ضعي 3 إلى 4 قطرات صباحاً على بشرة نظيفة قبل المرطّب وواقي الشمس، ودلّكي بلطف.',
-    price: 189, old: 230, rating: 4.9, reviews: 418, left: 6, total: 30, tag: 'الأكثر مبيعاً', hot: true
+    price: 350, old: 399, rating: 4.9, reviews: 418, left: 6, total: 30, tag: 'الأكثر مبيعاً', hot: true
   },
   {
     id: 2, cat: 'skin', shape: 'jar',
@@ -1179,7 +1212,7 @@ const PRODUCTS = [
     c1: '#F4EFE4', c2: '#D5CBB8',
     desc: 'كريم غني بزيت الأرغان المغربي النقي يرطّب البشرة بعمق ويمنحها نعومة مخملية طوال اليوم.',
     ritual: 'وزّعي كمية مناسبة صباحاً ومساءً على الوجه والرقبة بحركات دائرية صاعدة.',
-    price: 149, old: 185, rating: 4.9, reviews: 352, left: 9, total: 35, tag: 'عناية يومية', hot: false
+    price: 350, old: 399, rating: 4.9, reviews: 352, left: 9, total: 35, tag: 'عناية يومية', hot: false
   },
   {
     id: 3, cat: 'hair', shape: 'dropper',
@@ -1187,7 +1220,7 @@ const PRODUCTS = [
     c1: '#B5742E', c2: '#47250B',
     desc: 'إكسير مغذٍّ يمنح الشعر لمعة حريرية ونعومة فائقة دون أي ثقل أو ملمس دهني.',
     ritual: 'دفّئي قطرتين بين راحتي يديكِ ومرّريهما على أطراف الشعر الرطب أو الجاف.',
-    price: 129, old: 160, rating: 4.8, reviews: 294, left: 8, total: 30, tag: 'عناية بالشعر', hot: false
+    price: 350, old: 399, rating: 4.8, reviews: 294, left: 8, total: 30, tag: 'عناية بالشعر', hot: false
   },
   {
     id: 4, cat: 'skin', shape: 'cleanser',
@@ -1195,7 +1228,7 @@ const PRODUCTS = [
     c1: '#EAE4D7', c2: '#C7BEAC',
     desc: 'غسول بقوام ناعم ينظّف المسام بلطف ويحافظ على توازن رطوبة البشرة وانتعاشها.',
     ritual: 'استخدميه صباحاً ومساءً على بشرة مبللة مع تدليك لطيف لثوانٍ ثم اشطفيه بالماء الفاتر.',
-    price: 99, old: 125, rating: 4.8, reviews: 267, left: 12, total: 40, tag: 'أساسي يومي', hot: false
+    price: 275, old: 299, rating: 4.8, reviews: 267, left: 12, total: 40, tag: 'أساسي يومي', hot: false
   },
   {
     id: 5, cat: 'hair', shape: 'jar',
@@ -1203,7 +1236,7 @@ const PRODUCTS = [
     c1: '#16523E', c2: '#09261C',
     desc: 'ماسك كريمي مكثّف لجلسات عناية أسبوعية تعيد للشعر حيويته ومرونته ولمعانه.',
     ritual: 'ضعي طبقة غنية على الشعر المغسول واتركيه 10 إلى 15 دقيقة قبل الشطف بالماء.',
-    price: 119, old: 150, rating: 4.9, reviews: 215, left: 5, total: 25, tag: 'عناية أسبوعية', hot: true
+    price: 350, old: 399, rating: 4.9, reviews: 215, left: 5, total: 25, tag: 'عناية أسبوعية', hot: true
   },
   {
     id: 6, cat: 'set', shape: 'giftset',
@@ -1211,7 +1244,7 @@ const PRODUCTS = [
     c1: '#0D3B2E', c2: '#061D16',
     desc: 'سيروم فيتامين C وكريم زيت الأرغان في علبة هدايا فاخرة لطقس عناية متكامل.',
     ritual: 'ابدئي بالسيروم لتعزيز النضارة، ثم أتبِعيه بكريم الأرغان لتثبيت الترطيب والإشراقة.',
-    price: 299, old: 360, rating: 5.0, reviews: 489, left: 4, total: 20, tag: 'هدية مثالية', hot: true
+    price: 350, old: 399, rating: 5.0, reviews: 489, left: 4, total: 20, tag: 'هدية مثالية', hot: true
   },
   {
     id: 7, cat: 'hair', shape: 'shampoo',
@@ -1219,7 +1252,7 @@ const PRODUCTS = [
     c1: '#F2EDE2', c2: '#CFC6B4',
     desc: 'تركيبة نباتية لطيفة تقوّي بصيلات الشعر وتمنحه الكثافة واللمعان الصحي من الجذور.',
     ritual: 'دلّكي فروة الرأس بلطف لمدة دقيقتين لتنشيط الدورة الدموية ثم اشطفيه جيداً.',
-    price: 95, old: 130, rating: 4.7, reviews: 310, left: 10, total: 45, tag: 'تقوية وكثافة', hot: false
+    price: 275, old: 299, rating: 4.7, reviews: 310, left: 10, total: 45, tag: 'تقوية وكثافة', hot: false
   },
   {
     id: 8, cat: 'skin', shape: 'jar',
@@ -1227,7 +1260,7 @@ const PRODUCTS = [
     c1: '#D4AF37', c2: '#6E5214',
     desc: 'كريم ليلي فاخر يجدّد إشراقة البشرة أثناء النوم ويمنحها مظهراً ممتلئاً ومرتاحاً في الصباح.',
     ritual: 'يُوضع مساءً كخطوة أخيرة في روتينك الليلي قبل النوم.',
-    price: 185, old: 240, rating: 4.9, reviews: 198, left: 3, total: 20, tag: 'إصدار ملكي', hot: true
+    price: 350, old: 399, rating: 4.9, reviews: 198, left: 3, total: 20, tag: 'إصدار ملكي', hot: true
   },
   {
     id: 9, cat: 'supplements', shape: 'powder',
@@ -1235,7 +1268,7 @@ const PRODUCTS = [
     c1: '#C7A15D', c2: '#0D3B2E',
     desc: 'مكمل غذائي طبيعي لدعم القوام الأنثوي المتناسق وتعزيز نضارة البشرة من الداخل.',
     ritual: 'تُخلط ملعقة واحدة يومياً مع الحليب الدافئ أو العصير الطبيعي.',
-    price: 250, old: 300, rating: 4.8, reviews: 230, left: 7, total: 30, tag: 'الجمال الداخلي', hot: false
+    price: 350, old: 399, rating: 4.8, reviews: 230, left: 7, total: 30, tag: 'الجمال الداخلي', hot: false
   },
   {
     id: 10, cat: 'supplements', shape: 'capsule',
@@ -1243,7 +1276,90 @@ const PRODUCTS = [
     c1: '#155743', c2: '#08241C',
     desc: 'كبسولات عشبية طبيعية لراحة الجهاز الهضمي وتنقية الجسم لصفاء البشرة وحيويتها.',
     ritual: 'كبسولتان يومياً مع كوب كبير من الماء قبل الوجبة الرئيسية.',
-    price: 120, old: 165, rating: 4.9, reviews: 276, left: 5, total: 35, tag: 'نقاء وتوازن', hot: false
+    price: 350, old: 399, rating: 4.9, reviews: 276, left: 5, total: 35, tag: 'نقاء وتوازن', hot: false
+  },
+  {
+    id: 11, cat: 'skin', shape: 'dropper',
+    name: 'سيروم فيتامين E المشع', enSub: 'VITAMIN E GLOW', emoji: '💫',
+    c1: '#A3D4D4', c2: '#5A9B9B',
+    desc: 'سيروم غني بفيتامين E الطبيعي يحارب الجذور الحرة ويرطب البشرة بعمق لمدة 24 ساعة.',
+    ritual: 'ضعي 2 إلى 3 قطرات ليلاً على الوجه بعد التنظيف، ودلّكي بحركات لأعلى.',
+    price: 350, old: 399, rating: 4.7, reviews: 189, left: 10, total: 50, tag: 'ترطيب عميق', hot: false
+  },
+  {
+    id: 12, cat: 'hair', shape: 'jar',
+    name: 'زيت علاج التقصف', enSub: 'SPLIT ENDER', emoji: '⚔️',
+    c1: '#8B5A2B', c2: '#4A2C1A',
+    desc: 'زيت علاجي يغلق الأطراف المتقصفة ويمنع تكسر الشعر الجديد، مناسب لجميع أنواع الشعر.',
+    ritual: 'وزّعي 3 إلى 4 قطرات على أطراف الشعر الرطب أو الجاف، ولا تغسليه.',
+    price: 350, old: 399, rating: 4.8, reviews: 224, left: 6, total: 40, tag: 'علاج التقصف', hot: true
+  },
+  {
+    id: 13, cat: 'set', shape: 'giftset',
+    name: 'باقة العناية الشاملة', enSub: 'COMPLETE CARE SET', emoji: '🎯',
+    c1: '#2E5D2E', c2: '#1A3A1A',
+    desc: 'مجموعة شاملة تشمل السيروم، الكريم، وزيت الشعر لروتين عناية كامل من الصباح حتى الليل.',
+    ritual: 'ابدئي بالسيروم في الصباح، ثم الكريم في المساء، وزيت الشعر 2-3 مرات أسبوعياً.',
+    price: 499, old: 620, rating: 5.0, reviews: 398, left: 2, total: 15, tag: 'روتين كامل', hot: true
+  },
+  {
+    id: 14, cat: 'skin', shape: 'powder',
+    name: 'بودرة الوجه الناعمة', enSub: 'SOFT FACE POWDER', emoji: '💎',
+    c1: '#F5F0EB', c2: '#D0C8BC',
+    desc: 'بودرة نهائية خفيفة تمنح البشرة إشراقة ناعمة وتثبت المكياج لساعات طويلة.',
+    ritual: 'رشّي كمية خفيفة على الوجه بعد وضع المكياج، أو على البشرة العارية لإشراقة طبيعية.',
+    price: 350, old: 399, rating: 4.6, reviews: 156, left: 8, total: 60, tag: 'إشراقة طبيعية', hot: false
+  },
+  {
+    id: 15, cat: 'supplements', shape: 'capsule',
+    name: 'مستحضر توازن الهرمونات', enSub: 'HORMONE BALANCE', emoji: '⚖️',
+    c1: '#8B5A6B', c2: '#5A2D5A',
+    desc: 'مكمل طبيعي يساعد في توازن الهرمونات وتقليل التوتر، ويعزز النوم العميق وتجدد البشرة.',
+    ritual: 'كبسولة واحدة ليلاً مع الماء، ولمدة 30 يوماً على الأقل لتحقيق أفضل النتائج.',
+    price: 350, old: 399, rating: 4.5, reviews: 203, left: 4, total: 25, tag: 'توازن هرموني', hot: false
+  },
+  {
+    id: 16, cat: 'skin', shape: 'jar',
+    name: 'كريم مضاد للشيخوخة', enSub: 'ANTI-AGING CREAM', emoji: '🛡️',
+    c1: '#C4A387', c2: '#7B5A3A',
+    desc: 'كريم متقدم لمحاربة علامات التقدم في العمر، غني بالببتيدات والمستخلصات النباتية لشد البشرة.',
+    ritual: 'يُوضع صباحاً ومساءً على الوجه والرقبة بعد السيروم، بحركات دائرية صاعدة.',
+    price: 350, old: 399, rating: 4.8, reviews: 312, left: 3, total: 30, tag: 'مضاد للشيخوخة', hot: true
+  },
+  {
+    id: 17, cat: 'set', shape: 'giftset',
+    name: 'طقس الجمال الكامل', enSub: 'FULL BEAUTY RITUAL', emoji: '✨',
+    c1: '#D4AF37', c2: '#A38C50',
+    desc: 'طقس متكامل يجمع منتجات مختارة لتمنح بشرتك أعلى درجات الإشراق، من التنظيف إلى كريم الليل.',
+    ritual: 'تنظيف ← تونيك ← سيروم ← كريم ← زيت، خطوة بعد خطوة صباحاً ومساءً.',
+    price: 389, old: 450, rating: 4.9, reviews: 421, left: 5, total: 25, tag: 'طقس كامل', hot: true
+  },
+  {
+    id: 18, cat: 'supplements', shape: 'jar', sku: 'gumies-vitamine',
+    name: 'علكات الفيتامينات الشاملة', enSub: 'MULTIVITAMINS GUMMIES', emoji: '🍊',
+    img: 'assets/products/multivitamin-gummies.webp',
+    c1: '#F2C56B', c2: '#B86B1E',
+    desc: 'علكات فيتامينات شاملة لدعم المناعة والطاقة والصحة العامة، بطعم فاكهي لذيذ وسهولة في الاستخدام اليومي.',
+    ritual: 'علكتان يومياً بعد الأكل، مع مضغها جيداً قبل البلع.',
+    price: 275, old: 299, rating: 4.7, reviews: 142, left: 9, total: 40, tag: 'مناعة وطاقة', hot: true
+  },
+  {
+    id: 19, cat: 'supplements', shape: 'jar', sku: 'gummies_melato',
+    name: 'علكات الميلاتونين للنوم', enSub: 'MELATONIN SLEEP', emoji: '🌙',
+    img: 'assets/products/melatonine-gummies.webp',
+    c1: '#8C7BB8', c2: '#3A2E63',
+    desc: 'علكات بالميلاتونين والمغنيسيوم تساعد على الاسترخاء وتسريع النوم وتحسين جودته بشكل طبيعي.',
+    ritual: 'علكة واحدة قبل النوم بنحو 30 دقيقة.',
+    price: 275, old: 299, rating: 4.8, reviews: 167, left: 7, total: 40, tag: 'نوم هادئ', hot: true
+  },
+  {
+    id: 20, cat: 'supplements', shape: 'jar', sku: 'ashwagandha-gummies',
+    name: 'علكات الأشواغاندا للاسترخاء', enSub: 'ASHWAGANDHA', emoji: '🌿',
+    img: 'assets/products/ashwagandha-gummies.webp',
+    c1: '#D89A9A', c2: '#7A3E3E',
+    desc: 'علكات الأشواغاندا لتخفيف التوتر ودعم الاسترخاء والحفاظ على التوازن الطبيعي للجسم.',
+    ritual: 'علكتان يومياً، صباحاً أو عند الحاجة إلى الاسترخاء.',
+    price: 275, old: 299, rating: 4.6, reviews: 98, left: 11, total: 40, tag: 'توازن واسترخاء', hot: false
   }
 ];
 
@@ -1293,6 +1409,14 @@ function getProduct3DHTML(p, mode = renderMode) {
     return `<div class="box shape-cube" style="--c1:${p.c1};--c2:${p.c2}">${buildCubeHTML(p)}</div>`;
   }
   return `<div class="box shape-${p.shape}" style="--c1:${p.c1};--c2:${p.c2}">${buildSculptHTML(p.shape, p.enSub)}</div>`;
+}
+
+/* منتجات لها صورة حقيقية تُعرض بالصورة، والبقية بالمجسم ثلاثي الأبعاد */
+function getProductVisualHTML(p, mode = renderMode) {
+  if (p.img) {
+    return `<div class="photo-box"><img src="${p.img}" alt="${p.name}" loading="lazy" decoding="async"></div>`;
+  }
+  return getProduct3DHTML(p, mode);
 }
 
 /* ==========================================================
@@ -1408,7 +1532,7 @@ function renderStoreGrid() {
           <span class="stage-badge">↔ 360°</span>
           <button class="qv-trigger" data-qv="${p.id}">طقس الاستعمال ✦</button>
         </div>
-        ${getProduct3DHTML(p)}
+        ${getProductVisualHTML(p)}
       </div>
       <div class="info">
         <div class="tag-row">
@@ -1434,7 +1558,7 @@ function renderStoreGrid() {
   grid.querySelectorAll('.card').forEach(card => {
     const stage = card.querySelector('.stage');
     const box = card.querySelector('.box');
-    createSpinner(stage, box, { speed: 0.13 });
+    if (box) createSpinner(stage, box, { speed: 0.13 });
     visObserver.observe(stage);
   });
 }
@@ -1448,6 +1572,7 @@ document.getElementById('modeSwitch').addEventListener('click', e => {
 
   grid.querySelectorAll('.card').forEach(card => {
     const p = PRODUCTS.find(x => x.id === Number(card.dataset.id));
+    if (!p || p.img) return;
     const stage = card.querySelector('.stage');
     stage.querySelector('.box')?.remove();
     stage.insertAdjacentHTML('beforeend', getProduct3DHTML(p, renderMode));
@@ -1534,7 +1659,9 @@ function flyProductToCart(stageEl, product) {
   const r2 = document.getElementById('openCartBtn').getBoundingClientRect();
   const ghost = document.createElement('div');
   ghost.className = 'fly-item';
-  ghost.innerHTML = getProduct3DHTML(product, renderMode);
+  ghost.innerHTML = product.img
+    ? `<div class="photo-box" style="width:84px;height:84px"><img src="${product.img}" alt=""></div>`
+    : getProduct3DHTML(product, renderMode);
   ghost.style.left = (r1.left + r1.width / 2 - 42) + 'px';
   ghost.style.top = (r1.top + r1.height / 2 - 42) + 'px';
   ghost.style.transform = 'scale(.8)';
@@ -1574,6 +1701,8 @@ function updateCartUI() {
     totalPriceEl.textContent = '0 MAD';
     giftTextEl.textContent = 'أضيفي منتجات بقيمة 300 درهم لتحصلي على عينة هدية مجانية ✦';
     giftFillEl.style.width = '0%';
+    document.getElementById('shipLine').textContent = '';
+    document.getElementById('orderStatus').textContent = '';
     waCheckoutBtn.disabled = true;
     return;
   }
@@ -1582,7 +1711,7 @@ function updateCartUI() {
     const p = PRODUCTS.find(x => x.id === item.id);
     return `
     <div class="ci">
-      <div class="thumb" style="background:linear-gradient(145deg,${p.c1},${p.c2})">${p.emoji}</div>
+      <div class="thumb" style="background:linear-gradient(145deg,${p.c1},${p.c2})">${p.img ? `<img src="${p.img}" alt="${p.name}">` : p.emoji}</div>
       <div class="ci-info">
         <b>${p.name}</b>
         <span>${p.price * item.qty} درهم</span>
@@ -1600,8 +1729,12 @@ function updateCartUI() {
     const p = PRODUCTS.find(x => x.id === item.id);
     return sum + p.price * item.qty;
   }, 0);
+  const shipping = total >= FREE_SHIPPING_FROM ? 0 : SHIPPING_FEE;
 
-  totalPriceEl.textContent = `${total} MAD`;
+  totalPriceEl.textContent = `${total + shipping} MAD`;
+  document.getElementById('shipLine').textContent = shipping
+    ? `منها ${shipping} درهم توصيل — مجاني فوق ${FREE_SHIPPING_FROM} درهم`
+    : 'التوصيل مجاني ✦';
   waCheckoutBtn.disabled = false;
 
   const remaining = 300 - total;
@@ -1649,20 +1782,93 @@ document.getElementById('openCartBtn').addEventListener('click', openCartDrawer)
 document.getElementById('closeCartBtn').addEventListener('click', closeCartDrawer);
 overlay.addEventListener('click', closeCartDrawer);
 
+function normalizeMoroccanPhone(raw) {
+  let d = String(raw || '').replace(/[^\d+]/g, '');
+  if (d.startsWith('+212')) d = '0' + d.slice(4);
+  else if (d.startsWith('00212')) d = '0' + d.slice(5);
+  else if (/^212[5-7]\d{8}$/.test(d)) d = '0' + d.slice(3);
+  else if (/^[5-7]\d{8}$/.test(d)) d = '0' + d;
+  return /^0[5-7]\d{8}$/.test(d) ? d : '';
+}
+
 waCheckoutBtn.addEventListener('click', () => {
   if (!cart.length) return;
-  const cname = document.getElementById('custName').value.trim();
-  const ccity = document.getElementById('custCity').value.trim();
-  const lines = cart.map(item => {
-    const p = PRODUCTS.find(x => x.id === item.id);
-    return `• ${p.name} (×${item.qty}) — ${p.price * item.qty} درهم`;
-  }).join('\n');
-  const total = cart.reduce((s, x) => s + PRODUCTS.find(p => p.id === x.id).price * x.qty, 0);
 
-  let msg = `مرحبًا فريق MOFA GLOW ✦\nأود طلب المنتجات التالية:\n\n${lines}\n\nالمجموع: ${total} درهم`;
-  if (total >= 300) msg += `\n🎁 مؤهل لعينة هدية مجانية`;
-  if (cname) msg += `\nالاسم: ${cname}`;
-  if (ccity) msg += `\nالمدينة: ${ccity}`;
+  const status = document.getElementById('orderStatus');
+  const name = document.getElementById('custName').value.trim();
+  const phoneRaw = document.getElementById('custPhone').value.trim();
+  const phone = normalizeMoroccanPhone(phoneRaw);
+  const city = document.getElementById('custCity').value.trim();
+  const address = document.getElementById('custAddress').value.trim();
+
+  const fail = (msg, fieldId) => {
+    status.className = 'order-status err';
+    status.textContent = msg;
+    document.getElementById(fieldId)?.focus();
+    showToast(msg);
+  };
+
+  if (name.length < 3) return fail('أدخلي الاسم الكامل أولاً ✦', 'custName');
+  if (!phone) return fail('رقم الهاتف غير صحيح. مثال: 0661234567', 'custPhone');
+  if (city.length < 2) return fail('أدخلي المدينة ✦', 'custCity');
+  if (address.length < 8) return fail('أدخلي العنوان الكامل (الحي، الشارع، الرقم) ✦', 'custAddress');
+
+  const items = cart.map(item => {
+    const p = PRODUCTS.find(x => x.id === item.id);
+    return { id: p.id, sku: p.sku || '', name: p.name, qty: item.qty, price: p.price };
+  });
+  const subtotal = items.reduce((s, it) => s + it.price * it.qty, 0);
+  const shipping = subtotal >= FREE_SHIPPING_FROM ? 0 : SHIPPING_FEE;
+  const total = subtotal + shipping;
+  const orderId = 'MG-' + Date.now().toString(36).toUpperCase();
+  const order = {
+    id: orderId,
+    token: SHEET_TOKEN,
+    name,
+    phone,
+    city,
+    address: `${city} — ${address}`,
+    items,
+    subtotal,
+    shipping,
+    total,
+    createdAt: new Date().toISOString(),
+    source: 'mofa-glow-store'
+  };
+
+  try { localStorage.setItem('mofa_glow_last_order', JSON.stringify(order)); } catch (e) {}
+
+  if (SHEET_URL) {
+    status.className = 'order-status';
+    status.textContent = 'جارٍ تسجيل طلبك…';
+    fetch(SHEET_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(order),
+      keepalive: true
+    })
+      .then(r => r.json())
+      .then(d => {
+        if (!d || !d.ok) throw new Error((d && d.error) || 'rejected');
+        status.className = 'order-status ok';
+        status.textContent = `تم تسجيل الطلب ${orderId} ✦ أكملي التأكيد عبر واتساب.`;
+      })
+      .catch(() => {
+        status.className = 'order-status err';
+        status.textContent = 'تعذّر التسجيل التلقائي الآن — أكملي التأكيد عبر واتساب.';
+      });
+  } else {
+    status.className = 'order-status';
+    status.textContent = 'سيُحفظ طلبك محلياً، وأكملي التأكيد عبر واتساب.';
+  }
+
+  const lines = items.map(it => `• ${it.name} (×${it.qty}) — ${it.price * it.qty} درهم`).join('\n');
+  let msg = `مرحبًا فريق MOFA GLOW ✦\nأود طلب المنتجات التالية:\n\n${lines}\n\nالمجموع الفرعي: ${subtotal} درهم`;
+  if (shipping) msg += `\nالتوصيل: ${shipping} درهم`;
+  msg += `\nالمجموع الإجمالي: ${total} درهم`;
+  msg += `\nرقم الطلب: ${orderId}`;
+  if (subtotal >= FREE_SHIPPING_FROM) msg += `\n🎁 مؤهل لعينة هدية مجانية`;
+  msg += `\n\nالاسم: ${name}\nالهاتف: ${phone}\nالمدينة: ${city}\nالعنوان: ${address}`;
 
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
 });
@@ -1674,7 +1880,7 @@ const qvModal = document.getElementById('qvModal');
 function openQuickView(id) {
   const p = PRODUCTS.find(x => x.id === id);
   if (!p) return;
-  document.getElementById('qvStage').innerHTML = getProduct3DHTML(p, 'sculpt');
+  document.getElementById('qvStage').innerHTML = getProductVisualHTML(p, 'sculpt');
   document.getElementById('qvBody').innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:center">
       <span class="tag">${p.tag}</span>
@@ -1790,19 +1996,24 @@ const AI_KB = [
     en: 'Our Moroccan Argan oil deeply hydrates skin and adds silky shine to hair without heaviness.'
   }],
   [/vitamin|فيتامين|vitamine|نضارة|اشراقة/i, {
-    ar: 'سيروم فيتامين C المشرق (189 درهم) خفيف الامتصاص ويمنح البشرة توهّجاً فورياً عند استخدامه صباحاً.',
-    fr: 'Le Sérum Vitamine C (189 MAD) est léger et ravive instantanément l’éclat du teint.',
-    en: 'Our Vitamin C Serum (189 MAD) is lightweight and boosts skin radiance immediately.'
+    ar: 'سيروم فيتامين C المشرق (350 درهم) خفيف الامتصاص ويمنح البشرة توهّجاً فورياً عند استخدامه صباحاً.',
+    fr: 'Le Sérum Vitamine C (350 MAD) est léger et ravive instantanément l’éclat du teint.',
+    en: 'Our Vitamin C Serum (350 MAD) is lightweight and boosts skin radiance immediately.'
   }],
   [/شعر|hair|cheveux|تساقط|chute/i, {
     ar: 'للعناية بالشعر نرشّح لكِ شامبو Anti-Chute لتقوية الجذور مع ماسك الشعر الأسبوعي وزيت الأرغان للأطراف.',
     fr: 'Pour les cheveux, associez le Shampoing Anti-Chute au Masque Nourrissant et à l’Huile d’Argan.',
     en: 'For hair care, pair our Anti-Chute Shampoo with the Nourishing Mask and Argan Hair Oil.'
   }],
+  [/gummies|علك|نوم|sleep|sommeil|melaton|ashwa|توتر|stress/i, {
+    ar: 'علكات MOFA GLOW الجديدة: الفيتامينات الشاملة (275 درهم)، الميلاتونين للنوم (275 درهم)، والأشواغاندا للاسترخاء (275 درهم) — 25 علكة في العلبة.',
+    fr: 'Nos nouvelles gummies MOFA GLOW : Multivitamines, Mélatonine Sommeil et Ashwagandha, à 275 MAD le flacon de 25 gummies.',
+    en: 'Our new MOFA GLOW gummies: Multivitamins, Melatonin Sleep and Ashwagandha, 275 MAD per 25-gummy bottle.'
+  }],
   [/توصيل|livraison|shipping|واتساب|whatsapp|سعر|هدية/i, {
-    ar: 'الطلب يتم مباشرة عبر واتساب، وتحصلين على عينة هدية مجانية عند تجاوز سلتك 300 درهم ✦',
-    fr: 'Commande directe via WhatsApp avec un échantillon cadeau offert dès 300 MAD d’achat ✦',
-    en: 'Order directly via WhatsApp and receive a complimentary gift sample on orders over 300 MAD ✦'
+    ar: 'اختاري منتجاتك، أضيفيها للسلة، ثم أدخلي الاسم والهاتف والعنوان وأكّدي الطلب. سنتواصل معك عبر واتساب للتأكيد، والتوصيل مجاني فوق 300 درهم ✦',
+    fr: 'Ajoutez vos produits au panier, saisissez vos coordonnées puis confirmez. Nous vous contactons sur WhatsApp — livraison offerte dès 300 MAD ✦',
+    en: 'Add your products to the cart, enter your details and confirm. We follow up on WhatsApp — free delivery over 300 MAD ✦'
   }]
 ];
 
