@@ -857,6 +857,16 @@ footer .serif{letter-spacing:.24em;color:var(--text);font-weight:700}
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
+/* ===== جديد: معرض صور منتجات جديدة ===== */
+.new-arrivals{padding:60px 20px;max-width:1240px;margin:0 auto}
+.new-arrivals .sec-head{text-align:center;margin-bottom:28px}
+.new-arrivals .sec-head h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:8px 0}
+.new-arrivals .sec-head p{color:var(--muted);font-size:.9rem}
+.new-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.new-grid figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.new-grid img,.new-grid video{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--stage-bg)}
+.new-grid figcaption{padding:8px 10px;font-size:.78rem;text-align:center;color:var(--text);font-weight:700}
+.new-note{margin-top:18px;text-align:center;font-size:.82rem;color:var(--muted);padding:12px;border:1px dashed var(--line);border-radius:12px}
 </style>
 </head>
 <body>
@@ -1108,6 +1118,28 @@ footer .serif{letter-spacing:.24em;color:var(--text);font-weight:700}
       <div class="who"><div class="avatar">هـ</div><div><b>هدى التازي</b><span>عميلة موثقة · مراكش</span></div></div>
     </div>
   </div>
+</section>
+
+<!-- ===== جديد: معرض صور منتجات جديدة ===== -->
+<section class="new-arrivals" id="newArrivals">
+  <div class="sec-head">
+    <div class="eyebrow"><i></i> جديد</div>
+    <h2>صور منتجات <span class="grad">وصلت مؤخراً</span></h2>
+    <p>8 صور + ملصق + فيديو. أخبرني باسم كل منتج وسعره لإضافته كمنتج كامل (مع SKU إن توفر).</p>
+  </div>
+  <div class="new-grid">
+    <figure><img src="assets/products/new/new-01.jpg" alt="صورة 1" loading="eager"><figcaption>صورة 1</figcaption></figure>
+    <figure><img src="assets/products/new/new-02.jpg" alt="صورة 2" loading="eager"><figcaption>صورة 2</figcaption></figure>
+    <figure><img src="assets/products/new/new-03.jpg" alt="صورة 3" loading="eager"><figcaption>صورة 3</figcaption></figure>
+    <figure><img src="assets/products/new/new-04.jpg" alt="صورة 4" loading="eager"><figcaption>صورة 4</figcaption></figure>
+    <figure><img src="assets/products/new/new-05.jpg" alt="صورة 5" loading="eager"><figcaption>صورة 5</figcaption></figure>
+    <figure><img src="assets/products/new/new-06.jpg" alt="صورة 6" loading="eager"><figcaption>صورة 6</figcaption></figure>
+    <figure><img src="assets/products/new/new-07.jpg" alt="صورة 7" loading="eager"><figcaption>صورة 7</figcaption></figure>
+    <figure><img src="assets/products/new/new-08.jpg" alt="صورة 8" loading="eager"><figcaption>صورة 8</figcaption></figure>
+    <figure><img src="assets/products/new/label-poudre-200g.png" alt="ملصق بودرة 200g" loading="eager"><figcaption>ملصق — بودرة 200g</figcaption></figure>
+    <figure><video src="assets/media/product-video.mov" controls preload="metadata" playsinline></video><figcaption>فيديو منتج</figcaption></figure>
+  </div>
+  <p class="new-note">هذه الصور مستضافة الآن. أرسل لي "صورة X = اسم المنتج، السعر، SKU" وسأضيفها كمنتجات كاملة (اسم، وصف، طقس استعمال، سعر، SKU) في الدفعة التالية.</p>
 </section>
 
 <footer>
