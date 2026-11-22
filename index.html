@@ -1,2291 +1,581 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="light">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MOFA GLOW — دار العناية والجمال الفاخر | 3D Flagship Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MOFA GLOW — متجر العناية الفاخر</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-/* =====================================================
-   1. نظام الهوية البصرية الموحد لـ MOFA GLOW (عاجي زمردي + ليلي ذهبي)
-   ===================================================== */
+:root{
+  --cream:#F9F8F6;--cream-2:#F2F0EC;--ink:#1A1A1A;--emerald:#1A3B2B;--emerald-2:#0D2818;
+  --gold:#D4AF37;--gold-2:#E8C86A;--muted:#6B6B6B;--line:#E5E0D8;--panel:#FFFFFF;
+  --shadow:0 8px 30px -12px rgba(26,59,43,.12);--shadow-lg:0 20px 50px -20px rgba(26,59,43,.25);
+  --r:16px;--r-sm:10px;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-:root,
-[data-theme="light"]{
-  --bg:#F9F8F6;
-  --bg2:#F1EDE4;
-  --panel:#FFFFFF;
-  --text:#132E24;
-  --emerald:#0D3B2E;
-  --emerald2:#1B523F;
-  --gold:#C7A15D;
-  --gold2:#DFC286;
-  --muted:#5E7068;
-  --line:rgba(13,59,46,.12);
-  --glass:rgba(255,255,255,.78);
-  --card-bg:linear-gradient(168deg,#FFFFFF 0%,#F7F4EC 100%);
-  --stage-bg:radial-gradient(circle at 50% 45%,rgba(199,161,93,.16),rgba(13,59,46,.04) 70%);
-  --shadow:0 24px 60px -24px rgba(13,59,46,.16);
-  --btn-bg:#0D3B2E;
-  --btn-text:#F9F8F6;
-  --marquee-bg:#0D3B2E;
-  --marquee-text:#E7D2A6;
-  --r:26px;
-}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
 
-[data-theme="dark"]{
-  --bg:#070B09;
-  --bg2:#0D1511;
-  --panel:#101A16;
-  --text:#F3EFE4;
-  --emerald:#1E6B52;
-  --emerald2:#288F6E;
-  --gold:#D9B26A;
-  --gold2:#F4DFAE;
-  --muted:#95A69E;
-  --line:rgba(217,178,106,.18);
-  --glass:rgba(12,20,17,.82);
-  --card-bg:linear-gradient(168deg,#121E19 0%,#0A110E 100%);
-  --stage-bg:radial-gradient(circle at 50% 45%,rgba(217,178,106,.16),rgba(30,107,82,.07) 70%);
-  --shadow:0 28px 70px -24px rgba(0,0,0,.75);
-  --btn-bg:linear-gradient(145deg,#F4DFAE,#D9B26A 55%,#B8913F);
-  --btn-text:#161106;
-  --marquee-bg:linear-gradient(90deg,rgba(217,178,106,.04),rgba(217,178,106,.11),rgba(217,178,106,.04));
-  --marquee-text:#F4DFAE;
-  --r:26px;
-}
+/* Header */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(249,248,246,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:14px 20px}
+.header-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(145deg,var(--emerald),var(--emerald-2));border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold-2);box-shadow:0 8px 22px -8px rgba(13,59,46,.5)}
+.brand-mark img{max-width:28px;max-height:28px;object-fit:contain}
+.brand-text strong{font-family:'Playfair Display',serif;font-size:1.1rem;letter-spacing:.15em;font-weight:700;color:var(--emerald)}
+.brand-text span{font-size:.6rem;letter-spacing:.2em;color:var(--gold);font-weight:600}
+nav{display:flex;gap:20px;font-size:.85rem;font-weight:600}
+nav a{color:var(--ink);transition:color .2s}
+nav a:hover{color:var(--emerald)}
+.header-actions{display:flex;gap:8px;align-items:center}
+.pill-btn{padding:8px 14px;border-radius:999px;font-size:.8rem;font-weight:600;border:1px solid var(--line);background:var(--panel);transition:all .2s}
+.pill-btn:hover{border-color:var(--emerald);color:var(--emerald)}
+.cart-btn{padding:8px 16px;border-radius:999px;background:var(--emerald);color:#fff;font-size:.8rem;font-weight:700;display:flex;align-items:center;gap:6px;transition:all .2s}
+.cart-btn:hover{background:var(--emerald-2)}
+.cart-badge{background:var(--gold);color:var(--ink);border-radius:999px;padding:0 6px;font-size:.7rem;font-weight:800;min-width:18px;text-align:center}
 
-html{scroll-behavior:smooth;scroll-padding-top:88px}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Cairo','Tajawal',system-ui,-apple-system,sans-serif;
-  line-height:1.7;
-  overflow-x:hidden;
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-  transition:background-color .45s ease,color .45s ease;
-}
-.serif{font-family:'Playfair Display',serif}
+/* Hero */
+.hero{padding:60px 20px 40px;text-align:center;background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
+.hero-eyebrow{font-size:.7rem;letter-spacing:.3em;color:var(--gold);font-weight:700;margin-bottom:16px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,4rem);line-height:1.1;color:var(--emerald);margin-bottom:16px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{max-width:600px;margin:0 auto;color:var(--muted);font-size:1rem}
 
-/* ملمس ورق فاخر */
-body::before{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:95;opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+/* Filters */
+.filters{max-width:1320px;margin:30px auto 20px;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.filter-btn{padding:8px 16px;border-radius:999px;font-size:.8rem;font-weight:600;border:1px solid var(--line);background:var(--panel);transition:all .2s}
+.filter-btn.active{background:var(--emerald);color:#fff;border-color:var(--emerald)}
 
-/* توهجات محيطية */
-.ambient-bg{
-  position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(900px 600px at 85% -5%,rgba(199,161,93,.13),transparent 60%),
-    radial-gradient(750px 550px at 10% 45%,rgba(13,59,46,.08),transparent 60%);
-}
+/* Product Grid */
+.grid-section{max-width:1320px;margin:0 auto;padding:20px}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.product-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:all .3s;box-shadow:var(--shadow)}
+.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.card-img{aspect-ratio:1;overflow:hidden;background:var(--cream-2);position:relative}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.product-card:hover .card-img img{transform:scale(1.05)}
+.card-badge{position:absolute;top:10px;right:10px;background:var(--gold);color:var(--ink);padding:3px 10px;border-radius:999px;font-size:.7rem;font-weight:700}
+.card-body{padding:16px}
+.card-cat{font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.card-name{font-weight:700;font-size:.95rem;margin-bottom:4px;line-height:1.3}
+.card-desc{font-size:.78rem;color:var(--muted);margin-bottom:10px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-price{display:flex;align-items:baseline;gap:8px;margin-bottom:12px}
+.price-now{font-size:1.2rem;font-weight:800;color:var(--emerald)}
+.price-old{font-size:.8rem;color:var(--muted);text-decoration:line-through}
+.card-btn{width:100%;padding:10px;border-radius:var(--r-sm);background:var(--emerald);color:#fff;font-weight:700;font-size:.85rem;transition:all .2s}
+.card-btn:hover{background:var(--emerald-2)}
 
-::selection{background:rgba(199,161,93,.35);color:var(--text)}
-::-webkit-scrollbar{width:9px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),var(--emerald));border-radius:10px}
+/* Cart Sidebar */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-sidebar{position:fixed;top:0;left:0;bottom:0;width:400px;max-width:90vw;background:var(--panel);z-index:201;transform:translateX(-100%);transition:transform .3s;box-shadow:var(--shadow-lg);display:flex;flex-direction:column}
+.cart-sidebar.open{transform:translateX(0)}
+.cart-header{padding:20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.cart-header h3{font-weight:800;font-size:1.1rem}
+.cart-items{flex:1;overflow-y:auto;padding:16px}
+.cart-item{display:flex;gap:12px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.cart-item img{width:60px;height:60px;object-fit:cover;border-radius:var(--r-sm)}
+.cart-item-info{flex:1}
+.cart-item-name{font-weight:700;font-size:.85rem;margin-bottom:4px}
+.cart-item-price{color:var(--emerald);font-weight:700;font-size:.9rem}
+.cart-item-qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty-btn{width:24px;height:24px;border-radius:6px;border:1px solid var(--line);background:var(--cream);font-weight:700;font-size:.8rem}
+.cart-footer{padding:20px;border-top:1px solid var(--line)}
+.cart-total{display:flex;justify-content:space-between;margin-bottom:16px;font-weight:800;font-size:1.1rem}
+.checkout-btn{width:100%;padding:14px;border-radius:var(--r-sm);background:var(--emerald);color:#fff;font-weight:800;font-size:1rem;transition:all .2s}
+.checkout-btn:hover{background:var(--emerald-2)}
 
-/* شريط التقدم العلوي */
-.progress-bar{
-  position:fixed;top:0;left:0;height:3px;z-index:300;
-  background:linear-gradient(90deg,var(--gold),var(--emerald2));
-  width:0;box-shadow:0 0 12px rgba(199,161,93,.7);
-}
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--panel);border-radius:var(--r);max-width:700px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg)}
+.modal-img{aspect-ratio:4/3;overflow:hidden}
+.modal-img img{width:100%;height:100%;object-fit:cover}
+.modal-body{padding:24px}
+.modal-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--emerald);margin-bottom:8px}
+.modal-price{font-size:1.3rem;font-weight:800;color:var(--emerald);margin-bottom:16px}
+.modal-desc{color:var(--muted);margin-bottom:16px;line-height:1.7}
+.modal-usage{background:var(--cream-2);padding:16px;border-radius:var(--r-sm);margin-bottom:16px}
+.modal-usage h4{font-weight:700;margin-bottom:8px;color:var(--emerald)}
+.modal-usage p{font-size:.85rem;color:var(--muted)}
+.modal-btn{width:100%;padding:14px;border-radius:var(--r-sm);background:var(--emerald);color:#fff;font-weight:800;font-size:1rem}
 
-/* ضوء ناعم يتبع المؤشر */
-#cursorGlow{
-  position:fixed;left:0;top:0;width:360px;height:360px;margin:-180px 0 0 -180px;
-  border-radius:50%;pointer-events:none;z-index:1;
-  background:radial-gradient(circle,rgba(199,161,93,.13),transparent 65%);
-  transition:transform .12s ease-out;
-}
+/* Checkout */
+.checkout-section{max-width:600px;margin:40px auto;padding:20px}
+.checkout-section h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--emerald);margin-bottom:24px;text-align:center}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-weight:600;font-size:.85rem;margin-bottom:6px;color:var(--ink)}
+.form-group input,.form-group textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:var(--r-sm);font-family:inherit;font-size:.9rem;background:var(--panel)}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--emerald)}
+.form-error{color:#C0392B;font-size:.75rem;margin-top:4px;display:none}
+.form-group.error .form-error{display:block}
+.form-group.error input{border-color:#C0392B}
+.order-summary{background:var(--cream-2);padding:16px;border-radius:var(--r-sm);margin-bottom:20px}
+.order-summary h4{font-weight:700;margin-bottom:8px}
+.order-summary .line{display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:4px}
+.order-summary .total{font-weight:800;font-size:1.1rem;color:var(--emerald);border-top:1px solid var(--line);padding-top:8px;margin-top:8px}
 
-/* =====================================================
-   2. شاشة التحميل بالماندالا الهندسية (Mandala Preloader)
-   ===================================================== */
-#loader{
-  position:fixed;inset:0;z-index:250;background:var(--bg);
-  display:grid;place-items:center;transition:opacity .7s ease,visibility .7s;
-}
-#loader.done{opacity:0;visibility:hidden;pointer-events:none}
-.loader-inner{display:flex;flex-direction:column;align-items:center;gap:14px}
-#loader svg{width:120px;animation:spinSlow 8s linear infinite}
-.loader-title{font-family:'Playfair Display',serif;letter-spacing:.32em;font-weight:700;font-size:.95rem;color:var(--gold)}
-@keyframes spinSlow{to{transform:rotate(360deg)}}
+/* Success */
+.success-section{max-width:600px;margin:40px auto;padding:20px;text-align:center}
+.success-icon{width:80px;height:80px;border-radius:50%;background:var(--emerald);color:#fff;display:grid;place-items:center;font-size:2.5rem;margin:0 auto 20px}
+.success-section h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--emerald);margin-bottom:12px}
+.success-section p{color:var(--muted);margin-bottom:20px}
+.success-details{background:var(--cream-2);padding:20px;border-radius:var(--r-sm);text-align:right;margin-bottom:20px}
+.success-details .line{display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:6px}
 
-/* =====================================================
-   3. الهيدر الزجاجي العائم
-   ===================================================== */
-header{
-  position:fixed;inset-inline:0;top:0;z-index:80;
-  display:flex;align-items:center;justify-content:space-between;gap:14px;
-  padding:13px clamp(16px,4vw,52px);
-  background:var(--glass);
-  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
-  border-bottom:1px solid var(--line);
-}
-.brand-logo{
-  display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--text);
-}
-.brand-mark{
-  width:36px;height:36px;border-radius:12px;display:grid;place-items:center;
-  background:linear-gradient(145deg,var(--emerald),#07221A);
-  border:1px solid var(--gold);color:var(--gold2);
-  box-shadow:0 8px 22px -8px rgba(13,59,46,.5);
-}
-.brand-mark img.brand-logo-img{max-width:28px;max-height:28px;object-fit:contain}
-.brand-text{display:flex;flex-direction:column;line-height:1.1}
-.brand-text strong{font-family:'Playfair Display',serif;font-size:1.12rem;letter-spacing:.2em;font-weight:700}
-.brand-text span{font-size:.66rem;color:var(--gold);font-weight:700;letter-spacing:.12em}
+/* Gallery */
+.gallery-section{max-width:1320px;margin:40px auto;padding:20px}
+.gallery-section h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--emerald);margin-bottom:20px;text-align:center}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.gallery-grid img,.gallery-grid video{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--r-sm);cursor:pointer;transition:transform .3s}
+.gallery-grid img:hover,.gallery-grid video:hover{transform:scale(1.03)}
 
-nav{display:flex;gap:24px;font-size:.9rem;font-weight:700;color:var(--muted)}
-nav a{color:inherit;text-decoration:none;position:relative;padding-block:4px;transition:color .3s}
-nav a::after{content:'';position:absolute;bottom:0;inset-inline:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .35s}
-nav a:hover{color:var(--text)}
-nav a:hover::after{transform:scaleX(1)}
+/* Footer */
+footer{background:var(--emerald-2);color:#fff;padding:40px 20px;margin-top:60px}
+.footer-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px}
+.footer-col h4{font-weight:700;margin-bottom:12px;color:var(--gold-2)}
+.footer-col p,.footer-col a{font-size:.85rem;color:rgba(255,255,255,.7);line-height:1.8}
+.footer-col a:hover{color:var(--gold-2)}
+.footer-bottom{text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:.75rem;color:rgba(255,255,255,.5)}
 
-.nav-actions{display:flex;align-items:center;gap:8px}
-.pill-btn{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:9px 15px;border-radius:999px;cursor:pointer;
-  border:1px solid var(--line);background:var(--panel);
-  color:var(--text);font-family:inherit;font-size:.82rem;font-weight:700;
-  transition:.3s;
-}
-.pill-btn:hover{border-color:var(--gold);transform:translateY(-2px)}
-.pill-btn.calm-trigger{border-color:rgba(199,161,93,.45);background:rgba(199,161,93,.08)}
-
-.cart-btn{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:10px 18px;border-radius:999px;cursor:pointer;
-  border:1px solid transparent;background:var(--btn-bg);color:var(--btn-text);
-  font-family:inherit;font-size:.86rem;font-weight:800;
-  box-shadow:0 10px 26px -10px rgba(13,59,46,.45);
-  transition:.3s;
-}
-.cart-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
-.badge{
-  min-width:21px;height:21px;padding:0 6px;border-radius:999px;display:grid;place-items:center;
-  background:var(--gold);color:#141007;font-size:.73rem;font-weight:900;
-  transition:transform .3s;
-}
-.badge.pop{transform:scale(1.45)}
-
-/* =====================================================
-   4. الهيرو (Editorial Typography + 3D Interactive Stage)
-   ===================================================== */
-.hero{
-  min-height:95vh;display:grid;align-items:center;
-  padding:120px clamp(16px,4vw,52px) 64px;position:relative;overflow:hidden;
-}
-#dustCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
-.hero-grid{
-  display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(28px,5vw,64px);
-  align-items:center;max-width:1240px;width:100%;margin-inline:auto;position:relative;z-index:2;
-}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:7px 16px;border-radius:999px;font-size:.78rem;font-weight:800;letter-spacing:.06em;
-  border:1px solid rgba(199,161,93,.4);background:rgba(199,161,93,.1);color:var(--text);
-  margin-bottom:18px;
-}
-.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);animation:pulseDot 2s infinite}
-@keyframes pulseDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.65);opacity:.45}}
-
-.en-kicker{
-  font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
-  font-size:clamp(1.05rem,1.8vw,1.35rem);color:var(--gold);letter-spacing:.06em;margin-bottom:8px;
-}
-h1{
-  font-size:clamp(2.3rem,5.2vw,4.35rem);line-height:1.14;font-weight:900;letter-spacing:-.01em;
-  margin-bottom:20px;
-}
-.grad{
-  background:linear-gradient(105deg,var(--emerald),var(--gold) 52%,var(--emerald2));
-  background-size:200% 100%;
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:shimmerGrad 6s ease-in-out infinite;
-}
-[data-theme="dark"] .grad{
-  background:linear-gradient(105deg,var(--gold2),var(--gold) 50%,#55C49F);
-  background-size:200% 100%;
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-@keyframes shimmerGrad{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-
-.hero-desc{color:var(--muted);font-size:clamp(.98rem,1.45vw,1.12rem);line-height:1.9;max-width:54ch;margin-bottom:30px}
-.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:36px}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  padding:14px 30px;border-radius:999px;font-family:inherit;font-weight:800;font-size:.94rem;
-  cursor:pointer;border:1px solid transparent;text-decoration:none;transition:.35s cubic-bezier(.2,.8,.2,1);
-  position:relative;overflow:hidden;
-}
-.btn-primary{background:var(--btn-bg);color:var(--btn-text);box-shadow:0 16px 36px -14px rgba(13,59,46,.5)}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 22px 44px -14px rgba(13,59,46,.65)}
-.btn-outline{background:var(--panel);border-color:var(--gold);color:var(--text)}
-.btn-outline:hover{background:rgba(199,161,93,.14);transform:translateY(-3px)}
-
-.hero-stats{display:flex;gap:clamp(20px,4vw,44px);flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--line)}
-.stat b{display:block;font-size:1.45rem;font-weight:900;color:var(--gold);font-family:'Playfair Display',serif}
-.stat span{font-size:.78rem;color:var(--muted);font-weight:600}
-
-/* منصة الهيرو 3D */
-.hero-showcase{
-  display:flex;flex-direction:column;align-items:center;
-  background:var(--card-bg);border:1px solid var(--line);border-radius:36px 36px 24px 24px;
-  padding:22px 18px 20px;box-shadow:var(--shadow);position:relative;
-}
-.hero-showcase::before{
-  content:'MOFA GLOW · 360°';position:absolute;top:16px;inset-inline-start:20px;
-  font-family:'Playfair Display',serif;font-size:.7rem;letter-spacing:.2em;color:var(--gold);font-weight:700;
-}
-.hero-showcase .stage{height:330px;width:100%;background:transparent}
-.scale-wrap{transform:scale(1.36);transform-style:preserve-3d;display:grid;place-items:center}
-.hero-switcher{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:8px}
-.hero-pill{
-  padding:6px 13px;border-radius:999px;font-size:.75rem;font-weight:700;cursor:pointer;
-  border:1px solid var(--line);background:var(--bg);color:var(--muted);font-family:inherit;transition:.25s;
-}
-.hero-pill.active,.hero-pill:hover{background:var(--emerald);color:#fff;border-color:var(--emerald)}
-[data-theme="dark"] .hero-pill.active,[data-theme="dark"] .hero-pill:hover{background:var(--gold);color:#141007;border-color:var(--gold)}
-.drag-hint{margin-top:10px;font-size:.76rem;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:6px}
-
-/* =====================================================
-   5. الشريط المتحرك + شريط الضمانات
-   ===================================================== */
-.marquee{
-  overflow:hidden;border-block:1px solid var(--line);
-  background:var(--marquee-bg);padding:13px 0;position:relative;z-index:3;
-}
-.marquee-track{
-  display:flex;gap:52px;width:max-content;
-  animation:marqueeMove 42s linear infinite;
-  font-size:.85rem;color:var(--marquee-text);font-weight:700;padding-inline:24px;
-}
-.marquee-track span{white-space:nowrap}
-@keyframes marqueeMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-.trust-strip{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  background:var(--line);border-bottom:1px solid var(--line);
-  max-width:1240px;margin-inline:auto;position:relative;z-index:3;
-}
-.trust-item{
-  background:var(--bg);padding:24px 16px;text-align:center;
-  display:flex;flex-direction:column;align-items:center;gap:5px;
-}
-.trust-item .ico{font-size:1.5rem}
-.trust-item b{font-size:.92rem;font-weight:800}
-.trust-item span{font-size:.76rem;color:var(--muted)}
-
-/* =====================================================
-   6. منصة طقس الإشراقة الثلاثي التفاعلية (The Glow Ritual Podium)
-   ===================================================== */
-.ritual-sec{
-  padding:85px clamp(16px,4vw,52px);
-  background:linear-gradient(180deg,var(--bg),var(--bg2),var(--bg));
-  border-bottom:1px solid var(--line);position:relative;z-index:3;
-}
-.ritual-wrap{
-  max-width:1180px;margin-inline:auto;
-  display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center;
-}
-.podium-stage{
-  position:relative;height:420px;border-radius:200px 200px 28px 28px;
-  background:linear-gradient(180deg,var(--emerald) 0%,#07231B 100%);
-  border:2px solid var(--gold);
-  box-shadow:var(--shadow);
-  overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
-  padding-bottom:24px;
-}
-.podium-halo{
-  position:absolute;top:14%;width:230px;height:230px;border-radius:50%;
-  border:1px solid rgba(217,178,106,.32);
-  background:radial-gradient(circle,rgba(217,178,106,.18),transparent 70%);
-  pointer-events:none;
-}
-.podium-bottles{
-  position:relative;z-index:3;display:flex;align-items:flex-end;justify-content:center;gap:24px;
-  margin-bottom:-6px;
-}
-.pod-item{
-  cursor:pointer;transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .4s;
-  transform-origin:bottom center;position:relative;
-}
-.pod-item.active{transform:translateY(-14px) scale(1.08);filter:drop-shadow(0 16px 24px rgba(217,178,106,.45))}
-.pod-item:not(.active){opacity:.78}
-.pod-item:hover{opacity:1;transform:translateY(-8px)}
-.podium-steps{width:88%;display:flex;flex-direction:column;align-items:center;z-index:2}
-.step-tier{
-  height:24px;border-radius:10px;
-  background:linear-gradient(180deg,#F7F3EA,#DFD6C3);
-  box-shadow:0 10px 24px rgba(0,0,0,.35),inset 0 1px 0 #fff;
-}
-.tier-top{width:66%;border-bottom:2px solid var(--gold)}
-.tier-mid{width:82%}
-.tier-bot{width:100%}
-.podium-caption{
-  margin-top:14px;text-align:center;color:#F3EFE4;font-size:.86rem;font-weight:700;z-index:2;
-}
-.podium-caption span{display:block;font-family:'Playfair Display',serif;font-style:italic;color:var(--gold2);font-size:.95rem}
-
-.ritual-steps{display:flex;flex-direction:column;gap:14px;margin-top:20px}
-.r-step{
-  padding:16px 20px;border-radius:18px;border:1px solid var(--line);background:var(--panel);
-  cursor:pointer;transition:.35s;display:flex;gap:14px;align-items:flex-start;
-}
-.r-step.active,.r-step:hover{border-color:var(--gold);box-shadow:0 14px 32px -18px rgba(199,161,93,.55);transform:translateX(-4px)}
-.r-num{
-  width:34px;height:34px;border-radius:10px;flex-shrink:0;display:grid;place-items:center;
-  background:var(--emerald);color:var(--gold2);font-family:'Playfair Display',serif;font-weight:700;font-size:.95rem;
-}
-.r-step.active .r-num{background:var(--gold);color:#141007}
-.r-step b{display:block;font-size:1rem;margin-bottom:2px}
-.r-step p{font-size:.84rem;color:var(--muted);line-height:1.6}
-
-/* =====================================================
-   7. المتجر والمنتجات ثلاثية الأبعاد
-   ===================================================== */
-.shop{max-width:1240px;margin-inline:auto;padding:84px clamp(16px,4vw,52px) 60px;position:relative;z-index:3}
-.sec-head{text-align:center;margin-bottom:42px}
-.sec-head h2{font-size:clamp(1.85rem,3.6vw,2.95rem);font-weight:900;margin-bottom:10px}
-.sec-head p{color:var(--muted);font-size:1rem;max-width:56ch;margin-inline:auto}
-
-.toolbar{
-  display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;
-  margin-bottom:34px;position:sticky;top:72px;z-index:35;
-  padding:13px 16px;border-radius:22px;
-  background:var(--glass);backdrop-filter:blur(20px);
-  border:1px solid var(--line);box-shadow:var(--shadow);
-}
-.search-wrap{position:relative;flex:1;min-width:220px}
-.search-wrap svg{position:absolute;inset-inline-start:15px;top:50%;transform:translateY(-50%);opacity:.55}
-#search{
-  width:100%;padding:12px 42px 12px 16px;border-radius:14px;
-  background:var(--bg);border:1px solid var(--line);
-  color:var(--text);font-family:inherit;font-size:.92rem;outline:none;transition:.3s;
-}
-#search:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(199,161,93,.15)}
-
-.chips{display:flex;gap:7px;flex-wrap:wrap}
-.chip{
-  padding:8px 16px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:.82rem;font-weight:700;
-  background:var(--bg);border:1px solid var(--line);color:var(--muted);transition:.25s;
-}
-.chip:hover{color:var(--text);border-color:var(--gold)}
-.chip.active{background:var(--emerald);color:#fff;border-color:var(--emerald)}
-[data-theme="dark"] .chip.active{background:var(--gold);color:#141007;border-color:var(--gold)}
-
-.mode-switch{display:inline-flex;border-radius:999px;padding:3px;border:1px solid var(--line);background:var(--bg)}
-.mode-btn{
-  padding:7px 13px;border-radius:999px;border:none;background:transparent;color:var(--muted);
-  font-family:inherit;font-size:.76rem;font-weight:800;cursor:pointer;transition:.25s;
-}
-.mode-btn.active{background:var(--gold);color:#141007}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:26px}
-.card{
-  position:relative;display:flex;flex-direction:column;
-  background:var(--card-bg);border:1px solid var(--line);border-radius:var(--r);
-  padding:18px;overflow:hidden;box-shadow:var(--shadow);
-  transition:border-color .4s,transform .4s cubic-bezier(.2,.8,.2,1);
-}
-.card::before{
-  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;
-  background:radial-gradient(480px circle at var(--mx,50%) var(--my,0%),rgba(199,161,93,.15),transparent 45%);
-  transition:opacity .45s;
-}
-.card:hover::before{opacity:1}
-.card:hover{border-color:var(--gold);transform:translateY(-6px)}
-
-.stage{
-  display:grid;place-items:center;position:relative;
-  height:240px;cursor:grab;touch-action:pan-y;user-select:none;
-  border-radius:18px;background:var(--stage-bg);
-  perspective:1150px;perspective-origin:50% 50%;overflow:hidden;
-}
-.stage.grabbing{cursor:grabbing}
-.stage::after{
-  content:'';position:absolute;bottom:12%;left:50%;transform:translateX(-50%);
-  width:52%;height:12px;border-radius:50%;
-  background:radial-gradient(ellipse,rgba(13,59,46,.28),transparent 70%);filter:blur(7px);pointer-events:none;
-}
-.stage-tools{
-  position:absolute;top:10px;inset-inline:10px;display:flex;justify-content:space-between;align-items:center;z-index:4;pointer-events:none;
-}
-.stage-badge{
-  padding:4px 10px;border-radius:999px;font-size:.68rem;font-weight:800;
-  background:var(--glass);border:1px solid var(--line);color:var(--text);backdrop-filter:blur(8px);
-}
-.qv-trigger{
-  pointer-events:auto;padding:5px 11px;border-radius:999px;font-size:.7rem;font-weight:800;
-  background:var(--glass);border:1px solid var(--gold);color:var(--text);cursor:pointer;font-family:inherit;
-  transition:.25s;
-}
-.qv-trigger:hover{background:var(--gold);color:#141007}
-
-/* =====================================================
-   8. مجسمات 3D الفاخرة لمنتجات MOFA GLOW + المكعب السداسي
-   ===================================================== */
-.box{
-  position:relative;transform-style:preserve-3d;will-change:transform;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-}
-
-/* [IMG] صور المنتجات الحقيقية */
-.photo-box{
-  position:relative;z-index:2;display:grid;place-items:center;
-  width:100%;height:100%;padding:10px;pointer-events:none;
-}
-.photo-box img{
-  max-width:100%;max-height:100%;object-fit:contain;
-  filter:drop-shadow(0 18px 26px rgba(0,0,0,.28));
-  transition:transform .5s cubic-bezier(.2,.8,.2,1);
-}
-.card:hover .photo-box img{transform:scale(1.06) translateY(-4px)}
-.ci .thumb img{width:100%;height:100%;object-fit:contain;padding:3px}
-.fly-item .photo-box{padding:0}
-.fly-item .photo-box img{filter:drop-shadow(0 8px 14px rgba(0,0,0,.35))}
-.qv-top .photo-box img{max-height:190px}
-.s-brand{
-  font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.16em;font-size:8px;
-  pointer-events:none;z-index:2;text-transform:uppercase;
-}
-
-/* [A] صندوق العرض ثلاثي الأبعاد (Cube Mode) */
-.box.shape-cube{--s:126px;width:var(--s);height:var(--s)}
-.face{
-  position:absolute;inset:0;border-radius:16px;overflow:hidden;backface-visibility:hidden;
-  background:linear-gradient(150deg,var(--c1),var(--c2));
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),0 12px 28px rgba(0,0,0,.35);
-  display:grid;place-items:center;
-}
-.face::after{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(160deg,rgba(255,255,255,.18),rgba(0,0,0,.45) 80%);
-}
-.f-front{transform:translateZ(calc(var(--s)/2))}
-.f-back{transform:rotateY(180deg) translateZ(calc(var(--s)/2))}
-.f-right{transform:rotateY(90deg) translateZ(calc(var(--s)/2))}
-.f-left{transform:rotateY(-90deg) translateZ(calc(var(--s)/2))}
-.f-top{transform:rotateX(90deg) translateZ(calc(var(--s)/2))}
-.f-bottom{transform:rotateX(-90deg) translateZ(calc(var(--s)/2))}
-.p-emoji{font-size:calc(var(--s)*.42);position:relative;z-index:2;filter:drop-shadow(0 10px 18px rgba(0,0,0,.45))}
-.face-brand{position:absolute;z-index:2;font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.22em;font-size:8.5px;color:rgba(255,255,255,.78)}
-.face-name{position:absolute;z-index:2;bottom:10%;font-size:9px;font-weight:800;color:#fff;text-align:center;padding-inline:8px}
-.face-stripes{position:absolute;inset:0;z-index:2;opacity:.25;background:repeating-linear-gradient(90deg,rgba(255,255,255,.6) 0 2px,transparent 2px 11px)}
-.face-lid{width:56%;height:56%;border-radius:10px;z-index:2;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.15)}
-
-/* [B] مجسمات MOFA GLOW المنحوتة (Sculpt Mode) */
-/* 1) DROPPER (سيروم فيتامين C / زيت الأرغان / زيت العناية) */
-.shape-dropper{width:88px;height:184px;justify-content:flex-end}
-.s-bulb{width:22px;height:26px;border-radius:12px 12px 2px 2px;background:linear-gradient(to right,#111,#444,#111);transform:translateZ(16px)}
-.s-cap-dropper{width:42px;height:30px;border-radius:4px;background:linear-gradient(90deg,#9A7432,#F2DCA6 45%,#9A7432);transform:translateZ(12px);box-shadow:0 4px 8px rgba(0,0,0,.25)}
-.s-neck-dropper{width:26px;height:12px;background:linear-gradient(90deg,var(--c2),var(--c1),var(--c2));transform:translateZ(10px)}
-.s-body-dropper{
-  width:84px;height:108px;border-radius:30px 30px 16px 16px;
-  background:linear-gradient(135deg,var(--c1) 0%,var(--c2) 100%);
-  box-shadow:inset -10px 0 20px rgba(0,0,0,.35),inset 10px 0 18px rgba(255,255,255,.26),0 16px 30px rgba(0,0,0,.28);
-  transform:translateZ(12px);position:relative;overflow:hidden;
-}
-.s-label-dropper{
-  position:absolute;top:24px;width:100%;height:60px;
-  background:linear-gradient(90deg,#F5F2EA,#FFFFFF,#F5F2EA);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  border-block:1.5px solid var(--gold);box-shadow:0 2px 6px rgba(0,0,0,.15);
-}
-.s-label-dropper .s-brand{color:#0D3B2E;font-size:7.5px}
-.s-label-dropper small{font-size:6.5px;color:#8A6828;font-weight:800;letter-spacing:.08em}
-
-/* 2) JAR (كريم الأرغان / ماسك الشعر / كريم الذهب الليلي) */
-.shape-jar{width:128px;height:108px;justify-content:flex-end}
-.s-lid-jar{
-  width:128px;height:38px;border-radius:12px 12px 0 0;
-  background:linear-gradient(90deg,#8A6528,#F2DCA6 40%,#C7A15D 65%,#8A6528);
-  box-shadow:inset 0 -4px 8px rgba(0,0,0,.25),0 4px 10px rgba(0,0,0,.2);transform:translateZ(14px);
-}
-.s-body-jar{
-  width:122px;height:66px;border-radius:0 0 22px 22px;
-  background:linear-gradient(145deg,var(--c1),var(--c2));
-  box-shadow:inset -8px 0 16px rgba(0,0,0,.22),inset 8px 0 16px rgba(255,255,255,.25),0 16px 26px rgba(0,0,0,.25);
-  display:flex;align-items:center;justify-content:center;transform:translateZ(10px);position:relative;
-}
-.s-jar-plate{
-  width:84%;height:42px;border-radius:8px;background:rgba(255,255,255,.92);border:1px solid var(--gold);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-}
-.s-jar-plate .s-brand{color:#0D3B2E;font-size:7.5px}
-.s-jar-plate small{font-size:6.5px;color:#8A6828;font-weight:800}
-
-/* 3) CLEANSER & SHAMPOO (غسول الوجه / شامبو ضد التساقط) */
-.shape-shampoo,.shape-cleanser{width:94px;height:198px;justify-content:flex-end}
-.s-cap-shampoo{
-  width:42px;height:38px;border-radius:8px 8px 0 0;
-  background:linear-gradient(90deg,#08241B,#15523E,#08241B);
-  border-bottom:2px solid var(--gold);transform:translateZ(10px);
-}
-.s-body-shampoo{
-  width:94px;height:156px;border-radius:16px 16px 26px 26px;
-  background:linear-gradient(145deg,var(--c1),var(--c2));
-  box-shadow:inset -10px 0 20px rgba(0,0,0,.18),inset 10px 0 18px rgba(255,255,255,.28),0 18px 32px rgba(0,0,0,.25);
-  display:flex;align-items:center;justify-content:center;transform:translateZ(12px);
-}
-.s-label-shampoo{
-  width:84%;height:118px;border-radius:10px;background:rgba(255,255,255,.92);
-  border-block:1.5px solid var(--gold);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px;
-}
-.s-label-shampoo .s-brand{color:#0D3B2E;font-size:8px}
-.s-label-shampoo small{font-size:7px;color:#8A6828;font-weight:800;margin-top:4px;letter-spacing:.1em}
-
-/* 4) GIFTSET (مجموعة الإشراقة الملكية) */
-.shape-giftset{width:146px;height:132px;justify-content:flex-end}
-.s-box-lid{
-  width:152px;height:28px;border-radius:10px 10px 4px 4px;
-  background:linear-gradient(145deg,#134E3C,#08261D);
-  border-bottom:3px solid var(--gold);transform:translateZ(16px);box-shadow:0 6px 14px rgba(0,0,0,.3);
-}
-.s-box-base{
-  width:144px;height:98px;border-radius:0 0 16px 16px;
-  background:linear-gradient(155deg,#0D3B2E,#061D16);
-  box-shadow:0 18px 32px rgba(0,0,0,.32);transform:translateZ(12px);
-  position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;
-}
-.s-box-base::before{content:'';position:absolute;inset-block:0;width:16px;background:linear-gradient(90deg,#A67C3D,#F2DCA6,#A67C3D)}
-.s-box-crest{
-  position:relative;z-index:2;padding:8px 12px;border-radius:8px;background:#F9F8F6;border:1.5px solid var(--gold);text-align:center;
-}
-.s-box-crest .s-brand{color:#0D3B2E;font-size:8px;display:block}
-.s-box-crest small{font-size:6.5px;color:#8A6828;font-weight:800}
-
-/* 5) POWDER & CAPSULE (المكملات والجمال الداخلي) */
-.shape-powder{width:130px;height:172px;justify-content:flex-end}
-.s-cap-powder{
-  width:126px;height:38px;border-radius:10px 10px 0 0;
-  background:repeating-linear-gradient(90deg,#0D3B2E 0 5px,#08241C 5px 10px);
-  border-bottom:3px solid var(--gold);transform:translateZ(14px);
-}
-.s-body-powder{
-  width:130px;height:128px;border-radius:0 0 26px 26px;
-  background:linear-gradient(to right,#DDD5C5,#FBF8F2 30%,#FBF8F2 70%,#C9C1B0);
-  box-shadow:inset -12px 0 20px rgba(0,0,0,.1),0 18px 32px rgba(0,0,0,.24);
-  display:flex;align-items:center;justify-content:center;transform:translateZ(14px);
-}
-.s-label-powder{
-  width:88%;height:86px;background:rgba(255,255,255,.9);border:1px solid var(--gold);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4px;
-}
-.s-label-powder .s-brand{color:#0D3B2E}
-.s-label-powder small{font-size:7px;color:#8A6828;font-weight:800;margin-top:3px}
-
-.shape-capsule{width:106px;height:180px;justify-content:flex-end}
-.s-cap-capsule{
-  width:102px;height:34px;border-radius:8px 8px 0 0;
-  background:repeating-linear-gradient(90deg,#F5F2EA 0 3px,#D7CFC0 3px 6px);
-  border-bottom:2px solid var(--gold);transform:translateZ(12px);
-}
-.s-body-capsule{
-  width:106px;height:134px;border-radius:0 0 24px 24px;
-  background:linear-gradient(to right,#E8E4DA,#FFFFFF 25%,#FFFFFF 75%,#D5CFC2);
-  box-shadow:0 18px 30px rgba(0,0,0,.24);transform:translateZ(12px);position:relative;overflow:hidden;
-}
-.s-label-capsule{
-  position:absolute;top:18px;width:100%;height:74px;background:linear-gradient(90deg,#08241C,#0D3B2E,#08241C);
-  border-block:1.5px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;
-}
-.s-label-capsule .s-brand{color:#F4DFAE}
-.s-label-capsule small{font-size:6.5px;color:#D9B26A;font-weight:700;margin-top:2px}
-
-/* =====================================================
-   9. تفاصيل بطاقة المنتج
-   ===================================================== */
-.info{margin-top:12px;display:flex;flex-direction:column;gap:8px;flex:1}
-.tag-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.tag{
-  font-size:.7rem;font-weight:800;padding:4px 11px;border-radius:999px;
-  background:rgba(13,59,46,.09);color:var(--emerald);border:1px solid rgba(13,59,46,.2);
-}
-[data-theme="dark"] .tag{background:rgba(217,178,106,.12);color:var(--gold2);border-color:rgba(217,178,106,.3)}
-.tag.hot{background:rgba(199,161,93,.22);color:#7E5B1C;border-color:rgba(199,161,93,.45)}
-[data-theme="dark"] .tag.hot{color:#F4DFAE}
-
-.card h3{font-size:1.08rem;font-weight:800;line-height:1.4}
-.card .desc{font-size:.83rem;color:var(--muted);line-height:1.65;min-height:2.7em}
-.rating{display:flex;align-items:center;gap:7px;font-size:.79rem;color:var(--muted)}
-.stars{color:var(--gold);letter-spacing:1.5px;font-size:.88rem}
-.price-row{display:flex;align-items:baseline;gap:10px;margin-top:2px}
-.price{font-size:1.36rem;font-weight:900;color:var(--text);font-family:'Playfair Display',serif}
-.price small{font-family:'Cairo',sans-serif;font-size:.74rem;font-weight:700;color:var(--muted);margin-inline-start:3px}
-.old{font-size:.84rem;color:var(--muted);opacity:.65;text-decoration:line-through}
-
-.scarcity{margin-top:2px}
-.scarcity .bar{height:5px;border-radius:99px;background:rgba(128,128,128,.16);overflow:hidden}
-.scarcity .fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--emerald));width:var(--w)}
-.scarcity .lbl{font-size:.73rem;color:var(--muted);margin-top:5px;font-weight:700}
-
-.add-btn{
-  margin-top:auto;width:100%;padding:13px;border-radius:14px;cursor:pointer;
-  font-family:inherit;font-weight:800;font-size:.9rem;
-  border:1px solid var(--gold);background:var(--btn-bg);color:var(--btn-text);
-  transition:.3s;display:flex;align-items:center;justify-content:center;gap:8px;
-}
-.add-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(13,59,46,.6)}
-
-.no-results{grid-column:1/-1;text-align:center;padding:64px 20px;color:var(--muted);display:none}
-.no-results b{display:block;font-size:1.2rem;color:var(--text);margin-bottom:6px}
-
-/* =====================================================
-   10. قسم قصة العلامة (MOFA GLOW Architectural Story)
-   ===================================================== */
-.story-sec{
-  background:#0D3B2E;color:#F3EFE4;padding:90px clamp(16px,5vw,64px);
-  position:relative;z-index:3;overflow:hidden;
-}
-.story-grid{
-  max-width:1200px;margin-inline:auto;
-  display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;
-}
-.arch-card{
-  border-radius:220px 220px 24px 24px;padding:42px 28px 34px;text-align:center;
-  background:linear-gradient(180deg,#144E3D,#08241C);
-  border:1.5px solid var(--gold);box-shadow:0 30px 70px rgba(0,0,0,.35);
-}
-.arch-card .serif{font-size:1.7rem;letter-spacing:.22em;color:var(--gold2);display:block;margin-bottom:8px}
-.arch-card p{font-size:.88rem;color:#D5DDD8;max-width:34ch;margin-inline:auto}
-.story-sec h2{font-size:clamp(1.9rem,3.6vw,2.9rem);color:#fff;margin-bottom:14px}
-.story-sec .lead{color:#CFE0D8;font-size:1.02rem;line-height:1.9;margin-bottom:26px}
-.pillars{display:grid;gap:14px}
-.pillar{
-  border:1px solid rgba(217,178,106,.42);border-radius:18px;padding:16px 20px;
-  background:rgba(255,255,255,.04);
-}
-.pillar b{color:var(--gold2);display:block;font-size:.98rem;margin-bottom:3px}
-.pillar span{font-size:.85rem;color:#D5DDD8}
-
-/* =====================================================
-   11. آراء العميلات والفوتر
-   ===================================================== */
-.reviews{max-width:1240px;margin-inline:auto;padding:76px clamp(16px,4vw,52px) 44px;position:relative;z-index:3}
-.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
-.rev{
-  background:var(--card-bg);border:1px solid var(--line);border-radius:22px;padding:26px;
-  box-shadow:var(--shadow);transition:.35s;
-}
-.rev:hover{border-color:var(--gold);transform:translateY(-4px)}
-.rev .quote{font-size:2.4rem;line-height:1;color:var(--gold);font-family:'Playfair Display',serif}
-.rev p{font-size:.9rem;line-height:1.85;margin-block:10px 18px}
-.who{display:flex;align-items:center;gap:11px}
-.avatar{
-  width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:900;
-  background:var(--emerald);color:var(--gold2);
-}
-.who b{font-size:.88rem;display:block}
-.who span{font-size:.75rem;color:var(--muted)}
-
-footer{
-  border-top:1px solid var(--line);margin-top:40px;
-  padding:42px clamp(16px,4vw,52px);
-  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;
-  max-width:1240px;margin-inline:auto;color:var(--muted);font-size:.85rem;position:relative;z-index:3;
-}
-footer .serif{letter-spacing:.24em;color:var(--text);font-weight:700}
-
-/* =====================================================
-   12. السلة الجانبية + الطلب عبر واتساب + طيران المنتج
-   ===================================================== */
-.overlay{
-  position:fixed;inset:0;background:rgba(6,12,10,.65);backdrop-filter:blur(5px);
-  z-index:110;opacity:0;pointer-events:none;transition:opacity .35s;
-}
-.overlay.open{opacity:1;pointer-events:auto}
-.drawer{
-  position:fixed;top:0;bottom:0;inset-inline-end:0;width:min(430px,100%);
-  background:var(--bg);border-inline-start:1px solid var(--line);
-  z-index:120;display:flex;flex-direction:column;
-  transform:translateX(-102%);transition:transform .45s cubic-bezier(.16,1,.3,1);
-  box-shadow:-24px 0 70px rgba(0,0,0,.45);
-}
-.drawer.open{transform:none}
-.drawer-head{padding:20px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
-.drawer-head h3{font-size:1.15rem;font-weight:900}
-.close-x{
-  width:36px;height:36px;border-radius:11px;display:grid;place-items:center;cursor:pointer;
-  background:var(--panel);border:1px solid var(--line);color:var(--text);font-size:1rem;transition:.25s;
-}
-.close-x:hover{border-color:var(--gold);transform:rotate(90deg)}
-
-.gift-box{padding:12px 20px;background:rgba(199,161,93,.1);border-bottom:1px solid var(--line)}
-.gift-box small{display:block;font-size:.78rem;font-weight:700;margin-bottom:6px;text-align:center}
-.gift-track{height:6px;border-radius:99px;background:rgba(128,128,128,.2);overflow:hidden}
-.gift-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--emerald));transition:width .5s ease}
-
-.cart-items{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:11px}
-.ci{
-  display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;
-  background:var(--panel);border:1px solid var(--line);
-}
-.ci .thumb{width:50px;height:50px;border-radius:13px;display:grid;place-items:center;font-size:1.4rem;flex-shrink:0;color:#fff}
-.ci-info{flex:1;min-width:0}
-.ci-info b{display:block;font-size:.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ci-info span{font-size:.82rem;color:var(--gold);font-weight:800}
-.qty{display:flex;align-items:center;gap:8px;margin-top:6px}
-.qty button{
-  width:25px;height:25px;border-radius:8px;cursor:pointer;font-family:inherit;font-weight:900;
-  background:var(--bg);border:1px solid var(--line);color:var(--text);
-}
-.qty b{font-size:.84rem;min-width:16px;text-align:center}
-.remove{background:none;border:none;cursor:pointer;color:var(--muted);font-size:1rem;padding:4px}
-.cart-empty{text-align:center;color:var(--muted);padding:54px 20px;font-size:.92rem}
-
-.drawer-foot{padding:18px 20px;border-top:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;gap:10px}
-.cust-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.cust-fields input{
-  padding:9px 12px;border-radius:11px;border:1px solid var(--line);background:var(--bg);
-  color:var(--text);font-family:inherit;font-size:.8rem;outline:none;
-}
-.cust-fields input:focus{border-color:var(--gold)}
-#custAddress{grid-column:1/-1}
-.order-status{font-size:.76rem;line-height:1.6;color:var(--muted);min-height:0}
-.order-status.ok{color:var(--emerald)}
-.order-status.err{color:#B4472F}
-.ship-line{font-size:.76rem;color:var(--muted);text-align:center}
-.total-row{display:flex;justify-content:space-between;align-items:baseline}
-.total-row span{font-size:.88rem;color:var(--muted)}
-.total-row b{font-size:1.45rem;font-weight:900;font-family:'Playfair Display',serif}
-.wa-btn{
-  width:100%;padding:14px;border-radius:14px;cursor:pointer;border:none;
-  font-family:inherit;font-weight:900;font-size:.94rem;
-  background:#0D3B2E;color:#F9F8F6;
-  box-shadow:0 14px 30px -12px rgba(13,59,46,.65);transition:.3s;
-}
-.wa-btn:hover{background:#15523F;transform:translateY(-2px)}
-.wa-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
-
-/* =====================================================
-   13. ركن الهدوء + المعاينة السريعة + مساعد المكونات + التوست
-   ===================================================== */
-.modal-ov{
-  position:fixed;inset:0;z-index:160;display:none;place-items:center;
-  background:rgba(10,20,16,.72);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
-  padding:20px;text-align:center;
-}
-.modal-ov.open{display:grid}
-
-/* ركن الهدوء */
-.calm-box{max-width:440px;color:#F3EFE4}
-.orb{
-  width:min(210px,54vw);aspect-ratio:1;border-radius:50%;margin:0 auto 26px;
-  background:radial-gradient(circle at 35% 30%,#F7E3A0,#D4AF37 55%,#8B6B14);
-  box-shadow:0 0 85px rgba(212,175,55,.55);
-  transition:transform 4s ease-in-out;
-}
-.orb.inhale{transform:scale(1.32)}
-.orb.exhale{transform:scale(.96);transition-duration:6s}
-.calm-box h3{font-size:1.9rem;margin-bottom:6px}
-.calm-box p{color:#CFE0D8;margin-bottom:22px;min-height:1.7em}
-.calm-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-
-/* المعاينة السريعة */
-.qv-card{
-  max-width:440px;width:100%;background:var(--panel);color:var(--text);
-  border:1px solid var(--gold);border-radius:26px;overflow:hidden;text-align:start;
-  box-shadow:0 30px 80px rgba(0,0,0,.55);
-}
-.qv-top{height:210px;background:var(--stage-bg);display:grid;place-items:center;position:relative}
-.qv-body{padding:22px;display:flex;flex-direction:column;gap:10px}
-.qv-ritual{
-  padding:12px 14px;border-radius:14px;background:rgba(199,161,93,.12);
-  border:1px solid rgba(199,161,93,.35);font-size:.84rem;line-height:1.7;
-}
-
-/* مساعد المكونات الذكي */
-#aiWidget{position:fixed;left:18px;bottom:18px;z-index:105}
-#aiBtn{
-  width:56px;height:56px;border-radius:50%;border:1px solid #fff;cursor:pointer;font-size:22px;
-  background:radial-gradient(circle at 30% 30%,#F6DF8E,#B88E24);color:#141007;
-  box-shadow:0 12px 30px rgba(199,161,93,.55);transition:.3s;
-}
-#aiBtn:hover{transform:scale(1.08)}
-#aiPanel{
-  position:absolute;bottom:68px;left:0;width:min(335px,88vw);
-  background:var(--panel);border:1px solid var(--gold);border-radius:22px;padding:14px;
-  display:none;box-shadow:0 24px 60px rgba(0,0,0,.35);
-}
-#aiPanel.open{display:block}
-.ai-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid var(--line);font-size:.82rem;font-weight:800}
-#aiLog{max-height:210px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;font-size:.83rem}
-#aiLog div{padding:8px 12px;border-radius:14px;background:var(--bg2);max-width:90%}
-#aiLog .me{align-self:flex-end;background:var(--emerald);color:#fff}
-#aiForm{display:flex;gap:6px;margin-top:10px}
-#aiForm input{
-  flex:1;padding:9px 13px;border-radius:999px;border:1px solid var(--line);
-  background:var(--bg);color:var(--text);font-family:inherit;font-size:.82rem;outline:none;
-}
-#aiForm button{
-  padding:8px 15px;border-radius:999px;border:none;background:var(--emerald);color:#fff;
-  font-family:inherit;font-weight:700;font-size:.8rem;cursor:pointer;
-}
-
-.fly-item{position:fixed;z-index:9999;pointer-events:none;transition:all .72s cubic-bezier(.2,.8,.2,1)}
-
-#toast{
-  position:fixed;bottom:24px;left:50%;transform:translate(-50%,150%);z-index:220;
-  display:flex;align-items:center;gap:10px;padding:12px 24px;border-radius:999px;
-  background:#0D3B2E;color:#F9F8F6;border:1px solid var(--gold);
-  font-size:.86rem;font-weight:700;box-shadow:0 18px 45px rgba(0,0,0,.45);
-  transition:transform .45s cubic-bezier(.16,1,.3,1);white-space:nowrap;max-width:92vw;
-}
-#toast.show{transform:translate(-50%,0)}
-
-@media(max-width:940px){
-  .hero-grid,.ritual-wrap,.story-grid{grid-template-columns:1fr;text-align:center}
-  .hero-desc{margin-inline:auto}
-  .hero-actions,.hero-stats{justify-content:center}
-  .hero-showcase{order:-1}
+/* Responsive */
+@media(max-width:768px){
   nav{display:none}
-  .trust-strip{grid-template-columns:repeat(2,1fr)}
-  .toolbar{position:static}
+  .product-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+  .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
 }
-@media(max-width:520px){
-  .grid{grid-template-columns:1fr}
-  .pill-btn span{display:none}
-}
-@media(prefers-reduced-motion:reduce){
-  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
-}
-/* ===== جديد: معرض صور منتجات جديدة ===== */
-.new-arrivals{padding:60px 20px;max-width:1240px;margin:0 auto}
-.new-arrivals .sec-head{text-align:center;margin-bottom:28px}
-.new-arrivals .sec-head h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:8px 0}
-.new-arrivals .sec-head p{color:var(--muted);font-size:.9rem}
-.new-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
-.new-grid figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-.new-grid img,.new-grid video{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--stage-bg)}
-.new-grid figcaption{padding:8px 10px;font-size:.78rem;text-align:center;color:var(--text);font-weight:700}
-.new-note{margin-top:18px;text-align:center;font-size:.82rem;color:var(--muted);padding:12px;border:1px dashed var(--line);border-radius:12px}
+
+/* Animations */
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.product-card{animation:fadeIn .4s ease both}
 </style>
 </head>
 <body>
 
-<div class="progress-bar" id="progressBar"></div>
-<div class="ambient-bg"></div>
-<div id="cursorGlow"></div>
-
-<!-- شاشة التحميل الهندسية -->
-<div id="loader" aria-hidden="true">
-  <div class="loader-inner">
-    <svg id="mandalaSvg" viewBox="-50 -50 100 100"></svg>
-    <div class="loader-title">MOFA GLOW</div>
-  </div>
-</div>
-
-<!-- ===== الهيدر ===== -->
-<header>
-  <a href="#" class="brand-logo">
-    <div class="brand-mark">
-      <img src="assets/brand/logo.png" alt="MOFA GLOW" class="brand-logo-img" onload="if(this.nextElementSibling) this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="brand">
+      <div class="brand-mark"><img src="assets/brand/logo.png" alt="MOFA GLOW" onerror="this.style.display='none'"></div>
+      <div class="brand-text"><strong>MOFA GLOW</strong><span>HAUTE BOTANICAL CARE</span></div>
+    </a>
+    <nav>
+      <a href="#shop">المتجر</a>
+      <a href="#gallery">معرض الصور</a>
+      <a href="#about">عن العلامة</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-btn" onclick="toggleCart()">🛒 <span>السلة</span> <span class="cart-badge" id="cartBadge">0</span></button>
     </div>
-    <div class="brand-text">
-      <strong>MOFA GLOW</strong>
-      <span>HAUTE BOTANICAL CARE</span>
-    </div>
-  </a>
-
-  <nav>
-    <a href="#ritual">طقس الإشراقة</a>
-    <a href="#shop">المجموعة الكاملة</a>
-    <a href="#about">عن العلامة</a>
-    <a href="#reviews">آراء العميلات</a>
-  </nav>
-
-  <div class="nav-actions">
-    <button class="pill-btn calm-trigger" id="openCalmBtn" title="ركن الهدوء والتنفس">
-      ✦ <span>ركن الهدوء</span>
-    </button>
-    <button class="pill-btn" id="themeBtn" title="تبديل المظهر الفاخر">
-      🌗 <span>عاجي / ليلي</span>
-    </button>
-    <button class="cart-btn" id="openCartBtn">
-      <span>السلة</span>
-      <span class="badge" id="cartBadge">0</span>
-    </button>
   </div>
 </header>
 
-<!-- ===== الهيرو ===== -->
 <section class="hero">
-  <canvas id="dustCanvas" aria-hidden="true"></canvas>
-  <div class="hero-grid">
-    <div>
-      <div class="eyebrow"><i></i> دار العناية والجمال الطبيعي الفاخر</div>
-      <div class="en-kicker">Elevate Your Natural Glow</div>
-      <h1>إشراقة <span class="grad">تبدأ</span><br>من تفاصيلك <span class="grad">اليومية</span></h1>
-      <p class="hero-desc">عناية وتجميل بملمس فاخر وطقوس بسيطة. افحصي كل مستحضر بتقنية العرض ثلاثي الأبعاد 360°، اكتشفي مكوناته الطبيعية، وأرسلي طلبك مباشرة عبر واتساب في دقائق.</p>
-      <div class="hero-actions">
-        <a href="#shop" class="btn btn-primary">تسوّقي المجموعة ↙</a>
-        <a href="#ritual" class="btn btn-outline">اكتشفي طقس الإشراقة</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><b>4.9/5</b><span>تقييم العميلات</span></div>
-        <div class="stat"><b>+12,400</b><span>عميلة سعيدة</span></div>
-        <div class="stat"><b>100%</b><span>خلاصات نباتية</span></div>
-      </div>
-    </div>
-
-    <div class="hero-showcase">
-      <div class="stage" id="heroStage">
-        <div class="scale-wrap">
-          <div class="box" id="heroBox"></div>
-        </div>
-      </div>
-      <div class="hero-switcher" id="heroSwitcher">
-        <button class="hero-pill active" data-preset="serum">💧 فيتامين C</button>
-        <button class="hero-pill" data-preset="cream">👑 كريم الأرغان</button>
-        <button class="hero-pill" data-preset="gold">✨ كريم الذهب</button>
-        <button class="hero-pill" data-preset="shampoo">🧴 شامبو الأرغان</button>
-        <button class="hero-pill" data-preset="set">🎁 المجموعة</button>
-      </div>
-      <div class="drag-hint">↔ اسحبي لتدوير العبوة بحرية 360°</div>
-    </div>
-  </div>
+  <div class="hero-eyebrow">MOROCCAN LUXURY · SKINCARE & WELLNESS</div>
+  <h1>MOFA <em>GLOW</em></h1>
+  <p>متجرك الفاخر للعناية بالبشرة والشعر والصحة. منتجات أصلية، شحن سريع، دفع عند الاستلام.</p>
 </section>
 
-<!-- ===== الشريط المتحرك ===== -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>✦ عينة هدية مجانية للطلبات فوق 300 درهم</span>
-    <span>✦ تركيبات طبيعية بزيت الأرغان المغربي وفيتامين C</span>
-    <span>✦ طلب مباشر وسريع عبر واتساب والدفع عند الاستلام</span>
-    <span>✦ تغليف فاخر يليق بكِ وبمن تحبين</span>
-    <span>✦ عينة هدية مجانية للطلبات فوق 300 درهم</span>
-    <span>✦ تركيبات طبيعية بزيت الأرغان المغربي وفيتامين C</span>
-    <span>✦ طلب مباشر وسريع عبر واتساب والدفع عند الاستلام</span>
-    <span>✦ تغليف فاخر يليق بكِ وبمن تحبين</span>
+<div class="filters" id="filters">
+  <button class="filter-btn active" data-cat="all">الكل</button>
+  <button class="filter-btn" data-cat="supplements">مكملات</button>
+  <button class="filter-btn" data-cat="creams">كريمات</button>
+  <button class="filter-btn" data-cat="oils">زيوت وسروم</button>
+  <button class="filter-btn" data-cat="hair">الشعر</button>
+</div>
+
+<section class="grid-section" id="shop">
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<!-- Cart -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header"><h3>سلة المشتريات</h3><button onclick="toggleCart()" style="font-size:1.5rem">&times;</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>المجموع</span><span id="cartTotal">0 درهم</span></div>
+    <button class="checkout-btn" onclick="goToCheckout()">إتمام الطلب</button>
   </div>
 </div>
 
-<!-- ===== شريط الضمانات ===== -->
-<div class="trust-strip">
-  <div class="trust-item"><div class="ico">🚚</div><b>توصيل سريع</b><span>لجميع المدن المغربية</span></div>
-  <div class="trust-item"><div class="ico">🌿</div><b>مكونات طبيعية</b><span>آمنة ولطيفة على البشرة</span></div>
-  <div class="trust-item"><div class="ico">🎁</div><b>عينة هدية مجانية</b><span>للطلبات فوق 300 درهم</span></div>
-  <div class="trust-item"><div class="ico">💬</div><b>طلب عبر واتساب</b><span>تأكيد فوري ومباشر</span></div>
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-img"><img id="modalImg" src="" alt=""></div>
+    <div class="modal-body">
+      <h3 class="modal-name" id="modalName"></h3>
+      <div class="modal-price" id="modalPrice"></div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-usage"><h4>طريقة الاستعمال</h4><p id="modalUsage"></p></div>
+      <button class="modal-btn" id="modalAddBtn">أضف إلى السلة</button>
+    </div>
+  </div>
 </div>
 
-<!-- ===== منصة طقس الإشراقة الثلاثي ===== -->
-<section class="ritual-sec" id="ritual">
-  <div class="ritual-wrap">
-    <div class="podium-stage">
-      <div class="podium-halo"></div>
-      <div class="podium-bottles" id="podiumBottles">
-        <div class="pod-item" data-step="0">
-          <div class="box shape-cleanser" style="--c1:#E8E2D4;--c2:#C5BCA8">
-            <div class="s-cap-shampoo"></div>
-            <div class="s-body-shampoo"><div class="s-label-shampoo"><span class="s-brand">MOFA GLOW</span><small>CLEANSER</small></div></div>
-          </div>
-        </div>
-        <div class="pod-item active" data-step="1">
-          <div class="box shape-dropper" style="--c1:#C7883A;--c2:#5E3312">
-            <div class="s-bulb"></div><div class="s-cap-dropper"></div><div class="s-neck-dropper"></div>
-            <div class="s-body-dropper"><div class="s-label-dropper"><span class="s-brand">MOFA GLOW</span><small>VITAMIN C</small></div></div>
-          </div>
-        </div>
-        <div class="pod-item" data-step="2">
-          <div class="box shape-jar" style="--c1:#F5F1E8;--c2:#D8CFC0">
-            <div class="s-lid-jar"></div>
-            <div class="s-body-jar"><div class="s-jar-plate"><span class="s-brand">MOFA GLOW</span><small>ARGAN CREAM</small></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="podium-steps">
-        <div class="step-tier tier-top"></div>
-        <div class="step-tier tier-mid"></div>
-        <div class="step-tier tier-bot"></div>
-      </div>
-      <div class="podium-caption">
-        <span>The Glow Ritual</span>
-        ثلاث خطوات تكفي لإشراقة يومك
-      </div>
-    </div>
-
-    <div>
-      <div class="eyebrow"><i></i> فلسفة العناية اليومية</div>
-      <h2 style="font-size:clamp(1.8rem,3.4vw,2.7rem);font-weight:900;margin-bottom:10px">طقس الإشراقة في <span class="grad">ثلاث خطوات</span></h2>
-      <p style="color:var(--muted);font-size:.95rem">اضغطي على كل خطوة لاستعراضها على المنصة، أو أضيفي الطقس المتكامل إلى سلتك دفعة واحدة.</p>
-
-      <div class="ritual-steps" id="ritualSteps">
-        <div class="r-step" data-step="0">
-          <div class="r-num">01</div>
-          <div><b>التنقية اللطيفة — غسول الوجه النباتي</b><p>يزيل الشوائب بلطف دون تجفيف البشرة ويهيّئها لامتصاص السيروم.</p></div>
-        </div>
-        <div class="r-step active" data-step="1">
-          <div class="r-num">02</div>
-          <div><b>التوهّج المركّز — سيروم فيتامين C المشرق</b><p>بضع قطرات تمنح البشرة إشراقة فورية وتوحّد مظهرها الطبيعي.</p></div>
-        </div>
-        <div class="r-step" data-step="2">
-          <div class="r-num">03</div>
-          <div><b>الترطيب المخملي — كريم زيت الأرغان</b><p>يغلق الرطوبة داخل البشرة ويتركها ناعمة كالحرير طوال اليوم.</p></div>
-        </div>
-      </div>
-
-      <button class="btn btn-primary" id="addRitualBundle" style="margin-top:22px">
-        ✦ أضيفي طقس الخطوات الثلاث للسلة (975 درهم)
-      </button>
-    </div>
-  </div>
+<!-- Checkout -->
+<section class="checkout-section" id="checkoutSection" style="display:none">
+  <h2>إتمام الطلب</h2>
+  <div class="order-summary" id="orderSummary"></div>
+  <div class="form-group"><label>الاسم الكامل *</label><input type="text" id="custName" placeholder="اسمك الكامل"><div class="form-error">الاسم مطلوب</div></div>
+  <div class="form-group"><label>رقم الهاتف *</label><input type="tel" id="custPhone" placeholder="06XXXXXXXX"><div class="form-error">رقم هاتف مغربي (06/07...)</div></div>
+  <div class="form-group"><label>المدينة *</label><input type="text" id="custCity" placeholder="مدينتك"><div class="form-error">المدينة مطلوبة</div></div>
+  <div class="form-group"><label>العنوان *</label><textarea id="custAddress" rows="3" placeholder="عنوان التوصيل"></textarea><div class="form-error">العنوان مطلوب</div></div>
+  <button class="checkout-btn" onclick="submitOrder()">تأكيد الطلب</button>
 </section>
 
-<!-- ===== المتجر ===== -->
-<section class="shop" id="shop">
-  <div class="sec-head">
-    <div class="eyebrow"><i></i> المجموعة المختارة</div>
-    <h2>مستحضرات <span class="grad">تستحق</span> أن تُلمس</h2>
-    <p>اسحبي أي عبوة لتدويرها 360°، أو بدّلي بين المجسمات الواقعية وعلب العرض ثلاثية الأبعاد.</p>
-  </div>
-
-  <div class="toolbar">
-    <div class="search-wrap">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input type="text" id="search" placeholder="ابحثي عن منتج… سيروم، أرغان، شامبو، مجموعة" autocomplete="off">
-    </div>
-
-    <div class="chips" id="chips">
-      <button class="chip active" data-cat="all">الكل</button>
-      <button class="chip" data-cat="skin">بشرة متوهجة</button>
-      <button class="chip" data-cat="hair">شعر لامع</button>
-      <button class="chip" data-cat="set">المجموعات</button>
-      <button class="chip" data-cat="supplements">الجمال الداخلي</button>
-    </div>
-
-    <div class="mode-switch" id="modeSwitch" title="تبديل نمط العرض ثلاثي الأبعاد">
-      <button class="mode-btn active" data-mode="sculpt">مجسمات 3D</button>
-      <button class="mode-btn" data-mode="cube">علب 3D</button>
-    </div>
-  </div>
-
-  <div class="grid" id="grid"></div>
-  <div class="no-results" id="noResults">
-    <b>لا يوجد منتج يطابق بحثك</b>
-    جرّبي كلمة أخرى أو اختاري «الكل» لعرض المجموعة كاملة.
-  </div>
+<!-- Success -->
+<section class="success-section" id="successSection" style="display:none">
+  <div class="success-icon">✓</div>
+  <h2>تم استلام طلبك!</h2>
+  <p>سنتواصل معك قريباً عبر WhatsApp لتأكيد التوصيل.</p>
+  <div class="success-details" id="successDetails"></div>
+  <button class="checkout-btn" onclick="location.reload()">العودة للمتجر</button>
 </section>
 
-<!-- ===== قصة العلامة ===== -->
-<section class="story-sec" id="about">
-  <div class="story-grid">
-    <div class="arch-card">
-      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#D9B26A" stroke-width="1.5" style="margin-bottom:10px"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg>
-      <span class="serif">MOFA GLOW</span>
-      <p>تركيبات مستوحاة من خيرات الطبيعة المغربية، مصاغة بعناية لتمنحك لحظة هدوء وإشراقة تدوم.</p>
-    </div>
-
-    <div>
-      <h2>جمالٌ هادئ، بلمسة فاخرة</h2>
-      <p class="lead">وُلدت MOFA GLOW من حب العناية بالنفس كطقس يومي هادئ. نختار كل منتج لقوامه ورائحته وأثره الفعلي، ونقدّمه لكِ بتغليف أنيق يليق بك.</p>
-      <div class="pillars">
-        <div class="pillar"><b>ملمس فاخر</b><span>قوامات ناعمة سريعة الامتصاص تمنحك متعة الاستعمال كل يوم دون أي ثقل.</span></div>
-        <div class="pillar"><b>طقوس بسيطة</b><span>خطوات قليلة وواضحة تناسب إيقاع يومك وتمنح نتائج ملموسة.</span></div>
-        <div class="pillar"><b>طلب سهل ومباشر</b><span>أكملي طلبك مباشرة مع فريقنا عبر واتساب خلال دقائق معدودة.</span></div>
-      </div>
-    </div>
-  </div>
+<!-- Gallery -->
+<section class="gallery-section" id="gallery">
+  <h2>معرض الصور</h2>
+  <div class="gallery-grid" id="galleryGrid"></div>
 </section>
 
-<!-- ===== آراء العميلات ===== -->
-<section class="reviews" id="reviews">
-  <div class="sec-head">
-    <div class="eyebrow"><i></i> تجارب حقيقية</div>
-    <h2>ثقة <span class="grad">تتجدد</span> مع كل استعمال</h2>
-  </div>
-  <div class="rev-grid">
-    <div class="rev">
-      <div class="quote">“</div>
-      <p>سيروم فيتامين C وكريم الأرغان غيّرا روتيني الصباحي بالكامل. القوام خفيف جداً والتغليف يفتح النفس.</p>
-      <div class="who"><div class="avatar">س</div><div><b>سلمى بنعلي</b><span>عميلة موثقة · أكادير</span></div></div>
-    </div>
-    <div class="rev">
-      <div class="quote">“</div>
-      <p>أعجبتني فكرة تدوير العبوة وقراءة طقس الاستعمال قبل الطلب. الشامبو وزيت الأرغان أعطيا شعري لمعة رائعة.</p>
-      <div class="who"><div class="avatar">م</div><div><b>مريم الإدريسي</b><span>عميلة موثقة · الدار البيضاء</span></div></div>
-    </div>
-    <div class="rev">
-      <div class="quote">“</div>
-      <p>الطلب عبر واتساب كان سريعاً ومريحاً جداً، ووصلتني عينة هدية مع مجموعة الإشراقة. تجربة راقية بكل المقاييس.</p>
-      <div class="who"><div class="avatar">هـ</div><div><b>هدى التازي</b><span>عميلة موثقة · مراكش</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== جديد: معرض صور منتجات جديدة ===== -->
-<section class="new-arrivals" id="newArrivals">
-  <div class="sec-head">
-    <div class="eyebrow"><i></i> جديد</div>
-    <h2>صور منتجات <span class="grad">وصلت مؤخراً</span></h2>
-    <p>89 صورة + ملصق + 2 فيديو. أخبرني باسم كل منتج وسعره لإضافته كمنتج كامل (مع SKU إن توفر).</p>
-  </div>
-  <div class="new-grid">
-    <figure><img src="assets/products/new/new-01.jpg" alt="صورة 1" loading="eager"><figcaption>صورة 1</figcaption></figure>
-    <figure><img src="assets/products/new/new-02.jpg" alt="صورة 2" loading="eager"><figcaption>صورة 2</figcaption></figure>
-    <figure><img src="assets/products/new/new-03.jpg" alt="صورة 3" loading="eager"><figcaption>صورة 3</figcaption></figure>
-    <figure><img src="assets/products/new/new-04.jpg" alt="صورة 4" loading="eager"><figcaption>صورة 4</figcaption></figure>
-    <figure><img src="assets/products/new/new-05.jpg" alt="صورة 5" loading="eager"><figcaption>صورة 5</figcaption></figure>
-    <figure><img src="assets/products/new/new-06.jpg" alt="صورة 6" loading="eager"><figcaption>صورة 6</figcaption></figure>
-    <figure><img src="assets/products/new/new-07.jpg" alt="صورة 7" loading="eager"><figcaption>صورة 7</figcaption></figure>
-    <figure><img src="assets/products/new/new-08.jpg" alt="صورة 8" loading="eager"><figcaption>صورة 8</figcaption></figure>
-    <figure><img src="assets/products/new/new-09.jpg" alt="صورة 9" loading="eager"><figcaption>صورة 9</figcaption></figure>
-    <figure><img src="assets/products/new/new-10.jpg" alt="صورة 10" loading="eager"><figcaption>صورة 10</figcaption></figure>
-    <figure><img src="assets/products/new/new-11.jpg" alt="صورة 11" loading="eager"><figcaption>صورة 11</figcaption></figure>
-    <figure><img src="assets/products/new/new-12.jpg" alt="صورة 12" loading="eager"><figcaption>صورة 12</figcaption></figure>
-    <figure><img src="assets/products/new/new-13.jpg" alt="صورة 13" loading="eager"><figcaption>صورة 13</figcaption></figure>
-    <figure><img src="assets/products/new/new-14.jpg" alt="صورة 14" loading="eager"><figcaption>صورة 14</figcaption></figure>
-    <figure><img src="assets/products/new/new-15.jpg" alt="صورة 15" loading="eager"><figcaption>صورة 15</figcaption></figure>
-    <figure><img src="assets/products/new/new-16.jpg" alt="صورة 16" loading="eager"><figcaption>صورة 16</figcaption></figure>
-    <figure><img src="assets/products/new/new-17.jpg" alt="صورة 17" loading="eager"><figcaption>صورة 17</figcaption></figure>
-    <figure><img src="assets/products/new/new-18.jpg" alt="صورة 18" loading="eager"><figcaption>صورة 18</figcaption></figure>
-    <figure><img src="assets/products/new/new-19.jpg" alt="صورة 19" loading="eager"><figcaption>صورة 19</figcaption></figure>
-    <figure><img src="assets/products/new/new-20.jpg" alt="صورة 20" loading="eager"><figcaption>صورة 20</figcaption></figure>
-    <figure><img src="assets/products/new/new-21.jpg" alt="صورة 21" loading="eager"><figcaption>صورة 21</figcaption></figure>
-    <figure><img src="assets/products/new/new-22.jpg" alt="صورة 22" loading="eager"><figcaption>صورة 22</figcaption></figure>
-    <figure><img src="assets/products/new/new-23.jpg" alt="صورة 23" loading="eager"><figcaption>صورة 23</figcaption></figure>
-    <figure><img src="assets/products/new/new-24.jpg" alt="صورة 24" loading="eager"><figcaption>صورة 24</figcaption></figure>
-    <figure><img src="assets/products/new/new-25.jpg" alt="صورة 25" loading="eager"><figcaption>صورة 25</figcaption></figure>
-    <figure><img src="assets/products/new/new-26.jpg" alt="صورة 26" loading="eager"><figcaption>صورة 26</figcaption></figure>
-    <figure><img src="assets/products/new/new-27.jpg" alt="صورة 27" loading="eager"><figcaption>صورة 27</figcaption></figure>
-    <figure><img src="assets/products/new/new-28.jpg" alt="صورة 28" loading="eager"><figcaption>صورة 28</figcaption></figure>
-    <figure><img src="assets/products/new/new-29.jpg" alt="صورة 29" loading="eager"><figcaption>صورة 29</figcaption></figure>
-    <figure><img src="assets/products/new/new-30.jpg" alt="صورة 30" loading="eager"><figcaption>صورة 30</figcaption></figure>
-    <figure><img src="assets/products/new/new-31.jpg" alt="صورة 31" loading="eager"><figcaption>صورة 31</figcaption></figure>
-    <figure><img src="assets/products/new/new-32.jpg" alt="صورة 32" loading="eager"><figcaption>صورة 32</figcaption></figure>
-    <figure><img src="assets/products/new/new-33.jpg" alt="صورة 33" loading="eager"><figcaption>صورة 33</figcaption></figure>
-    <figure><img src="assets/products/new/new-34.jpg" alt="صورة 34" loading="eager"><figcaption>صورة 34</figcaption></figure>
-    <figure><img src="assets/products/new/new-35.jpg" alt="صورة 35" loading="eager"><figcaption>صورة 35</figcaption></figure>
-    <figure><img src="assets/products/new/new-36.jpg" alt="صورة 36" loading="eager"><figcaption>صورة 36</figcaption></figure>
-    <figure><img src="assets/products/new/new-37.jpg" alt="صورة 37" loading="eager"><figcaption>صورة 37</figcaption></figure>
-    <figure><img src="assets/products/new/new-38.jpg" alt="صورة 38" loading="eager"><figcaption>صورة 38</figcaption></figure>
-    <figure><img src="assets/products/new/new-39.jpg" alt="صورة 39" loading="eager"><figcaption>صورة 39</figcaption></figure>
-    <figure><img src="assets/products/new/new-40.jpg" alt="صورة 40" loading="eager"><figcaption>صورة 40</figcaption></figure>
-    <figure><img src="assets/products/new/new-41.jpg" alt="صورة 41" loading="eager"><figcaption>صورة 41</figcaption></figure>
-    <figure><img src="assets/products/new/new-42.jpg" alt="صورة 42" loading="eager"><figcaption>صورة 42</figcaption></figure>
-    <figure><img src="assets/products/new/new-43.jpg" alt="صورة 43" loading="eager"><figcaption>صورة 43</figcaption></figure>
-    <figure><img src="assets/products/new/new-44.jpg" alt="صورة 44" loading="eager"><figcaption>صورة 44</figcaption></figure>
-    <figure><img src="assets/products/new/new-45.jpg" alt="صورة 45" loading="eager"><figcaption>صورة 45</figcaption></figure>
-    <figure><img src="assets/products/new/new-46.jpg" alt="صورة 46" loading="eager"><figcaption>صورة 46</figcaption></figure>
-    <figure><img src="assets/products/new/new-47.jpg" alt="صورة 47" loading="eager"><figcaption>صورة 47</figcaption></figure>
-    <figure><img src="assets/products/new/new-48.jpg" alt="صورة 48" loading="eager"><figcaption>صورة 48</figcaption></figure>
-    <figure><img src="assets/products/new/new-49.jpg" alt="صورة 49" loading="eager"><figcaption>صورة 49</figcaption></figure>
-    <figure><img src="assets/products/new/new-50.jpg" alt="صورة 50" loading="eager"><figcaption>صورة 50</figcaption></figure>
-    <figure><img src="assets/products/new/new-51.jpg" alt="صورة 51" loading="eager"><figcaption>صورة 51</figcaption></figure>
-    <figure><img src="assets/products/new/new-52.jpg" alt="صورة 52" loading="eager"><figcaption>صورة 52</figcaption></figure>
-    <figure><img src="assets/products/new/new-53.jpg" alt="صورة 53" loading="eager"><figcaption>صورة 53</figcaption></figure>
-    <figure><img src="assets/products/new/new-54.jpg" alt="صورة 54" loading="eager"><figcaption>صورة 54</figcaption></figure>
-    <figure><img src="assets/products/new/new-55.jpg" alt="صورة 55" loading="eager"><figcaption>صورة 55</figcaption></figure>
-    <figure><img src="assets/products/new/new-56.jpg" alt="صورة 56" loading="eager"><figcaption>صورة 56</figcaption></figure>
-    <figure><img src="assets/products/new/new-57.jpg" alt="صورة 57" loading="eager"><figcaption>صورة 57</figcaption></figure>
-    <figure><img src="assets/products/new/new-58.jpg" alt="صورة 58" loading="eager"><figcaption>صورة 58</figcaption></figure>
-    <figure><img src="assets/products/new/new-59.jpg" alt="صورة 59" loading="eager"><figcaption>صورة 59</figcaption></figure>
-    <figure><img src="assets/products/new/new-60.jpg" alt="صورة 60" loading="eager"><figcaption>صورة 60</figcaption></figure>
-    <figure><img src="assets/products/new/new-61.jpg" alt="صورة 61" loading="eager"><figcaption>صورة 61</figcaption></figure>
-    <figure><img src="assets/products/new/new-62.jpg" alt="صورة 62" loading="eager"><figcaption>صورة 62</figcaption></figure>
-    <figure><img src="assets/products/new/new-63.jpg" alt="صورة 63" loading="eager"><figcaption>صورة 63</figcaption></figure>
-    <figure><img src="assets/products/new/new-64.jpg" alt="صورة 64" loading="eager"><figcaption>صورة 64</figcaption></figure>
-    <figure><img src="assets/products/new/new-65.jpg" alt="صورة 65" loading="eager"><figcaption>صورة 65</figcaption></figure>
-    <figure><img src="assets/products/new/new-66.jpg" alt="صورة 66" loading="eager"><figcaption>صورة 66</figcaption></figure>
-    <figure><img src="assets/products/new/new-67.jpg" alt="صورة 67" loading="eager"><figcaption>صورة 67</figcaption></figure>
-    <figure><img src="assets/products/new/new-68.jpg" alt="صورة 68" loading="eager"><figcaption>صورة 68</figcaption></figure>
-    <figure><img src="assets/products/new/new-69.jpg" alt="صورة 69" loading="eager"><figcaption>صورة 69</figcaption></figure>
-    <figure><img src="assets/products/new/new-70.jpg" alt="صورة 70" loading="eager"><figcaption>صورة 70</figcaption></figure>
-    <figure><img src="assets/products/new/new-71.jpg" alt="صورة 71" loading="eager"><figcaption>صورة 71</figcaption></figure>
-    <figure><img src="assets/products/new/new-72.jpg" alt="صورة 72" loading="eager"><figcaption>صورة 72</figcaption></figure>
-    <figure><img src="assets/products/new/new-73.jpg" alt="صورة 73" loading="eager"><figcaption>صورة 73</figcaption></figure>
-    <figure><img src="assets/products/new/new-74.jpg" alt="صورة 74" loading="eager"><figcaption>صورة 74</figcaption></figure>
-    <figure><img src="assets/products/new/new-75.jpg" alt="صورة 75" loading="eager"><figcaption>صورة 75</figcaption></figure>
-    <figure><img src="assets/products/new/new-76.jpg" alt="صورة 76" loading="eager"><figcaption>صورة 76</figcaption></figure>
-    <figure><img src="assets/products/new/new-77.jpg" alt="صورة 77" loading="eager"><figcaption>صورة 77</figcaption></figure>
-    <figure><img src="assets/products/new/new-78.jpg" alt="صورة 78" loading="eager"><figcaption>صورة 78</figcaption></figure>
-    <figure><img src="assets/products/new/new-79.jpg" alt="صورة 79" loading="eager"><figcaption>صورة 79</figcaption></figure>
-    <figure><img src="assets/products/new/new-80.jpg" alt="صورة 80" loading="eager"><figcaption>صورة 80</figcaption></figure>
-    <figure><img src="assets/products/new/new-81.jpg" alt="صورة 81" loading="eager"><figcaption>صورة 81</figcaption></figure>
-    <figure><img src="assets/products/new/new-82.jpg" alt="صورة 82" loading="eager"><figcaption>صورة 82</figcaption></figure>
-    <figure><img src="assets/products/new/new-83.jpg" alt="صورة 83" loading="eager"><figcaption>صورة 83</figcaption></figure>
-    <figure><img src="assets/products/new/new-84.jpg" alt="صورة 84" loading="eager"><figcaption>صورة 84</figcaption></figure>
-    <figure><img src="assets/products/new/new-85.jpg" alt="صورة 85" loading="eager"><figcaption>صورة 85</figcaption></figure>
-    <figure><img src="assets/products/new/new-86.jpg" alt="صورة 86" loading="eager"><figcaption>صورة 86</figcaption></figure>
-    <figure><img src="assets/products/new/new-87.jpg" alt="صورة 87" loading="eager"><figcaption>صورة 87</figcaption></figure>
-    <figure><img src="assets/products/new/new-88.jpg" alt="صورة 88" loading="eager"><figcaption>صورة 88</figcaption></figure>
-    <figure><img src="assets/products/new/new-89.jpg" alt="صورة 89" loading="eager"><figcaption>صورة 89</figcaption></figure>
-    <figure><img src="assets/products/new/label-poudre-200g.png" alt="ملصق بودرة 200g" loading="eager"><figcaption>ملصق — بودرة 200g</figcaption></figure>
-    <figure><video src="assets/media/product-video-3.mov" controls preload="metadata" playsinline></video><figcaption>فيديو منتج 3</figcaption></figure>
-    <figure><video src="assets/media/product-video-2.mp4" controls preload="metadata" playsinline></video><figcaption>فيديو منتج 2</figcaption></figure>
-    <figure><video src="assets/media/product-video.mov" controls preload="metadata" playsinline></video><figcaption>فيديو منتج</figcaption></figure>
-  </div>
-  <p class="new-note">هذه الصور مستضافة الآن. أرسل لي "صورة X = اسم المنتج، السعر، SKU" وسأضيفها كمنتجات كاملة (اسم، وصف، طقس استعمال، سعر، SKU) في الدفعة التالية.</p>
+<!-- About -->
+<section style="max-width:800px;margin:40px auto;padding:20px;text-align:center" id="about">
+  <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--emerald);margin-bottom:16px">عن MOFA GLOW</h2>
+  <p style="color:var(--muted);line-height:1.8">MOFA GLOW علامة مغربية فاخرة للعناية بالبشرة والشعر والصحة. نقدم منتجات أصلية بأسعار منافسة مع شحن سريع ودفع عند الاستلام.</p>
 </section>
 
 <footer>
-  <span class="serif">MOFA GLOW</span>
-  <span>واتساب الطلبات: +212665366326</span>
-  <span>© 2026 MOFA GLOW. جميع الحقوق محفوظة.</span>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>MOFA GLOW</h4>
+      <p>متجرك الفاخر للعناية. شحن 35 درهم، مجاني فوق 300 درهم. دفع عند الاستلام.</p>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل</h4>
+      <p>WhatsApp: +212 665 366 326</p>
+      <p>البريد: contact@mofaglow.ma</p>
+    </div>
+    <div class="footer-col">
+      <h4>روابط</h4>
+      <a href="#shop">المتجر</a><br>
+      <a href="#gallery">معرض الصور</a><br>
+      <a href="#about">عن العلامة</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 MOFA GLOW — جميع الحقوق محفوظة</div>
 </footer>
 
-<!-- ===== السلة الجانبية ===== -->
-<div class="overlay" id="overlay"></div>
-<aside class="drawer" id="drawer" aria-label="سلة المشتريات">
-  <div class="drawer-head">
-    <h3>سلتك المختارة</h3>
-    <button class="close-x" id="closeCartBtn">✕</button>
-  </div>
-  <div class="gift-box">
-    <small id="giftText">أضيفي منتجات بقيمة 300 درهم لتحصلي على عينة هدية مجانية ✦</small>
-    <div class="gift-track"><div class="gift-fill" id="giftFill"></div></div>
-  </div>
-  <div class="cart-items" id="cartItems"></div>
-  <div class="drawer-foot">
-    <div class="cust-fields">
-      <input type="text" id="custName" placeholder="الاسم الكامل *" autocomplete="name">
-      <input type="tel" id="custPhone" placeholder="رقم الهاتف 06… *" inputmode="tel" autocomplete="tel">
-      <input type="text" id="custCity" placeholder="المدينة *" autocomplete="address-level2">
-      <input type="text" id="custAddress" placeholder="العنوان الكامل *" autocomplete="street-address">
-    </div>
-    <div class="order-status" id="orderStatus" role="status"></div>
-    <div class="ship-line" id="shipLine"></div>
-    <div class="total-row"><span>المجموع الإجمالي</span><b id="totalPrice">0 MAD</b></div>
-    <button class="wa-btn" id="waCheckoutBtn">أرسلي الطلب عبر واتساب 💬</button>
-  </div>
-</aside>
-
-<!-- ===== نافذة المعاينة السريعة وطقس الاستعمال ===== -->
-<div class="modal-ov" id="qvModal" role="dialog" aria-label="تفاصيل وطقس الاستعمال">
-  <div class="qv-card">
-    <div class="qv-top" id="qvStage"></div>
-    <div class="qv-body" id="qvBody"></div>
-  </div>
-</div>
-
-<!-- ===== ركن الهدوء ===== -->
-<div class="modal-ov" id="calmModal" role="dialog" aria-label="ركن الهدوء">
-  <div class="calm-box">
-    <div class="orb" id="breathOrb"></div>
-    <h3 id="breathPhase">تنفّسي معنا</h3>
-    <p id="breathAffirmation">دقيقة من الهدوء، ثم تابعي تسوّقك على راحتك</p>
-    <div class="calm-actions">
-      <button class="btn btn-primary" id="soundToggleBtn">تشغيل الصوت الهادئ 🎵</button>
-      <button class="btn btn-outline" id="closeCalmBtn" style="color:#fff">عودة للمتجر</button>
-    </div>
-  </div>
-</div>
-
-<!-- ===== مساعد المكونات الذكي ===== -->
-<div id="aiWidget">
-  <div id="aiPanel" role="dialog" aria-label="مساعد مكونات MOFA GLOW">
-    <div class="ai-head">
-      <span>✦ مساعد مكونات MOFA GLOW</span>
-      <button id="closeAiBtn" style="border:none;background:none;color:var(--muted);cursor:pointer;font-size:15px">✕</button>
-    </div>
-    <div id="aiLog">
-      <div>مرحبًا بكِ في MOFA GLOW! اسأليني عن الأرغان، فيتامين C، تساقط الشعر، أو طريقة الاستخدام. (عربي / Français / English)</div>
-    </div>
-    <form id="aiForm">
-      <input id="aiInput" placeholder="اكتبي سؤالك هنا…">
-      <button type="submit">إرسال</button>
-    </form>
-  </div>
-  <button id="aiBtn" aria-label="مساعد المكونات الذكي">✦</button>
-</div>
-
-<div id="toast" role="status"><span id="toastMsg">تم</span></div>
-
 <script>
-/* ==========================================================
-   1. قاعدة منتجات MOFA GLOW المتكاملة
-   ========================================================== */
+const SHEET_URL = "";
+const SHEET_TOKEN = "MG7X9q2L8pV4";
 const WHATSAPP_NUMBER = "212665366326";
-
-/* ===== ربط الطلبات =====
-   بعد نشر Code.gs كتطبيق ويب، ضعي رابط /exec في SHEET_URL.
-   اتركيه فارغاً مؤقتاً: الطلب سيُفتح عبر واتساب ويُحفظ محلياً. */
-const SHEET_URL = "";                       // مثال: https://script.google.com/macros/s/XXXX/exec
-const SHEET_TOKEN = "MG7X9q2L8pV4";         // يجب أن يطابق SECRET_TOKEN في Code.gs
-const FREE_SHIPPING_FROM = 300;
 const SHIPPING_FEE = 35;
+const FREE_SHIPPING_FROM = 300;
 
+// Products (loaded from products_js.txt)
 const PRODUCTS = [
-  {
-    id: 1, cat: 'skin', shape: 'dropper',
-    name: 'سيروم فيتامين C المشرق', enSub: 'VITAMIN C GLOW', emoji: '💧',
-    c1: '#C88A3B', c2: '#5A3110',
-    desc: 'سيروم خفيف الملمس غني بفيتامين C النقي يمنح البشرة نضارة فورية وتوهّجاً صحياً.',
-    ritual: 'ضعي 3 إلى 4 قطرات صباحاً على بشرة نظيفة قبل المرطّب وواقي الشمس، ودلّكي بلطف.',
-    price: 350, old: 399, rating: 4.9, reviews: 418, left: 6, total: 30, tag: 'الأكثر مبيعاً', hot: true
-  },
-  {
-    id: 2, cat: 'skin', shape: 'jar',
-    name: 'كريم مرطّب بزيت الأرغان', enSub: 'ARGAN VELVET', emoji: '👑',
-    c1: '#F4EFE4', c2: '#D5CBB8',
-    desc: 'كريم غني بزيت الأرغان المغربي النقي يرطّب البشرة بعمق ويمنحها نعومة مخملية طوال اليوم.',
-    ritual: 'وزّعي كمية مناسبة صباحاً ومساءً على الوجه والرقبة بحركات دائرية صاعدة.',
-    price: 350, old: 399, rating: 4.9, reviews: 352, left: 9, total: 35, tag: 'عناية يومية', hot: false
-  },
-  {
-    id: 3, cat: 'hair', shape: 'dropper',
-    name: 'زيت الأرغان الملكي للشعر', enSub: 'ARGAN HAIR OIL', emoji: '✨',
-    c1: '#B5742E', c2: '#47250B',
-    desc: 'إكسير مغذٍّ يمنح الشعر لمعة حريرية ونعومة فائقة دون أي ثقل أو ملمس دهني.',
-    ritual: 'دفّئي قطرتين بين راحتي يديكِ ومرّريهما على أطراف الشعر الرطب أو الجاف.',
-    price: 350, old: 399, rating: 4.8, reviews: 294, left: 8, total: 30, tag: 'عناية بالشعر', hot: false
-  },
-  {
-    id: 4, cat: 'skin', shape: 'cleanser',
-    name: 'غسول الوجه اللطيف', enSub: 'PURE CLEANSER', emoji: '🫧',
-    c1: '#EAE4D7', c2: '#C7BEAC',
-    desc: 'غسول بقوام ناعم ينظّف المسام بلطف ويحافظ على توازن رطوبة البشرة وانتعاشها.',
-    ritual: 'استخدميه صباحاً ومساءً على بشرة مبللة مع تدليك لطيف لثوانٍ ثم اشطفيه بالماء الفاتر.',
-    price: 275, old: 299, rating: 4.8, reviews: 267, left: 12, total: 40, tag: 'أساسي يومي', hot: false
-  },
-  {
-    id: 5, cat: 'hair', shape: 'jar',
-    name: 'ماسك الشعر المغذّي', enSub: 'REPAIR MASK', emoji: '🌿',
-    c1: '#16523E', c2: '#09261C',
-    desc: 'ماسك كريمي مكثّف لجلسات عناية أسبوعية تعيد للشعر حيويته ومرونته ولمعانه.',
-    ritual: 'ضعي طبقة غنية على الشعر المغسول واتركيه 10 إلى 15 دقيقة قبل الشطف بالماء.',
-    price: 350, old: 399, rating: 4.9, reviews: 215, left: 5, total: 25, tag: 'عناية أسبوعية', hot: true
-  },
-  {
-    id: 6, cat: 'set', shape: 'giftset',
-    name: 'مجموعة الإشراقة الملكية', enSub: 'ROYAL GLOW SET', emoji: '🎁',
-    c1: '#0D3B2E', c2: '#061D16',
-    desc: 'سيروم فيتامين C وكريم زيت الأرغان في علبة هدايا فاخرة لطقس عناية متكامل.',
-    ritual: 'ابدئي بالسيروم لتعزيز النضارة، ثم أتبِعيه بكريم الأرغان لتثبيت الترطيب والإشراقة.',
-    price: 350, old: 399, rating: 5.0, reviews: 489, left: 4, total: 20, tag: 'هدية مثالية', hot: true
-  },
-  {
-    id: 7, cat: 'hair', shape: 'shampoo',
-    name: 'شامبو ضد تساقط الشعر', enSub: 'ANTI-CHUTE', emoji: '🧴',
-    c1: '#F2EDE2', c2: '#CFC6B4',
-    desc: 'تركيبة نباتية لطيفة تقوّي بصيلات الشعر وتمنحه الكثافة واللمعان الصحي من الجذور.',
-    ritual: 'دلّكي فروة الرأس بلطف لمدة دقيقتين لتنشيط الدورة الدموية ثم اشطفيه جيداً.',
-    price: 275, old: 299, rating: 4.7, reviews: 310, left: 10, total: 45, tag: 'تقوية وكثافة', hot: false
-  },
-  {
-    id: 8, cat: 'skin', shape: 'jar',
-    name: 'كريم الليل بالذهب الملكي', enSub: 'ROYAL GOLD NIGHT', emoji: '🌟',
-    c1: '#D4AF37', c2: '#6E5214',
-    desc: 'كريم ليلي فاخر يجدّد إشراقة البشرة أثناء النوم ويمنحها مظهراً ممتلئاً ومرتاحاً في الصباح.',
-    ritual: 'يُوضع مساءً كخطوة أخيرة في روتينك الليلي قبل النوم.',
-    price: 350, old: 399, rating: 4.9, reviews: 198, left: 3, total: 20, tag: 'إصدار ملكي', hot: true
-  },
-  {
-    id: 9, cat: 'supplements', shape: 'powder',
-    name: 'بروتين كيرف بوست الطبيعي', enSub: 'CURVE BOOST', emoji: '✨',
-    c1: '#C7A15D', c2: '#0D3B2E',
-    desc: 'مكمل غذائي طبيعي لدعم القوام الأنثوي المتناسق وتعزيز نضارة البشرة من الداخل.',
-    ritual: 'تُخلط ملعقة واحدة يومياً مع الحليب الدافئ أو العصير الطبيعي.',
-    price: 350, old: 399, rating: 4.8, reviews: 230, left: 7, total: 30, tag: 'الجمال الداخلي', hot: false
-  },
-  {
-    id: 10, cat: 'supplements', shape: 'capsule',
-    name: 'ديتوكس النقاء الداخلي', enSub: 'PURE DETOX', emoji: '🍃',
-    c1: '#155743', c2: '#08241C',
-    desc: 'كبسولات عشبية طبيعية لراحة الجهاز الهضمي وتنقية الجسم لصفاء البشرة وحيويتها.',
-    ritual: 'كبسولتان يومياً مع كوب كبير من الماء قبل الوجبة الرئيسية.',
-    price: 350, old: 399, rating: 4.9, reviews: 276, left: 5, total: 35, tag: 'نقاء وتوازن', hot: false
-  },
-  {
-    id: 11, cat: 'skin', shape: 'dropper',
-    name: 'سيروم فيتامين E المشع', enSub: 'VITAMIN E GLOW', emoji: '💫',
-    c1: '#A3D4D4', c2: '#5A9B9B',
-    desc: 'سيروم غني بفيتامين E الطبيعي يحارب الجذور الحرة ويرطب البشرة بعمق لمدة 24 ساعة.',
-    ritual: 'ضعي 2 إلى 3 قطرات ليلاً على الوجه بعد التنظيف، ودلّكي بحركات لأعلى.',
-    price: 350, old: 399, rating: 4.7, reviews: 189, left: 10, total: 50, tag: 'ترطيب عميق', hot: false
-  },
-  {
-    id: 12, cat: 'hair', shape: 'jar',
-    name: 'زيت علاج التقصف', enSub: 'SPLIT ENDER', emoji: '⚔️',
-    c1: '#8B5A2B', c2: '#4A2C1A',
-    desc: 'زيت علاجي يغلق الأطراف المتقصفة ويمنع تكسر الشعر الجديد، مناسب لجميع أنواع الشعر.',
-    ritual: 'وزّعي 3 إلى 4 قطرات على أطراف الشعر الرطب أو الجاف، ولا تغسليه.',
-    price: 350, old: 399, rating: 4.8, reviews: 224, left: 6, total: 40, tag: 'علاج التقصف', hot: true
-  },
-  {
-    id: 13, cat: 'set', shape: 'giftset',
-    name: 'باقة العناية الشاملة', enSub: 'COMPLETE CARE SET', emoji: '🎯',
-    c1: '#2E5D2E', c2: '#1A3A1A',
-    desc: 'مجموعة شاملة تشمل السيروم، الكريم، وزيت الشعر لروتين عناية كامل من الصباح حتى الليل.',
-    ritual: 'ابدئي بالسيروم في الصباح، ثم الكريم في المساء، وزيت الشعر 2-3 مرات أسبوعياً.',
-    price: 499, old: 620, rating: 5.0, reviews: 398, left: 2, total: 15, tag: 'روتين كامل', hot: true
-  },
-  {
-    id: 14, cat: 'skin', shape: 'powder',
-    name: 'بودرة الوجه الناعمة', enSub: 'SOFT FACE POWDER', emoji: '💎',
-    c1: '#F5F0EB', c2: '#D0C8BC',
-    desc: 'بودرة نهائية خفيفة تمنح البشرة إشراقة ناعمة وتثبت المكياج لساعات طويلة.',
-    ritual: 'رشّي كمية خفيفة على الوجه بعد وضع المكياج، أو على البشرة العارية لإشراقة طبيعية.',
-    price: 350, old: 399, rating: 4.6, reviews: 156, left: 8, total: 60, tag: 'إشراقة طبيعية', hot: false
-  },
-  {
-    id: 15, cat: 'supplements', shape: 'capsule',
-    name: 'مستحضر توازن الهرمونات', enSub: 'HORMONE BALANCE', emoji: '⚖️',
-    c1: '#8B5A6B', c2: '#5A2D5A',
-    desc: 'مكمل طبيعي يساعد في توازن الهرمونات وتقليل التوتر، ويعزز النوم العميق وتجدد البشرة.',
-    ritual: 'كبسولة واحدة ليلاً مع الماء، ولمدة 30 يوماً على الأقل لتحقيق أفضل النتائج.',
-    price: 350, old: 399, rating: 4.5, reviews: 203, left: 4, total: 25, tag: 'توازن هرموني', hot: false
-  },
-  {
-    id: 16, cat: 'skin', shape: 'jar',
-    name: 'كريم مضاد للشيخوخة', enSub: 'ANTI-AGING CREAM', emoji: '🛡️',
-    c1: '#C4A387', c2: '#7B5A3A',
-    desc: 'كريم متقدم لمحاربة علامات التقدم في العمر، غني بالببتيدات والمستخلصات النباتية لشد البشرة.',
-    ritual: 'يُوضع صباحاً ومساءً على الوجه والرقبة بعد السيروم، بحركات دائرية صاعدة.',
-    price: 350, old: 399, rating: 4.8, reviews: 312, left: 3, total: 30, tag: 'مضاد للشيخوخة', hot: true
-  },
-  {
-    id: 17, cat: 'set', shape: 'giftset',
-    name: 'طقس الجمال الكامل', enSub: 'FULL BEAUTY RITUAL', emoji: '✨',
-    c1: '#D4AF37', c2: '#A38C50',
-    desc: 'طقس متكامل يجمع منتجات مختارة لتمنح بشرتك أعلى درجات الإشراق، من التنظيف إلى كريم الليل.',
-    ritual: 'تنظيف ← تونيك ← سيروم ← كريم ← زيت، خطوة بعد خطوة صباحاً ومساءً.',
-    price: 389, old: 450, rating: 4.9, reviews: 421, left: 5, total: 25, tag: 'طقس كامل', hot: true
-  },
-  {
-    id: 18, cat: 'supplements', shape: 'jar', sku: 'gumies-vitamine',
-    name: 'علكات الفيتامينات الشاملة', enSub: 'MULTIVITAMINS GUMMIES', emoji: '🍊',
-    img: 'assets/products/multivitamin-gummies.webp',
-    c1: '#F2C56B', c2: '#B86B1E',
-    desc: 'علكات فيتامينات شاملة لدعم المناعة والطاقة والصحة العامة، بطعم فاكهي لذيذ وسهولة في الاستخدام اليومي.',
-    ritual: 'علكتان يومياً بعد الأكل، مع مضغها جيداً قبل البلع.',
-    price: 275, old: 299, rating: 4.7, reviews: 142, left: 9, total: 40, tag: 'مناعة وطاقة', hot: true
-  },
-  {
-    id: 19, cat: 'supplements', shape: 'jar', sku: 'gummies_melato',
-    name: 'علكات الميلاتونين للنوم', enSub: 'MELATONIN SLEEP', emoji: '🌙',
-    img: 'assets/products/melatonine-gummies.webp',
-    c1: '#8C7BB8', c2: '#3A2E63',
-    desc: 'علكات بالميلاتونين والمغنيسيوم تساعد على الاسترخاء وتسريع النوم وتحسين جودته بشكل طبيعي.',
-    ritual: 'علكة واحدة قبل النوم بنحو 30 دقيقة.',
-    price: 275, old: 299, rating: 4.8, reviews: 167, left: 7, total: 40, tag: 'نوم هادئ', hot: true
-  },
-  {
-    id: 20, cat: 'supplements', shape: 'jar', sku: 'ashwagandha-gummies',
-    name: 'علكات الأشواغاندا للاسترخاء', enSub: 'ASHWAGANDHA', emoji: '🌿',
-    img: 'assets/products/ashwagandha-gummies.webp',
-    c1: '#D89A9A', c2: '#7A3E3E',
-    desc: 'علكات الأشواغاندا لتخفيف التوتر ودعم الاسترخاء والحفاظ على التوازن الطبيعي للجسم.',
-    ritual: 'علكتان يومياً، صباحاً أو عند الحاجة إلى الاسترخاء.',
-    price: 275, old: 299, rating: 4.6, reviews: 98, left: 11, total: 40, tag: 'توازن واسترخاء', hot: false
-  }
+  { id: 1, sku: 'shampoing-proteine', cat: 'hair', name: 'شامبو بروتين', vol: '1 unit', price: 275, cost: 55, desc: 'تقوية الشعر وإصلاح التلف والتقصف.', usage: 'تقوية الشعر وإصلاح التلف والتقصف.', img: 'assets/products/new/new-01.jpg', badge: '' },
+  { id: 2, sku: 'shampoux', cat: 'hair', name: 'شامبوان ضد القمل', vol: '1 unit', price: 199, cost: 50, desc: 'القضاء الفعال على القمل والصئبان.', usage: 'القضاء الفعال على القمل والصئبان.', img: 'assets/products/new/new-02.jpg', badge: '' },
+  { id: 3, sku: 'gel-intime', cat: 'hair', name: 'جيل انتيم', vol: '1 unit', price: 275, cost: 54, desc: 'نظافة وانتعاش المناطق الحساسة والحفاظ على التوازن الطبيعي.', usage: 'نظافة وانتعاش المناطق الحساسة والحفاظ على التوازن الطبيعي.', img: 'assets/products/new/new-03.jpg', badge: '' },
+  { id: 4, sku: 'sham-anti-chute', cat: 'hair', name: 'شامبو لتكثيف الشعر و منع التساقط', vol: '1 unit', price: 199, cost: 47, desc: 'تحفيز النمو، منع تساقط الشعر وزيادة كثافته.', usage: 'تحفيز النمو، منع تساقط الشعر وزيادة كثافته.', img: 'assets/products/new/new-04.jpg', badge: '' },
+  { id: 5, sku: 'poudre-dents', cat: 'creams', name: 'بودرة الأسنان', vol: '1 unit', price: 199, cost: 41, desc: 'مسحوق طبيعي لتبييض الأسنان وإزالة التصبغات والبقع.', usage: 'مسحوق طبيعي لتبييض الأسنان وإزالة التصبغات والبقع.', img: 'assets/products/new/new-05.jpg', badge: '' },
+  { id: 6, sku: 'deodorant', cat: 'creams', name: 'كريم مزيل العرق', vol: '1 unit', price: 199, cost: 46, desc: 'حماية طويلة من التعرق والروائح الكريهة مع ترطيب البشرة.', usage: 'حماية طويلة من التعرق والروائح الكريهة مع ترطيب البشرة.', img: 'assets/products/new/new-06.jpg', badge: '' },
+  { id: 7, sku: 'creme-visage-blanche', cat: 'creams', name: 'كريم تفتيح الوجه (أومبلاج أبيض)', vol: '1 unit', price: 199, cost: 43, desc: 'تفتيح بشرة الوجه، توحيد اللون وتقليل البقع الداكنة.', usage: 'تفتيح بشرة الوجه، توحيد اللون وتقليل البقع الداكنة.', img: 'assets/products/new/new-07.jpg', badge: '' },
+  { id: 8, sku: 'creme-visage', cat: 'creams', name: '(أومبلاج أسود) كريم تفتيح الوجه', vol: '1 unit', price: 199, cost: 43, desc: 'تركيبة تفتيح وتوحيد لون البشرة وتقليل التصبغات (عبوة سوداء).', usage: 'تركيبة تفتيح وتوحيد لون البشرة وتقليل التصبغات (عبوة سوداء).', img: 'assets/products/new/new-08.jpg', badge: '' },
+  { id: 9, sku: 'joint-creme', cat: 'creams', name: 'كريم ألم المفاصل', vol: '1 unit', price: 199, cost: 38, desc: 'مضاد لالتهابات المفاصل والعضلات وتخفيف التيبس بتركيبة دافئة.', usage: 'مضاد لالتهابات المفاصل والعضلات وتخفيف التيبس بتركيبة دافئة.', img: 'assets/products/new/new-09.jpg', badge: '' },
+  { id: 10, sku: 'creme-retanol', cat: 'creams', name: 'كريم الريتنول', vol: '1 unit', price: 199, cost: 37, desc: 'تجديد خلايا البشرة ومكافحة التجاعيد والخطوط الدقيقة.', usage: 'تجديد خلايا البشرة ومكافحة التجاعيد والخطوط الدقيقة.', img: 'assets/products/new/new-10.jpg', badge: '' },
+  { id: 11, sku: 'creme-retanoltube', cat: 'creams', name: '(Emballage Tube) كريم الريتنول', vol: '1 unit', price: 199, cost: 37, desc: 'تجديد خلايا البشرة وتحسين ملمسها (تغليف أنبوب).', usage: 'تجديد خلايا البشرة وتحسين ملمسها (تغليف أنبوب).', img: 'assets/products/new/new-11.jpg', badge: '' },
+  { id: 12, sku: 'vitiligo-noir', cat: 'creams', name: 'كريم البهاق (أومبلاج أسود)', vol: '1 unit', price: 199, cost: 38, desc: 'دعم العناية بالبشرة المتصبغة (البهاق) وتوحيد اللون (عبوة سوداء).', usage: 'دعم العناية بالبشرة المتصبغة (البهاق) وتوحيد اللون (عبوة سوداء).', img: 'assets/products/new/new-12.jpg', badge: '' },
+  { id: 13, sku: 'vitiligotube', cat: 'creams', name: '(Tube أومبلاج) كريم البهاق', vol: '1 unit', price: 199, cost: 45, desc: 'العناية بالبشرة المتصبغة وتقليل تفاوت اللون (تغليف أنبوب).', usage: 'العناية بالبشرة المتصبغة وتقليل تفاوت اللون (تغليف أنبوب).', img: 'assets/products/new/new-13.jpg', badge: '' },
+  { id: 14, sku: 'vitiligo', cat: 'creams', name: 'كريم العناية بالبشرة المتصبغة (البهاق)', vol: '1 unit', price: 199, cost: 38, desc: 'تركيبة مغذية لتهدئة وترطيب الجلد المصاب بالبهاق.', usage: 'تركيبة مغذية لتهدئة وترطيب الجلد المصاب بالبهاق.', img: 'assets/products/new/new-14.jpg', badge: '' },
+  { id: 15, sku: 'melasma', cat: 'creams', name: 'كريم الكلف', vol: '1 unit', price: 199, cost: 39, desc: 'تقشير لطيف لتخفيف الكلف والبقع الداكنة وتوحيد البشرة.', usage: 'تقشير لطيف لتخفيف الكلف والبقع الداكنة وتوحيد البشرة.', img: 'assets/products/new/new-15.jpg', badge: '' },
+  { id: 16, sku: 'creme-hommetube', cat: 'creams', name: '(Emballage Tube) كريم الرجال100غ', vol: '1 unit', price: 199, cost: 50, desc: 'كريم العناية بصحة والأداء والنشاط للرجال (أنبوب 100غ).', usage: 'كريم العناية بصحة والأداء والنشاط للرجال (أنبوب 100غ).', img: 'assets/products/new/new-16.jpg', badge: '' },
+  { id: 17, sku: 'creme-homme', cat: 'creams', name: 'كريم الرجال', vol: '1 unit', price: 199, cost: 47, desc: 'تركيبة لتعزيز الحيوية والدورة الدموية لدى الرجال.', usage: 'تركيبة لتعزيز الحيوية والدورة الدموية لدى الرجال.', img: 'assets/products/new/new-17.jpg', badge: '' },
+  { id: 18, sku: 'eclat-zone-intime', cat: 'creams', name: 'كريم تفتيح المناطق الحساسة', vol: '1 unit', price: 199, cost: 48, desc: 'تفتيح وترطيب لطيف ومخصص للمناطق الحساسة.', usage: 'تفتيح وترطيب لطيف ومخصص للمناطق الحساسة.', img: 'assets/products/new/new-18.jpg', badge: '' },
+  { id: 19, sku: 'creme_hyd', cat: 'creams', name: 'كريم مرطب وضد تجاعيد tube 100g', vol: '1 unit', price: 199, cost: 50, desc: 'ترطيب عميق بالريتينول والنياسيناميد ومقاومة التجاعيد (100غ).', usage: 'ترطيب عميق بالريتينول والنياسيناميد ومقاومة التجاعيد (100غ).', img: 'assets/products/new/new-19.jpg', badge: '' },
+  { id: 20, sku: 'ecran_solaire', cat: 'creams', name: 'الواقي الشمسي', vol: '1 unit', price: 275, cost: 66, desc: 'حماية عالية من الأشعة الشمسية الضارة بلمسة غير دهنية.', usage: 'حماية عالية من الأشعة الشمسية الضارة بلمسة غير دهنية.', img: 'assets/products/new/new-20.jpg', badge: '' },
+  { id: 21, sku: 'anti-friction', cat: 'creams', name: 'كريم الحكة والتسلخات بين الفخدين', vol: '1 unit', price: 199, cost: 41, desc: 'تهدئة التهيج والتسلخات وتقليل الاحتكاك بين الفخذين.', usage: 'تهدئة التهيج والتسلخات وتقليل الاحتكاك بين الفخذين.', img: 'assets/products/new/new-21.jpg', badge: '' },
+  { id: 22, sku: 'filer', cat: 'creams', name: 'كريم نفخ الخدود', vol: '1 unit', price: 199, cost: 50, desc: 'تعزيز امتلاء الخدود ومنح البشرة مظهراً مشدوداً ومشرقاً.', usage: 'تعزيز امتلاء الخدود ومنح البشرة مظهراً مشدوداً ومشرقاً.', img: 'assets/products/new/new-22.jpg', badge: '' },
+  { id: 23, sku: 'poils', cat: 'creams', name: 'كريم جلد الاوزة', vol: '1 unit', price: 199, cost: 39, desc: 'تقشير لطيف بحمض الساليسيليك للتخلص من جلد الأوزة والحبوب.', usage: 'تقشير لطيف بحمض الساليسيليك للتخلص من جلد الأوزة والحبوب.', img: 'assets/products/new/new-23.jpg', badge: '' },
+  { id: 24, sku: 'varices-testicules', cat: 'creams', name: 'جل العناية الخاصة للرجال', vol: '1 unit', price: 275, cost: 52, desc: 'تخفيف الانزعاج وتحسين الدورة الدموية في المنطقة الخاصة للرجال.', usage: 'تخفيف الانزعاج وتحسين الدورة الدموية في المنطقة الخاصة للرجال.', img: 'assets/products/new/new-24.jpg', badge: '' },
+  { id: 25, sku: 'ejacontrol', cat: 'oils', name: 'زيت التحكم', vol: '1 unit', price: 199, cost: 35, desc: 'زيت عشبي طبيعي للمساعدة في التحكم والأداء الحميمي للرجال.', usage: 'زيت عشبي طبيعي للمساعدة في التحكم والأداء الحميمي للرجال.', img: 'assets/products/new/new-25.jpg', badge: '' },
+  { id: 26, sku: 'niacinamide', cat: 'oils', name: 'سيروم النياسيناميد', vol: '1 unit', price: 275, cost: 52, desc: 'تضييق المسام، تقليل الإفرازات الدهنية وتوحيد ملمس البشرة.', usage: 'تضييق المسام، تقليل الإفرازات الدهنية وتوحيد ملمس البشرة.', img: 'assets/products/new/new-26.jpg', badge: '' },
+  { id: 27, sku: 'serum-retanoltube', cat: 'oils', name: '(Emballage Tube) سيروم الريتنول', vol: '1 unit', price: 199, cost: 44, desc: 'سيروم مركز لتجديد خلايا البشرة وتقليل التجاعيد والبقع.', usage: 'سيروم مركز لتجديد خلايا البشرة وتقليل التجاعيد والبقع.', img: 'assets/products/new/new-27.jpg', badge: '' },
+  { id: 28, sku: 'cerne', cat: 'oils', name: 'سيروم الهالات السوداء', vol: '1 unit', price: 199, cost: 44, desc: 'تركيبة بالكافيين والشاي الأخضر لتخفيف الهالات والانتفاخ تحت العين.', usage: 'تركيبة بالكافيين والشاي الأخضر لتخفيف الهالات والانتفاخ تحت العين.', img: 'assets/products/new/new-28.jpg', badge: '' },
+  { id: 29, sku: 'blush', cat: 'oils', name: 'مورد الخدود', vol: '1 unit', price: 199, cost: 42, desc: 'ترطيب البشرة وإعطاء إشراقة ومظهر طبيعي ممتلئ للخدود.', usage: 'ترطيب البشرة وإعطاء إشراقة ومظهر طبيعي ممتلئ للخدود.', img: 'assets/products/new/new-29.jpg', badge: '' },
+  { id: 30, sku: 'acne-corps', cat: 'oils', name: 'رشاش حب الشباب في الجسم 100مل', vol: '1 unit', price: 275, cost: 52, desc: 'بخاخ لتصفية حب الشباب في الظهر والصدر والكتفين (100مل).', usage: 'بخاخ لتصفية حب الشباب في الظهر والصدر والكتفين (100مل).', img: 'assets/products/new/new-30.jpg', badge: '' },
+  { id: 31, sku: 'anti-vergeture', cat: 'oils', name: 'سيروم مضاد لعلامات التمدد', vol: '1 unit', price: 199, cost: 42, desc: 'تحسين مرونة الجلد وتقليل ظهور علامات التمدد القديمة والجديدة.', usage: 'تحسين مرونة الجلد وتقليل ظهور علامات التمدد القديمة والجديدة.', img: 'assets/products/new/new-31.jpg', badge: '' },
+  { id: 32, sku: 'anti-douleur', cat: 'oils', name: 'رشاش مسكن للألام', vol: '1 unit', price: 199, cost: 42, desc: 'رذاذ مسكن سريع ومبرد لآلام العضلات والمفاصل والشد العضلي.', usage: 'رذاذ مسكن سريع ومبرد لآلام العضلات والمفاصل والشد العضلي.', img: 'assets/products/new/new-32.jpg', badge: '' },
+  { id: 33, sku: 'lightening-intimate', cat: 'oils', name: 'سيروم تبيض المناطق الحساسة', vol: '1 unit', price: 199, cost: 44, desc: 'سيروم خفيف لتفتيح وتوحيد لون المناطق الداكنة الحساسة.', usage: 'سيروم خفيف لتفتيح وتوحيد لون المناطق الداكنة الحساسة.', img: 'assets/products/new/new-33.jpg', badge: '' },
+  { id: 34, sku: 'spray-vagin', cat: 'oils', name: 'رشاش للنساء للعناية بالمناطق الأنثوية', vol: '1 unit', price: 199, cost: 50, desc: 'بخاخ للعناية والشد وزيادة مرونة وانتعاش المنطقة الحميمة للنساء.', usage: 'بخاخ للعناية والشد وزيادة مرونة وانتعاش المنطقة الحميمة للنساء.', img: 'assets/products/new/new-34.jpg', badge: '' },
+  { id: 35, sku: 'dys-erectile30', cat: 'supplements', name: 'للرجال 30 كبسولة', vol: '1 unit', price: 199, cost: 38, desc: 'دعم الوظيفة الجنسية والدورة الدموية للرجال (30 كبسولة).', usage: 'دعم الوظيفة الجنسية والدورة الدموية للرجال (30 كبسولة).', img: 'assets/products/new/new-35.jpg', badge: '' },
+  { id: 36, sku: 'dys-erectile', cat: 'supplements', name: 'للرجال 60 كبسولة', vol: '1 unit', price: 275, cost: 53, desc: 'دعم الوظيفة الجنسية والدورة الدموية للرجال (60 كبسولة).', usage: 'دعم الوظيفة الجنسية والدورة الدموية للرجال (60 كبسولة).', img: 'assets/products/new/new-36.jpg', badge: '' },
+  { id: 37, sku: 'womens-protein', cat: 'supplements', name: 'بروتين النساء 60 كبسولة', vol: '1 unit', price: 275, cost: 52, desc: 'دعم الطاقة والتركيز والتوازن الهرموني والمناطق الأنثوية.', usage: 'دعم الطاقة والتركيز والتوازن الهرموني والمناطق الأنثوية.', img: 'assets/products/new/new-37.jpg', badge: '' },
+  { id: 38, sku: 'vitamax', cat: 'supplements', name: 'دعم الطاقة والحيوية الرجالية 30 كبسولة', vol: '1 unit', price: 199, cost: 39, desc: 'تعزيز الصحة الذكورية والتوازن الهرموني والطاقة.', usage: 'تعزيز الصحة الذكورية والتوازن الهرموني والطاقة.', img: 'assets/products/new/new-38.jpg', badge: '' },
+  { id: 39, sku: 'body-whitening30', cat: 'supplements', name: 'تبيض الجسم 30 كبسولة', vol: '1 unit', price: 199, cost: 42, desc: 'كبسولات بالجلوتاثيون لإزالة السموم وتوحيد وتبييض لون الجسم.', usage: 'كبسولات بالجلوتاثيون لإزالة السموم وتوحيد وتبييض لون الجسم.', img: 'assets/products/new/new-39.jpg', badge: '' },
+  { id: 40, sku: 'collagen-prodre', cat: 'supplements', name: 'كولاجين بودر 250غ', vol: '1 unit', price: 275, cost: 100, desc: 'كولاجين بحري بـ Vit C للبشرة والشعر والأظافر والمفاصل (250غ).', usage: 'كولاجين بحري بـ Vit C للبشرة والشعر والأظافر والمفاصل (250غ).', img: 'assets/products/new/new-40.jpg', badge: '' },
+  { id: 41, sku: 'biotine', cat: 'supplements', name: 'بيوتين ضروري لصحة الشعر والبشرة والأظافر 60 كبسولة', vol: '1 unit', price: 199, cost: 50, desc: 'تقوية الشعر والأظافر ودعم نضارة البشرة والأيض (60 كبسولة).', usage: 'تقوية الشعر والأظافر ودعم نضارة البشرة والأيض (60 كبسولة).', img: 'assets/products/new/new-41.jpg', badge: '' },
+  { id: 42, sku: 'anti-transpirant', cat: 'supplements', name: 'مكمل مضاد للتعرق 30 كبسولة', vol: '1 unit', price: 199, cost: 42, desc: 'تنظيم عمل الغدد العرقية وتقليل التعرق الزائد من الداخل.', usage: 'تنظيم عمل الغدد العرقية وتقليل التعرق الزائد من الداخل.', img: 'assets/products/new/new-42.jpg', badge: '' },
+  { id: 43, sku: 'energiee', cat: 'supplements', name: 'فيتامين س مع سبرولينا 30 كبسولة', vol: '1 unit', price: 199, cost: 41, desc: 'دعم جهاز المناعة وزيادة مستويات الطاقة (30 كبسولة).', usage: 'دعم جهاز المناعة وزيادة مستويات الطاقة (30 كبسولة).', img: 'assets/products/new/new-43.jpg', badge: '' },
+  { id: 44, sku: 'energie', cat: 'supplements', name: 'فيتامين س مع سبرولينا 60 كبسولة', vol: '1 unit', price: 275, cost: 52, desc: 'دعم جهاز المناعة وزيادة مستويات الطاقة (60 كبسولة).', usage: 'دعم جهاز المناعة وزيادة مستويات الطاقة (60 كبسولة).', img: 'assets/products/new/new-44.jpg', badge: '' },
+  { id: 45, sku: 'ginseng30', cat: 'supplements', name: 'الجنسينغ 30 كبسولة', vol: '1 unit', price: 199, cost: 36, desc: 'جينسنغ كوري وسيبيري لزيادة التركيز والحيوية البدنية والذهنية.', usage: 'جينسنغ كوري وسيبيري لزيادة التركيز والحيوية البدنية والذهنية.', img: 'assets/products/new/new-45.jpg', badge: '' },
+  { id: 46, sku: 'pro-musculaire', cat: 'supplements', name: 'بروتين تعزيز الكتلة العضلية 250غ', vol: '1 unit', price: 275, cost: 100, desc: 'بروتين وراي غني بـ BCAA لبناء العضلات الصافية والاستشفاء (250غ).', usage: 'بروتين وراي غني بـ BCAA لبناء العضلات الصافية والاستشفاء (250غ).', img: 'assets/products/new/new-46.jpg', badge: '' },
+  { id: 47, sku: 'maca', cat: 'supplements', name: 'ماكا 60كبسولة', vol: '1 unit', price: 275, cost: 52, desc: 'جذور الماكا لتعزيز التحمل، الطاقة والتوازن الهرموني (60 كبسولة).', usage: 'جذور الماكا لتعزيز التحمل، الطاقة والتوازن الهرموني (60 كبسولة).', img: 'assets/products/new/new-47.jpg', badge: '' },
+  { id: 48, sku: 'ashwa-zenvy', cat: 'supplements', name: 'أشواكاندا 60 كبسولة', vol: '1 unit', price: 199, cost: 50, desc: 'تخفيف التوتر، تحسين جودة النوم وزيادة التحمل (60 كبسولة).', usage: 'تخفيف التوتر، تحسين جودة النوم وزيادة التحمل (60 كبسولة).', img: 'assets/products/new/new-48.jpg', badge: '' },
+  { id: 49, sku: 'caffeine', cat: 'supplements', name: 'كافيين مع فيتامين س 30 كبسولة', vol: '1 unit', price: 199, cost: 42, desc: 'كافيين محفز للتركيز والنشاط مع فيتامين C للمناعة (30 كبسولة).', usage: 'كافيين محفز للتركيز والنشاط مع فيتامين C للمناعة (30 كبسولة).', img: 'assets/products/new/new-49.jpg', badge: '' },
+  { id: 50, sku: 'force-musculaire30', cat: 'supplements', name: 'زيادة قوة العضلات 30 كبسولة', vol: '1 unit', price: 199, cost: 40, desc: 'تعزيز القوة العضلية والتحمل البدني أثناء التمارين (30 كبسولة).', usage: 'تعزيز القوة العضلية والتحمل البدني أثناء التمارين (30 كبسولة).', img: 'assets/products/new/new-50.jpg', badge: '' },
+  { id: 51, sku: 'perform-control30', cat: 'supplements', name: 'مكمل إطالة الأداء 30 كبسولة', vol: '1 unit', price: 199, cost: 48, desc: 'دعم التحمل والتحكم وإطالة الأداء البدني (30 كبسولة).', usage: 'دعم التحمل والتحكم وإطالة الأداء البدني (30 كبسولة).', img: 'assets/products/new/new-51.jpg', badge: '' },
+  { id: 52, sku: 'sirop-gastrobalance', cat: 'supplements', name: '(Sirop) محلول فموي مفيد لجرثمة المعدة', vol: '1 unit', price: 199, cost: 50, desc: 'تهدئة حموضة المعدة وحماية البطانة ودعم التوازن الهضمي.', usage: 'تهدئة حموضة المعدة وحماية البطانة ودعم التوازن الهضمي.', img: 'assets/products/new/new-52.jpg', badge: '' },
+  { id: 53, sku: 'sirop-pertepoids', cat: 'supplements', name: '(Sirop) محلول فموي لنقص الوزن', vol: '1 unit', price: 199, cost: 45, desc: 'دعم حرق الدهون والتحكم في الشهية لإنقاص الوزن.', usage: 'دعم حرق الدهون والتحكم في الشهية لإنقاص الوزن.', img: 'assets/products/new/new-53.jpg', badge: '' },
+  { id: 54, sku: 'sirop-weightgain', cat: 'supplements', name: '(Sirop) محلول فموي لزيادة الوزن', vol: '1 unit', price: 275, cost: 56, desc: 'فتح الشهية وزيادة الوزن تدريجياً مدعم بالزنك وفيتامين B.', usage: 'فتح الشهية وزيادة الوزن تدريجياً مدعم بالزنك وفيتامين B.', img: 'assets/products/new/new-54.jpg', badge: '' },
+  { id: 55, sku: 'sirop-prostat', cat: 'supplements', name: '(Sirop) محلول فموي لدعم البروستات', vol: '1 unit', price: 275, cost: 56, desc: 'تحسين الراحة البولية ودعم صحة البروستات لدى الرجال.', usage: 'تحسين الراحة البولية ودعم صحة البروستات لدى الرجال.', img: 'assets/products/new/new-55.jpg', badge: '' },
+  { id: 56, sku: 'sirop-colon', cat: 'supplements', name: '(Sirop) محلول فموي لدعم القولون', vol: '1 unit', price: 199, cost: 45, desc: 'تقليل انتفاخ القولون، تهدئة الجهاز الهضمي وتحسين الهضم.', usage: 'تقليل انتفاخ القولون، تهدئة الجهاز الهضمي وتحسين الهضم.', img: 'assets/products/new/new-56.jpg', badge: '' },
+  { id: 57, sku: 'sirop-urine', cat: 'supplements', name: '(Sirop) محلول فموي للتبول اللاإرادي', vol: '1 unit', price: 199, cost: 50, desc: 'دعم التحكم البولي وتقليل التبول اللاإرادي أثناء النوم.', usage: 'دعم التحكم البولي وتقليل التبول اللاإرادي أثناء النوم.', img: 'assets/products/new/new-57.jpg', badge: '' },
+  { id: 58, sku: 'sirop-smoking', cat: 'supplements', name: 'محلول فموي للاقلاع عن التدخين', vol: '1 unit', price: 199, cost: 50, desc: 'تقليل الرغبة في التدخين وتنظيف السموم وتخفيف احتقان الحلق.', usage: 'تقليل الرغبة في التدخين وتنظيف السموم وتخفيف احتقان الحلق.', img: 'assets/products/new/new-58.jpg', badge: '' },
+  { id: 59, sku: 'gumies_magnesieum', cat: 'supplements', name: 'Magnesium Complex Gummies', vol: '1 unit', price: 275, cost: 53, desc: 'علكات المغنيسيوم والناردين لتهدئة الأعصاب والنوم ودعم العضلات.', usage: 'علكات المغنيسيوم والناردين لتهدئة الأعصاب والنوم ودعم العضلات.', img: 'assets/products/new/new-59.jpg', badge: '' },
+  { id: 60, sku: 'gummies_melato', cat: 'supplements', name: 'Melatonin Sleep Gummies', vol: '1 unit', price: 275, cost: 55, desc: 'علكات الميلاتونين والمغنيسيوم لتسريع النوم وتحسين جودته.', usage: 'علكات الميلاتونين والمغنيسيوم لتسريع النوم وتحسين جودته.', img: 'assets/products/new/new-60.jpg', badge: '' },
+  { id: 61, sku: 'gumies-vitamine', cat: 'supplements', name: 'Multivitamine Gummies', vol: '1 unit', price: 275, cost: 55, desc: 'علكات فيتامينات شاملة لدعم المناعة، الطاقة والصحة العامة.', usage: 'علكات فيتامينات شاملة لدعم المناعة، الطاقة والصحة العامة.', img: 'assets/products/new/new-61.jpg', badge: 'جديد' },
+  { id: 62, sku: 'ashwagandha-gummies', cat: 'supplements', name: 'Gummies Ashwagandha', vol: '1 unit', price: 275, cost: 54, desc: 'علكات الأشواغاندا لتخفيف التوتر، الاسترخاء وحفظ التوازن.', usage: 'علكات الأشواغاندا لتخفيف التوتر، الاسترخاء وحفظ التوازن.', img: 'assets/products/new/new-62.jpg', badge: 'جديد' },
+  { id: 63, sku: 'energyfocus-gummies', cat: 'supplements', name: 'Gummies Energy & Focus', vol: '1 unit', price: 275, cost: 55, desc: 'علكات الماكا والجينسنغ وVit B لمقاومة التعب وزيادة التركيز.', usage: 'علكات الماكا والجينسنغ وVit B لمقاومة التعب وزيادة التركيز.', img: 'assets/products/new/new-63.jpg', badge: 'جديد' },
+  { id: 64, sku: 'gummies_collagen', cat: 'supplements', name: 'Collagen Gummies', vol: '1 unit', price: 275, cost: 53, desc: 'علكات الكولاجين والهيالورونيك والبيوتين لنضارة البشرة والمفاصل.', usage: 'علكات الكولاجين والهيالورونيك والبيوتين لنضارة البشرة والمفاصل.', img: 'assets/products/new/new-64.jpg', badge: 'جديد' },
+  { id: 65, sku: 'gummies_biotine', cat: 'supplements', name: 'Gummies biotine', vol: '1 unit', price: 275, cost: 52, desc: 'علكات البيوتين والزنك وVit C لتقوية الشعر والأظافر والجلد.', usage: 'علكات البيوتين والزنك وVit C لتقوية الشعر والأظافر والجلد.', img: 'assets/products/new/new-65.jpg', badge: 'جديد' }
 ];
 
-let renderMode = 'sculpt'; // 'sculpt' | 'cube'
+// Cart state
+let cart = JSON.parse(localStorage.getItem('mg_cart') || '[]');
+let currentProduct = null;
 
-/* ==========================================================
-   2. مصنع المجسمات ثلاثية الأبعاد (Sculpted 3D + 3D Cube)
-   ========================================================== */
-function buildCubeHTML(p) {
-  return `
-    <div class="face f-front" style="--c1:${p.c1};--c2:${p.c2}"><div class="p-emoji">${p.emoji}</div></div>
-    <div class="face f-back" style="--c1:${p.c1};--c2:${p.c2}"><div class="face-brand">MOFA GLOW</div><div class="face-name">${p.name}</div></div>
-    <div class="face f-right" style="--c1:${p.c1};--c2:${p.c2}"><div class="face-stripes"></div></div>
-    <div class="face f-left" style="--c1:${p.c1};--c2:${p.c2}"><div class="face-brand">MOFA GLOW</div></div>
-    <div class="face f-top" style="--c1:${p.c1};--c2:${p.c2}"><div class="face-lid"></div></div>
-    <div class="face f-bottom" style="--c1:${p.c1};--c2:${p.c2}"><div class="face-brand">MOFA GLOW</div></div>`;
+function saveCart(){ localStorage.setItem('mg_cart', JSON.stringify(cart)); updateCartUI(); }
+
+function addToCart(id, qty=1){
+  const p = PRODUCTS.find(x=>x.id===id);
+  if(!p) return;
+  const existing = cart.find(x=>x.id===id);
+  if(existing) existing.qty += qty;
+  else cart.push({id, qty, price: p.price});
+  saveCart();
+  toggleCart(true);
 }
 
-function buildSculptHTML(shape, sub = '') {
-  switch (shape) {
-    case 'dropper':
-      return `<div class="s-bulb"></div><div class="s-cap-dropper"></div><div class="s-neck-dropper"></div>
-              <div class="s-body-dropper"><div class="s-label-dropper"><span class="s-brand">MOFA GLOW</span><small>${sub}</small></div></div>`;
-    case 'jar':
-      return `<div class="s-lid-jar"></div>
-              <div class="s-body-jar"><div class="s-jar-plate"><span class="s-brand">MOFA GLOW</span><small>${sub}</small></div></div>`;
-    case 'cleanser':
-    case 'shampoo':
-      return `<div class="s-cap-shampoo"></div>
-              <div class="s-body-shampoo"><div class="s-label-shampoo"><span class="s-brand">MOFA GLOW</span><small>${sub}</small></div></div>`;
-    case 'giftset':
-      return `<div class="s-box-lid"></div>
-              <div class="s-box-base"><div class="s-box-crest"><span class="s-brand">MOFA GLOW</span><small>${sub}</small></div></div>`;
-    case 'powder':
-      return `<div class="s-cap-powder"></div>
-              <div class="s-body-powder"><div class="s-label-powder"><span class="s-brand">MOFA GLOW</span><small>${sub}</small></div></div>`;
-    case 'capsule':
-      return `<div class="s-cap-capsule"></div>
-              <div class="s-body-capsule"><div class="s-label-capsule"><span class="s-brand">MOFA GLOW</span><small>${sub}</small></div></div>`;
-    default:
-      return '';
-  }
+function removeFromCart(id){
+  cart = cart.filter(x=>x.id!==id);
+  saveCart();
 }
 
-function getProduct3DHTML(p, mode = renderMode) {
-  if (mode === 'cube') {
-    return `<div class="box shape-cube" style="--c1:${p.c1};--c2:${p.c2}">${buildCubeHTML(p)}</div>`;
-  }
-  return `<div class="box shape-${p.shape}" style="--c1:${p.c1};--c2:${p.c2}">${buildSculptHTML(p.shape, p.enSub)}</div>`;
+function updateQty(id, delta){
+  const item = cart.find(x=>x.id===id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0) removeFromCart(id);
+  else saveCart();
 }
 
-/* منتجات لها صورة حقيقية تُعرض بالصورة، والبقية بالمجسم ثلاثي الأبعاد */
-function getProductVisualHTML(p, mode = renderMode) {
-  if (p.img) {
-    return `<div class="photo-box"><img src="${p.img}" alt="${p.name}" loading="eager" decoding="async"></div>`;
-  }
-  return getProduct3DHTML(p, mode);
+function cartTotal(){
+  return cart.reduce((s,i)=>s + i.price*i.qty, 0);
 }
 
-/* ==========================================================
-   3. محرك التدوير الفيزيائي 360°
-   ========================================================== */
-const spinners = [];
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function createSpinner(stageEl, boxEl, opts = {}) {
-  const idx = spinners.findIndex(s => s.stage === stageEl);
-  if (idx !== -1) spinners.splice(idx, 1);
-
-  const s = {
-    stage: stageEl, box: boxEl,
-    rx: opts.rx ?? -12, ry: opts.ry ?? 26,
-    vx: 0, vy: 0, dragging: false, px: 0, py: 0,
-    speed: opts.speed ?? 0.14, visible: true
-  };
-  spinners.push(s);
-  boxEl.style.transform = `rotateX(${s.rx}deg) rotateY(${s.ry}deg)`;
-
-  if (!stageEl.dataset.bound) {
-    stageEl.dataset.bound = '1';
-    const getCur = () => spinners.find(x => x.stage === stageEl);
-
-    stageEl.addEventListener('pointerdown', e => {
-      if (e.target.closest('button')) return;
-      const cur = getCur(); if (!cur) return;
-      cur.dragging = true; cur.px = e.clientX; cur.py = e.clientY;
-      cur.vx = 0; cur.vy = 0;
-      stageEl.classList.add('grabbing');
-      try { stageEl.setPointerCapture(e.pointerId); } catch (_) {}
-    });
-
-    stageEl.addEventListener('pointermove', e => {
-      const cur = getCur(); if (!cur || !cur.dragging) return;
-      const dx = e.clientX - cur.px, dy = e.clientY - cur.py;
-      cur.px = e.clientX; cur.py = e.clientY;
-      cur.ry += dx * 0.56;
-      cur.rx = Math.max(-68, Math.min(68, cur.rx - dy * 0.42));
-      cur.vy = dx * 0.56;
-      cur.vx = -dy * 0.42;
-    });
-
-    const stopDrag = () => {
-      const cur = getCur(); if (cur) cur.dragging = false;
-      stageEl.classList.remove('grabbing');
-    };
-    stageEl.addEventListener('pointerup', stopDrag);
-    stageEl.addEventListener('pointercancel', stopDrag);
-  }
-  return s;
+function cartCount(){
+  return cart.reduce((s,i)=>s+i.qty, 0);
 }
 
-function kickSpinner(pid) {
-  const s = spinners.find(x => x.stage.dataset.pid === String(pid));
-  if (s) { s.vy += 15; s.vx -= 4; }
-}
-
-let prevTime = performance.now();
-function animateScene(now) {
-  const dt = Math.min((now - prevTime) / 16.67, 2.4);
-  prevTime = now;
-
-  if (!document.hidden) {
-    for (const s of spinners) {
-      if (!s.visible || !s.box) continue;
-      if (!s.dragging) {
-        s.ry += s.vy * dt;
-        s.rx += s.vx * dt;
-        s.vy *= Math.pow(0.94, dt);
-        s.vx *= Math.pow(0.94, dt);
-        if (Math.abs(s.vy) < 0.03) s.vy = 0;
-        if (Math.abs(s.vx) < 0.03) s.vx = 0;
-        if (!s.vy && !s.vx) {
-          if (!reduceMotion) s.ry += s.speed * dt;
-          s.rx += (-12 - s.rx) * 0.03 * dt;
-        }
-        s.rx = Math.max(-68, Math.min(68, s.rx));
-      }
-      s.box.style.transform = `rotateX(${s.rx.toFixed(2)}deg) rotateY(${s.ry.toFixed(2)}deg)`;
-    }
-  }
-  requestAnimationFrame(animateScene);
-}
-requestAnimationFrame(animateScene);
-
-const visObserver = new IntersectionObserver(entries => {
-  entries.forEach(en => {
-    const s = spinners.find(x => x.stage === en.target);
-    if (s) s.visible = en.isIntersecting;
-  });
-}, { rootMargin: '120px' });
-
-/* ==========================================================
-   4. بناء بطاقات المتجر + البحث والتصفية
-   ========================================================== */
-const grid = document.getElementById('grid');
-const noResults = document.getElementById('noResults');
-
-function renderStars(r) {
-  const full = Math.floor(r);
-  return '★'.repeat(full) + '☆'.repeat(5 - full);
-}
-
-function renderStoreGrid() {
-  grid.innerHTML = PRODUCTS.map(p => {
-    const pct = Math.max(10, Math.round((p.left / p.total) * 100));
-    return `
-    <article class="card" data-id="${p.id}" data-cat="${p.cat}" data-name="${p.name}">
-      <div class="stage" data-pid="${p.id}">
-        <div class="stage-tools">
-          <span class="stage-badge">↔ 360°</span>
-          <button class="qv-trigger" data-qv="${p.id}">طقس الاستعمال ✦</button>
+function updateCartUI(){
+  document.getElementById('cartBadge').textContent = cartCount();
+  const items = document.getElementById('cartItems');
+  if(cart.length===0){ items.innerHTML = '<p style="text-align:center;color:var(--muted);padding:40px">السلة فارغة</p>'; }
+  else {
+    items.innerHTML = cart.map(item=>{
+      const p = PRODUCTS.find(x=>x.id===item.id);
+      return `<div class="cart-item">
+        <img src="${p.img}" alt="${p.name}">
+        <div class="cart-item-info">
+          <div class="cart-item-name">${p.name}</div>
+          <div class="cart-item-price">${p.price} درهم</div>
+          <div class="cart-item-qty">
+            <button class="qty-btn" onclick="updateQty(${item.id},-1)">-</button>
+            <span>${item.qty}</span>
+            <button class="qty-btn" onclick="updateQty(${item.id},1)">+</button>
+            <button class="qty-btn" onclick="removeFromCart(${item.id})" style="margin-right:auto;color:#C0392B">✕</button>
+          </div>
         </div>
-        ${getProductVisualHTML(p)}
+      </div>`;
+    }).join('');
+  }
+  const total = cartTotal();
+  const shipping = total >= FREE_SHIPPING_FROM ? 0 : (total>0 ? SHIPPING_FEE : 0);
+  document.getElementById('cartTotal').textContent = (total+shipping) + ' درهم';
+}
+
+function toggleCart(force){
+  const overlay = document.getElementById('cartOverlay');
+  const sidebar = document.getElementById('cartSidebar');
+  if(force===true){ overlay.classList.add('open'); sidebar.classList.add('open'); }
+  else if(force===false){ overlay.classList.remove('open'); sidebar.classList.remove('open'); }
+  else { overlay.classList.toggle('open'); sidebar.classList.toggle('open'); }
+}
+
+// Render products
+function renderProducts(filter='all'){
+  const grid = document.getElementById('productGrid');
+  const filtered = filter==='all' ? PRODUCTS : PRODUCTS.filter(p=>p.cat===filter);
+  grid.innerHTML = filtered.map(p=>`
+    <div class="product-card" onclick="openModal(${p.id})">
+      <div class="card-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        ${p.badge?`<span class="card-badge">${p.badge}</span>`:''}
       </div>
-      <div class="info">
-        <div class="tag-row">
-          <span class="tag ${p.hot ? 'hot' : ''}">${p.tag}</span>
-          <span class="serif" style="font-size:.7rem;color:var(--gold);font-weight:700">${p.enSub}</span>
-        </div>
-        <h3>${p.name}</h3>
-        <p class="desc">${p.desc}</p>
-        <div class="rating"><span class="stars">${renderStars(p.rating)}</span><span>${p.rating} (${p.reviews} تقييماً)</span></div>
-        <div class="price-row">
-          <span class="price">${p.price}<small>درهم</small></span>
-          <span class="old">${p.old} درهم</span>
-        </div>
-        <div class="scarcity" style="--w:${pct}%">
-          <div class="bar"><div class="fill"></div></div>
-          <div class="lbl">متوفر ${p.left} قطع فقط من هذه الدفعة</div>
-        </div>
-        <button class="add-btn" data-add="${p.id}">أضيفي إلى السلة</button>
+      <div class="card-body">
+        <div class="card-cat">${p.cat}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-desc">${p.desc}</div>
+        <div class="card-price"><span class="price-now">${p.price} درهم</span></div>
+        <button class="card-btn" onclick="event.stopPropagation();addToCart(${p.id})">أضف إلى السلة</button>
       </div>
-    </article>`;
-  }).join('');
-
-  grid.querySelectorAll('.card').forEach(card => {
-    const stage = card.querySelector('.stage');
-    const box = card.querySelector('.box');
-    if (box) createSpinner(stage, box, { speed: 0.13 });
-    visObserver.observe(stage);
-  });
+    </div>
+  `).join('');
 }
 
-document.getElementById('modeSwitch').addEventListener('click', e => {
-  const btn = e.target.closest('.mode-btn');
-  if (!btn || btn.dataset.mode === renderMode) return;
-  renderMode = btn.dataset.mode;
-  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-
-  grid.querySelectorAll('.card').forEach(card => {
-    const p = PRODUCTS.find(x => x.id === Number(card.dataset.id));
-    if (!p || p.img) return;
-    const stage = card.querySelector('.stage');
-    stage.querySelector('.box')?.remove();
-    stage.insertAdjacentHTML('beforeend', getProduct3DHTML(p, renderMode));
-    createSpinner(stage, stage.querySelector('.box'), { speed: 0.13 });
+// Filters
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProducts(btn.dataset.cat);
   });
 });
 
-let activeCat = 'all';
-const searchInput = document.getElementById('search');
-
-function normalizeArabic(str) {
-  return String(str || '').toLowerCase()
-    .replace(/[\u064B-\u0652\u0670\u0640]/g, '')
-    .replace(/[أإآٱ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه')
-    .replace(/\s+/g, ' ').trim();
+// Modal
+function openModal(id){
+  const p = PRODUCTS.find(x=>x.id===id);
+  if(!p) return;
+  currentProduct = p;
+  document.getElementById('modalImg').src = p.img;
+  document.getElementById('modalName').textContent = p.name;
+  document.getElementById('modalPrice').textContent = p.price + ' درهم';
+  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalUsage').textContent = p.usage;
+  document.getElementById('modalAddBtn').onclick = ()=>{ addToCart(p.id); closeModal(); };
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal(e){
+  if(!e || e.target===document.getElementById('modalOverlay'))
+    document.getElementById('modalOverlay').classList.remove('open');
 }
 
-function filterProducts() {
-  const q = normalizeArabic(searchInput.value);
-  let visibleCount = 0;
-
-  grid.querySelectorAll('.card').forEach(card => {
-    const catOk = activeCat === 'all' || card.dataset.cat === activeCat;
-    const textOk = !q ||
-      normalizeArabic(card.dataset.name).includes(q) ||
-      normalizeArabic(card.querySelector('.desc').textContent).includes(q);
-    const show = catOk && textOk;
-    card.style.display = show ? '' : 'none';
-    if (show) visibleCount++;
-  });
-
-  noResults.style.display = visibleCount ? 'none' : 'block';
+// Checkout
+function goToCheckout(){
+  if(cart.length===0){ alert('السلة فارغة'); return; }
+  toggleCart(false);
+  document.getElementById('shop').style.display='none';
+  document.getElementById('gallery').style.display='none';
+  document.getElementById('checkoutSection').style.display='block';
+  renderOrderSummary();
+  window.scrollTo(0,0);
 }
-
-searchInput.addEventListener('input', filterProducts);
-document.getElementById('chips').addEventListener('click', e => {
-  const chip = e.target.closest('.chip');
-  if (!chip) return;
-  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-  chip.classList.add('active');
-  activeCat = chip.dataset.cat;
-  filterProducts();
-});
-
-/* ==========================================================
-   5. منصة طقس الإشراقة الثلاثي التفاعلية
-   ========================================================== */
-function setRitualStep(stepIdx) {
-  document.querySelectorAll('.pod-item').forEach(el => {
-    el.classList.toggle('active', Number(el.dataset.step) === stepIdx);
-  });
-  document.querySelectorAll('.r-step').forEach(el => {
-    el.classList.toggle('active', Number(el.dataset.step) === stepIdx);
-  });
-}
-document.getElementById('podiumBottles').addEventListener('click', e => {
-  const item = e.target.closest('.pod-item');
-  if (item) setRitualStep(Number(item.dataset.step));
-});
-document.getElementById('ritualSteps').addEventListener('click', e => {
-  const step = e.target.closest('.r-step');
-  if (step) setRitualStep(Number(step.dataset.step));
-});
-document.getElementById('addRitualBundle').addEventListener('click', () => {
-  [4, 1, 2].forEach(id => addToCart(id, null, true));
-  showToast('✦ أُضيف طقس الإشراقة الثلاثي إلى سلتك');
-  openCartDrawer();
-});
-
-/* ==========================================================
-   6. السلة + طيران المنتج + إرسال الطلب عبر واتساب
-   ========================================================== */
-let cart = [];
-const badgeEl = document.getElementById('cartBadge');
-const cartItemsEl = document.getElementById('cartItems');
-const totalPriceEl = document.getElementById('totalPrice');
-const giftTextEl = document.getElementById('giftText');
-const giftFillEl = document.getElementById('giftFill');
-const waCheckoutBtn = document.getElementById('waCheckoutBtn');
-
-function flyProductToCart(stageEl, product) {
-  if (!stageEl || reduceMotion) return;
-  const r1 = stageEl.getBoundingClientRect();
-  const r2 = document.getElementById('openCartBtn').getBoundingClientRect();
-  const ghost = document.createElement('div');
-  ghost.className = 'fly-item';
-  ghost.innerHTML = product.img
-    ? `<div class="photo-box" style="width:84px;height:84px"><img src="${product.img}" alt=""></div>`
-    : getProduct3DHTML(product, renderMode);
-  ghost.style.left = (r1.left + r1.width / 2 - 42) + 'px';
-  ghost.style.top = (r1.top + r1.height / 2 - 42) + 'px';
-  ghost.style.transform = 'scale(.8)';
-  document.body.appendChild(ghost);
-
-  requestAnimationFrame(() => {
-    ghost.style.left = (r2.left + r2.width / 2) + 'px';
-    ghost.style.top = (r2.top + r2.height / 2) + 'px';
-    ghost.style.transform = 'scale(.12) rotate(200deg)';
-    ghost.style.opacity = '0';
-  });
-  setTimeout(() => ghost.remove(), 750);
-}
-
-function addToCart(id, stageEl = null, silent = false) {
-  const p = PRODUCTS.find(x => x.id === id);
-  if (!p) return;
-  kickSpinner(id);
-  flyProductToCart(stageEl, p);
-
-  const existing = cart.find(x => x.id === id);
-  if (existing) existing.qty++;
-  else cart.push({ id, qty: 1 });
-
-  updateCartUI();
-  badgeEl.classList.add('pop');
-  setTimeout(() => badgeEl.classList.remove('pop'), 300);
-  if (!silent) showToast(`أُضيف «${p.name}» إلى سلتك ✦`);
-}
-
-function updateCartUI() {
-  const totalCount = cart.reduce((sum, x) => sum + x.qty, 0);
-  badgeEl.textContent = totalCount;
-
-  if (!cart.length) {
-    cartItemsEl.innerHTML = `<div class="cart-empty">سلتك فارغة حالياً.<br>خذي وقتك في استكشاف مجموعتنا الفاخرة ✦</div>`;
-    totalPriceEl.textContent = '0 MAD';
-    giftTextEl.textContent = 'أضيفي منتجات بقيمة 300 درهم لتحصلي على عينة هدية مجانية ✦';
-    giftFillEl.style.width = '0%';
-    document.getElementById('shipLine').textContent = '';
-    document.getElementById('orderStatus').textContent = '';
-    waCheckoutBtn.disabled = true;
-    return;
-  }
-
-  cartItemsEl.innerHTML = cart.map(item => {
-    const p = PRODUCTS.find(x => x.id === item.id);
-    return `
-    <div class="ci">
-      <div class="thumb" style="background:linear-gradient(145deg,${p.c1},${p.c2})">${p.img ? `<img src="${p.img}" alt="${p.name}">` : p.emoji}</div>
-      <div class="ci-info">
-        <b>${p.name}</b>
-        <span>${p.price * item.qty} درهم</span>
-        <div class="qty">
-          <button data-delta="-1" data-id="${p.id}">−</button>
-          <b>${item.qty}</b>
-          <button data-delta="1" data-id="${p.id}">+</button>
-        </div>
-      </div>
-      <button class="remove" data-remove="${p.id}" aria-label="حذف">✕</button>
-    </div>`;
-  }).join('');
-
-  const total = cart.reduce((sum, item) => {
-    const p = PRODUCTS.find(x => x.id === item.id);
-    return sum + p.price * item.qty;
-  }, 0);
+function renderOrderSummary(){
+  const total = cartTotal();
   const shipping = total >= FREE_SHIPPING_FROM ? 0 : SHIPPING_FEE;
-
-  totalPriceEl.textContent = `${total + shipping} MAD`;
-  document.getElementById('shipLine').textContent = shipping
-    ? `منها ${shipping} درهم توصيل — مجاني فوق ${FREE_SHIPPING_FROM} درهم`
-    : 'التوصيل مجاني ✦';
-  waCheckoutBtn.disabled = false;
-
-  const remaining = 300 - total;
-  giftFillEl.style.width = `${Math.min(100, (total / 300) * 100)}%`;
-  giftTextEl.textContent = remaining > 0
-    ? `أضيفي بقيمة ${remaining} درهم لتحصلي على عينة هدية مجانية ✦`
-    : '🎉 تهانينا! حصلتِ على عينة هدية مجانية مع طلبك';
+  const grand = total + shipping;
+  const items = cart.map(item=>{
+    const p = PRODUCTS.find(x=>x.id===item.id);
+    return `<div class="line"><span>${p.name} × ${item.qty}</span><span>${item.price*item.qty} درهم</span></div>`;
+  }).join('');
+  document.getElementById('orderSummary').innerHTML = `
+    <h4>ملخص الطلب</h4>
+    ${items}
+    <div class="line"><span>الشحن</span><span>${shipping===0?'مجاني':shipping+' درهم'}</span></div>
+    <div class="total"><span>المجموع</span><span>${grand} درهم</span></div>
+  `;
 }
 
-cartItemsEl.addEventListener('click', e => {
-  const qBtn = e.target.closest('[data-delta]');
-  if (qBtn) {
-    const id = Number(qBtn.dataset.id);
-    const item = cart.find(x => x.id === id);
-    if (!item) return;
-    item.qty += Number(qBtn.dataset.delta);
-    if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
-    updateCartUI();
-    return;
-  }
-  const rmBtn = e.target.closest('[data-remove]');
-  if (rmBtn) {
-    cart = cart.filter(x => x.id !== Number(rmBtn.dataset.remove));
-    updateCartUI();
-  }
-});
-
-grid.addEventListener('click', e => {
-  const addBtn = e.target.closest('[data-add]');
-  if (addBtn) {
-    const card = addBtn.closest('.card');
-    addToCart(Number(addBtn.dataset.add), card?.querySelector('.stage'));
-    return;
-  }
-  const qvBtn = e.target.closest('[data-qv]');
-  if (qvBtn) openQuickView(Number(qvBtn.dataset.qv));
-});
-
-const drawer = document.getElementById('drawer');
-const overlay = document.getElementById('overlay');
-function openCartDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeCartDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
-
-document.getElementById('openCartBtn').addEventListener('click', openCartDrawer);
-document.getElementById('closeCartBtn').addEventListener('click', closeCartDrawer);
-overlay.addEventListener('click', closeCartDrawer);
-
-function normalizeMoroccanPhone(raw) {
-  let d = String(raw || '').replace(/[^\d+]/g, '');
-  if (d.startsWith('+212')) d = '0' + d.slice(4);
-  else if (d.startsWith('00212')) d = '0' + d.slice(5);
-  else if (/^212[5-7]\d{8}$/.test(d)) d = '0' + d.slice(3);
-  else if (/^[5-7]\d{8}$/.test(d)) d = '0' + d;
-  return /^0[5-7]\d{8}$/.test(d) ? d : '';
+function validateForm(){
+  let ok = true;
+  const name = document.getElementById('custName');
+  const phone = document.getElementById('custPhone');
+  const city = document.getElementById('custCity');
+  const address = document.getElementById('custAddress');
+  // reset
+  [name,phone,city,address].forEach(el=>el.parentElement.classList.remove('error'));
+  if(!name.value.trim()){ name.parentElement.classList.add('error'); ok=false; }
+  if(!/^0[5-7]\d{8}$/.test(phone.value.trim())){ phone.parentElement.classList.add('error'); ok=false; }
+  if(!city.value.trim()){ city.parentElement.classList.add('error'); ok=false; }
+  if(!address.value.trim()){ address.parentElement.classList.add('error'); ok=false; }
+  return ok;
 }
 
-waCheckoutBtn.addEventListener('click', () => {
-  if (!cart.length) return;
-
-  const status = document.getElementById('orderStatus');
+function submitOrder(){
+  if(!validateForm()) return;
   const name = document.getElementById('custName').value.trim();
-  const phoneRaw = document.getElementById('custPhone').value.trim();
-  const phone = normalizeMoroccanPhone(phoneRaw);
+  const phone = document.getElementById('custPhone').value.trim();
   const city = document.getElementById('custCity').value.trim();
   const address = document.getElementById('custAddress').value.trim();
-
-  const fail = (msg, fieldId) => {
-    status.className = 'order-status err';
-    status.textContent = msg;
-    document.getElementById(fieldId)?.focus();
-    showToast(msg);
-  };
-
-  if (name.length < 3) return fail('أدخلي الاسم الكامل أولاً ✦', 'custName');
-  if (!phone) return fail('رقم الهاتف غير صحيح. مثال: 0661234567', 'custPhone');
-  if (city.length < 2) return fail('أدخلي المدينة ✦', 'custCity');
-  if (address.length < 8) return fail('أدخلي العنوان الكامل (الحي، الشارع، الرقم) ✦', 'custAddress');
-
-  const items = cart.map(item => {
-    const p = PRODUCTS.find(x => x.id === item.id);
-    return { id: p.id, sku: p.sku || '', name: p.name, qty: item.qty, price: p.price };
-  });
-  const subtotal = items.reduce((s, it) => s + it.price * it.qty, 0);
-  const shipping = subtotal >= FREE_SHIPPING_FROM ? 0 : SHIPPING_FEE;
-  const total = subtotal + shipping;
+  const total = cartTotal();
+  const shipping = total >= FREE_SHIPPING_FROM ? 0 : SHIPPING_FEE;
+  const grand = total + shipping;
   const orderId = 'MG-' + Date.now().toString(36).toUpperCase();
-  const order = {
-    id: orderId,
-    token: SHEET_TOKEN,
-    name,
-    phone,
-    city,
-    address: `${city} — ${address}`,
-    items,
-    subtotal,
-    shipping,
-    total,
-    createdAt: new Date().toISOString(),
-    source: 'mofa-glow-store'
-  };
 
-  try { localStorage.setItem('mofa_glow_last_order', JSON.stringify(order)); } catch (e) {}
+  // Save locally
+  const order = { orderId, name, phone, city, address, cart: [...cart], total: grand, date: new Date().toISOString() };
+  localStorage.setItem('mofa_glow_last_order', JSON.stringify(order));
 
-  if (SHEET_URL) {
-    status.className = 'order-status';
-    status.textContent = 'جارٍ تسجيل طلبك…';
+  // Build WhatsApp message
+  const items = cart.map(item=>{
+    const p = PRODUCTS.find(x=>x.id===item.id);
+    return `• ${p.name} (SKU: ${p.sku}) × ${item.qty} = ${item.price*item.qty} درهم`;
+  }).join('\n');
+  const msg = `طلب جديد — MOFA GLOW\nرقم الطلب: ${orderId}\n\nالاسم: ${name}\nالهاتف: ${phone}\nالمدينة: ${city}\nالعنوان: ${address}\n\nالمنتجات:\n${items}\n\nالمجموع: ${total} درهم\nالشحن: ${shipping===0?'مجاني':shipping+' درهم'}\nالإجمالي: ${grand} درهم\n\nالدفع: عند الاستلام`;
+  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+
+  // Send to Google Sheets if configured
+  if(SHEET_URL){
     fetch(SHEET_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(order),
-      keepalive: true
-    })
-      .then(r => r.json())
-      .then(d => {
-        if (!d || !d.ok) throw new Error((d && d.error) || 'rejected');
-        status.className = 'order-status ok';
-        status.textContent = `تم تسجيل الطلب ${orderId} ✦ أكملي التأكيد عبر واتساب.`;
-      })
-      .catch(() => {
-        status.className = 'order-status err';
-        status.textContent = 'تعذّر التسجيل التلقائي الآن — أكملي التأكيد عبر واتساب.';
-      });
-  } else {
-    status.className = 'order-status';
-    status.textContent = 'سيُحفظ طلبك محلياً، وأكملي التأكيد عبر واتساب.';
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({token: SHEET_TOKEN, order})
+    }).catch(()=>{});
   }
 
-  const lines = items.map(it => `• ${it.name} (×${it.qty}) — ${it.price * it.qty} درهم`).join('\n');
-  let msg = `مرحبًا فريق MOFA GLOW ✦\nأود طلب المنتجات التالية:\n\n${lines}\n\nالمجموع الفرعي: ${subtotal} درهم`;
-  if (shipping) msg += `\nالتوصيل: ${shipping} درهم`;
-  msg += `\nالمجموع الإجمالي: ${total} درهم`;
-  msg += `\nرقم الطلب: ${orderId}`;
-  if (subtotal >= FREE_SHIPPING_FROM) msg += `\n🎁 مؤهل لعينة هدية مجانية`;
-  msg += `\n\nالاسم: ${name}\nالهاتف: ${phone}\nالمدينة: ${city}\nالعنوان: ${address}`;
-
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
-});
-
-/* ==========================================================
-   7. المعاينة السريعة (Quick View + طقس الاستعمال)
-   ========================================================== */
-const qvModal = document.getElementById('qvModal');
-function openQuickView(id) {
-  const p = PRODUCTS.find(x => x.id === id);
-  if (!p) return;
-  document.getElementById('qvStage').innerHTML = getProductVisualHTML(p, 'sculpt');
-  document.getElementById('qvBody').innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <span class="tag">${p.tag}</span>
-      <button id="closeQvBtn" style="border:none;background:none;color:var(--muted);cursor:pointer;font-size:18px">✕</button>
-    </div>
-    <h3 style="font-size:1.25rem;font-weight:900">${p.name}</h3>
-    <p style="font-size:.88rem;color:var(--muted)">${p.desc}</p>
-    <div class="qv-ritual"><b>✦ طقس الاستعمال:</b><br>${p.ritual}</div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
-      <span class="price">${p.price}<small>درهم</small></span>
-      <button class="btn btn-primary" id="qvAddBtn" style="padding:10px 22px">أضيفي للسلة</button>
-    </div>`;
-  qvModal.classList.add('open');
-  document.getElementById('closeQvBtn').onclick = () => qvModal.classList.remove('open');
-  document.getElementById('qvAddBtn').onclick = () => {
-    addToCart(p.id);
-    qvModal.classList.remove('open');
-  };
-}
-qvModal.addEventListener('click', e => { if (e.target === qvModal) qvModal.classList.remove('open'); });
-
-/* ==========================================================
-   8. ركن الهدوء + مولد الصوت الهادئ (Web Audio API)
-   ========================================================== */
-const calmModal = document.getElementById('calmModal');
-const breathOrb = document.getElementById('breathOrb');
-const breathPhase = document.getElementById('breathPhase');
-const breathAffirmation = document.getElementById('breathAffirmation');
-const AFFIRMATIONS = [
-  'خذي نفساً عميقاً، لا شيء مستعجل.',
-  'بشرتك تستحق لحظة اهتمام وهدوء.',
-  'الجمال الحقيقي يبدأ من صفاء الداخل.',
-  'ركّزي على أنفاسك فقط لبضع ثوانٍ.'
-];
-let breathTimer = null, affTimer = null, audioCtx = null, ambientNodes = null;
-
-function toggleAmbientSound(turnOn) {
-  const btn = document.getElementById('soundToggleBtn');
-  if (turnOn) {
-    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
-    audioCtx.resume();
-    const master = audioCtx.createGain();
-    master.gain.value = 0;
-    master.connect(audioCtx.destination);
-    master.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 2.5);
-
-    const oscs = [174.61, 220.0, 261.63, 329.63].map((freq, i) => {
-      const o = audioCtx.createOscillator();
-      o.type = 'sine';
-      o.frequency.value = freq;
-      o.detune.value = (i - 1.5) * 5;
-      o.connect(master);
-      o.start();
-      return o;
-    });
-    ambientNodes = { master, oscs };
-    btn.textContent = 'إيقاف الصوت الهادئ 🔇';
-  } else if (ambientNodes) {
-    const { master, oscs } = ambientNodes;
-    master.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1);
-    setTimeout(() => oscs.forEach(o => o.stop()), 1100);
-    ambientNodes = null;
-    btn.textContent = 'تشغيل الصوت الهادئ 🎵';
-  }
+  // Show success
+  document.getElementById('checkoutSection').style.display='none';
+  document.getElementById('successSection').style.display='block';
+  document.getElementById('successDetails').innerHTML = `
+    <div class="line"><span>رقم الطلب</span><span>${orderId}</span></div>
+    <div class="line"><span>الاسم</span><span>${name}</span></div>
+    <div class="line"><span>الهاتف</span><span>${phone}</span></div>
+    <div class="line"><span>المجموع</span><span>${grand} درهم</span></div>
+  `;
+  // Clear cart
+  cart = [];
+  saveCart();
+  // Open WhatsApp
+  window.open(waUrl, '_blank');
+  window.scrollTo(0,0);
 }
 
-function runBreathCycle() {
-  breathPhase.textContent = 'شهيق عميق…';
-  breathOrb.className = 'orb inhale';
-  breathTimer = setTimeout(() => {
-    breathPhase.textContent = 'احبسي النفس برفق…';
-    breathTimer = setTimeout(() => {
-      breathPhase.textContent = 'زفير هادئ…';
-      breathOrb.className = 'orb exhale';
-      breathTimer = setTimeout(runBreathCycle, 6000);
-    }, 3500);
-  }, 4000);
+// Gallery
+function renderGallery(){
+  const grid = document.getElementById('galleryGrid');
+  const imgs = [];
+  for(let i=1;i<=89;i++) imgs.push(`assets/products/new/new-${String(i).padStart(2,'0')}.jpg`);
+  imgs.push('assets/products/new/label-poudre-200g.png');
+  imgs.push('assets/media/product-video.mov');
+  imgs.push('assets/media/product-video-2.mp4');
+  imgs.push('assets/media/product-video-3.mov');
+  grid.innerHTML = imgs.map(src=>{
+    if(src.endsWith('.mov')||src.endsWith('.mp4')) return `<video src="${src}" controls preload="metadata" playsinline></video>`;
+    return `<img src="${src}" alt="صورة" loading="lazy">`;
+  }).join('');
 }
 
-document.getElementById('openCalmBtn').addEventListener('click', () => {
-  calmModal.classList.add('open');
-  runBreathCycle();
-  let idx = 0;
-  affTimer = setInterval(() => {
-    idx = (idx + 1) % AFFIRMATIONS.length;
-    breathAffirmation.textContent = AFFIRMATIONS[idx];
-  }, 7000);
-});
-
-function closeCalmModal() {
-  calmModal.classList.remove('open');
-  clearTimeout(breathTimer);
-  clearInterval(affTimer);
-  breathOrb.className = 'orb';
-  if (ambientNodes) toggleAmbientSound(false);
-}
-document.getElementById('closeCalmBtn').addEventListener('click', closeCalmModal);
-calmModal.addEventListener('click', e => { if (e.target === calmModal) closeCalmModal(); });
-document.getElementById('soundToggleBtn').addEventListener('click', () => toggleAmbientSound(!ambientNodes));
-
-/* ==========================================================
-   9. مساعد المكونات الذكي (عربي / Français / English)
-   ========================================================== */
-const aiPanel = document.getElementById('aiPanel');
-const aiLog = document.getElementById('aiLog');
-document.getElementById('aiBtn').addEventListener('click', () => aiPanel.classList.toggle('open'));
-document.getElementById('closeAiBtn').addEventListener('click', () => aiPanel.classList.remove('open'));
-
-const AI_KB = [
-  [/argan|أرغان|ارغان/i, {
-    ar: 'زيت الأرغان المغربي في مجموعتنا يغذّي البشرة بعمق ويمنح الشعر لمعة حريرية دون أي ثقل دهني.',
-    fr: 'Notre huile d’argan marocaine nourrit intensément la peau et illumine les cheveux sans alourdir.',
-    en: 'Our Moroccan Argan oil deeply hydrates skin and adds silky shine to hair without heaviness.'
-  }],
-  [/vitamin|فيتامين|vitamine|نضارة|اشراقة/i, {
-    ar: 'سيروم فيتامين C المشرق (350 درهم) خفيف الامتصاص ويمنح البشرة توهّجاً فورياً عند استخدامه صباحاً.',
-    fr: 'Le Sérum Vitamine C (350 MAD) est léger et ravive instantanément l’éclat du teint.',
-    en: 'Our Vitamin C Serum (350 MAD) is lightweight and boosts skin radiance immediately.'
-  }],
-  [/شعر|hair|cheveux|تساقط|chute/i, {
-    ar: 'للعناية بالشعر نرشّح لكِ شامبو Anti-Chute لتقوية الجذور مع ماسك الشعر الأسبوعي وزيت الأرغان للأطراف.',
-    fr: 'Pour les cheveux, associez le Shampoing Anti-Chute au Masque Nourrissant et à l’Huile d’Argan.',
-    en: 'For hair care, pair our Anti-Chute Shampoo with the Nourishing Mask and Argan Hair Oil.'
-  }],
-  [/gummies|علك|نوم|sleep|sommeil|melaton|ashwa|توتر|stress/i, {
-    ar: 'علكات MOFA GLOW الجديدة: الفيتامينات الشاملة (275 درهم)، الميلاتونين للنوم (275 درهم)، والأشواغاندا للاسترخاء (275 درهم) — 25 علكة في العلبة.',
-    fr: 'Nos nouvelles gummies MOFA GLOW : Multivitamines, Mélatonine Sommeil et Ashwagandha, à 275 MAD le flacon de 25 gummies.',
-    en: 'Our new MOFA GLOW gummies: Multivitamins, Melatonin Sleep and Ashwagandha, 275 MAD per 25-gummy bottle.'
-  }],
-  [/توصيل|livraison|shipping|واتساب|whatsapp|سعر|هدية/i, {
-    ar: 'اختاري منتجاتك، أضيفيها للسلة، ثم أدخلي الاسم والهاتف والعنوان وأكّدي الطلب. سنتواصل معك عبر واتساب للتأكيد، والتوصيل مجاني فوق 300 درهم ✦',
-    fr: 'Ajoutez vos produits au panier, saisissez vos coordonnées puis confirmez. Nous vous contactons sur WhatsApp — livraison offerte dès 300 MAD ✦',
-    en: 'Add your products to the cart, enter your details and confirm. We follow up on WhatsApp — free delivery over 300 MAD ✦'
-  }]
-];
-
-document.getElementById('aiForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const input = document.getElementById('aiInput');
-  const q = input.value.trim();
-  if (!q) return;
-
-  const lang = /[\u0600-\u06FF]/.test(q) ? 'ar' : /[éèàçêô]|bonjour|quel|huile|cheveux/i.test(q) ? 'fr' : 'en';
-  const match = AI_KB.find(([rx]) => rx.test(q));
-  const reply = match ? match[1][lang] : {
-    ar: 'يسعدنا مساعدتك! اضغطي على «طقس الاستعمال» في أي منتج أو راسلينا مباشرة عبر واتساب.',
-    fr: 'Avec plaisir ! Cliquez sur « طقس الاستعمال » sur chaque produit ou contactez-nous sur WhatsApp.',
-    en: 'Happy to help! Tap any product’s ritual button or message our team directly on WhatsApp.'
-  }[lang];
-
-  const userDiv = document.createElement('div');
-  userDiv.className = 'me';
-  userDiv.textContent = q;
-  const botDiv = document.createElement('div');
-  botDiv.textContent = reply;
-  aiLog.append(userDiv, botDiv);
-  aiLog.scrollTop = aiLog.scrollHeight;
-  input.value = '';
-});
-
-/* ==========================================================
-   10. التوست + شريط التقدم + الغبار الذهبي + المظهر + التهيئة
-   ========================================================== */
-let toastTimer;
-const toastEl = document.getElementById('toast');
-function showToast(msg) {
-  document.getElementById('toastMsg').textContent = msg;
-  toastEl.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3000);
-}
-
-/* تبديل المظهر (عاجي زمردي <-> ليلي ذهبي) */
-document.getElementById('themeBtn').addEventListener('click', () => {
-  const html = document.documentElement;
-  const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-  html.setAttribute('data-theme', next);
-  showToast(next === 'dark' ? 'تم تفعيل المظهر الليلي الذهبي ✦' : 'تم تفعيل المظهر العاجي الملكي ✦');
-});
-
-/* إضاءة تتبع المؤشر */
-const cursorGlow = document.getElementById('cursorGlow');
-window.addEventListener('pointermove', e => {
-  cursorGlow.style.transform = `translate3d(${e.clientX}px,${e.clientY}px,0)`;
-  const card = e.target.closest('.card');
-  if (card) {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--mx', ((e.clientX - r.left) / r.width) * 100 + '%');
-    card.style.setProperty('--my', ((e.clientY - r.top) / r.height) * 100 + '%');
-  }
-}, { passive: true });
-
-/* شريط التقدم العلوي */
-window.addEventListener('scroll', () => {
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  document.getElementById('progressBar').style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
-}, { passive: true });
-
-/* الغبار الذهبي في الهيرو */
-(function initGoldenDust() {
-  if (reduceMotion) return;
-  const canvas = document.getElementById('dustCanvas');
-  const ctx = canvas.getContext('2d');
-  let W, H;
-  const resize = () => { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; };
-  resize();
-  window.addEventListener('resize', resize);
-
-  const particles = Array.from({ length: 55 }, () => ({
-    x: Math.random(), y: Math.random(),
-    r: Math.random() * 1.9 + 0.5,
-    v: Math.random() * 0.0005 + 0.0002,
-    phase: Math.random() * Math.PI * 2
-  }));
-
-  function drawDust() {
-    if (!document.hidden) {
-      ctx.clearRect(0, 0, W, H);
-      for (const p of particles) {
-        p.y -= p.v;
-        p.x += Math.sin(p.y * 18 + p.phase) * 0.00025;
-        if (p.y < 0) p.y = 1;
-        ctx.globalAlpha = 0.25 + 0.45 * Math.abs(Math.sin(p.y * 10 + p.phase));
-        ctx.fillStyle = '#C7A15D';
-        ctx.beginPath();
-        ctx.arc(p.x * W, p.y * H, p.r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-    requestAnimationFrame(drawDust);
-  }
-  requestAnimationFrame(drawDust);
-})();
-
-/* رسم الماندالا في شاشة التحميل */
-document.getElementById('mandalaSvg').innerHTML =
-  Array.from({ length: 12 }, (_, i) =>
-    `<ellipse cx="0" cy="-26" rx="6" ry="16" fill="none" stroke="${i % 2 ? '#C7A15D' : '#0D3B2E'}" stroke-width="1.3" transform="rotate(${i * 30})"/>`
-  ).join('') + `<circle r="8" fill="#C7A15D"/><circle r="40" fill="none" stroke="#0D3B2E" stroke-width=".9"/>`;
-
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('loader').classList.add('done'), reduceMotion ? 0 : 650);
-});
-
-/* مبدّل مجسم الهيرو */
-const HERO_PRESETS = {
-  serum:   { shape: 'dropper', c1: '#C88A3B', c2: '#5A3110', enSub: 'VITAMIN C GLOW' },
-  cream:   { shape: 'jar',     c1: '#F4EFE4', c2: '#D5CBB8', enSub: 'ARGAN VELVET' },
-  gold:    { shape: 'jar',     c1: '#D4AF37', c2: '#6E5214', enSub: 'ROYAL GOLD NIGHT' },
-  shampoo: { shape: 'shampoo', c1: '#F2EDE2', c2: '#CFC6B4', enSub: 'ANTI-CHUTE' },
-  set:     { shape: 'giftset', c1: '#0D3B2E', c2: '#061D16', enSub: 'ROYAL GLOW SET' }
-};
-
-function setHeroPreset(key) {
-  const item = HERO_PRESETS[key] || HERO_PRESETS.serum;
-  const stage = document.getElementById('heroStage');
-  const box = document.getElementById('heroBox');
-  box.className = `box shape-${item.shape}`;
-  box.style.cssText = `--c1:${item.c1};--c2:${item.c2}`;
-  box.innerHTML = buildSculptHTML(item.shape, item.enSub);
-  createSpinner(stage, box, { speed: 0.2, rx: -10, ry: 28 });
-}
-
-document.getElementById('heroSwitcher').addEventListener('click', e => {
-  const pill = e.target.closest('.hero-pill');
-  if (!pill) return;
-  document.querySelectorAll('.hero-pill').forEach(p => p.classList.remove('active'));
-  pill.classList.add('active');
-  setHeroPreset(pill.dataset.preset);
-});
-
-/* إغلاق النوافذ بزر Escape + تفاعل عنوان التبويب */
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    closeCartDrawer();
-    qvModal.classList.remove('open');
-    closeCalmModal();
-    aiPanel.classList.remove('open');
-  }
-});
-document.addEventListener('visibilitychange', () => {
-  document.title = document.hidden ? '✦ إشراقتك تنتظرك — MOFA GLOW' : 'MOFA GLOW — دار العناية والجمال الفاخر';
-});
-
-/* التشغيل الأولي */
-setHeroPreset('serum');
-renderStoreGrid();
+// Init
 updateCartUI();
+renderProducts();
+renderGallery();
 </script>
 </body>
 </html>
+"
